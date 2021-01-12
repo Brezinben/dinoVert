@@ -1,22 +1,24 @@
-@startuml test
+@startuml gestionDesBien
 left to right direction
 actor Admin as a
 actor Guest as g
 
 package Les_Biens {
-  usecase "Gérer les biens" as glb
-  usecase "Visualiser les biens" as vlb
-   (supprimer)--> (glb)
-   (ajouter)-->(glb)
-   (editer) -->(glb)
+  usecase "Visualiser" as vlb
+  usecase "Authentification" as auth
+  usecase "Supprimer" as del
+  usecase "Ajouter" as add
+  usecase "Editer" as edit
+    del ..> auth : <<include>>
+    add ..> auth : <<include>>
+    edit ..> auth : <<include>>
 }
 
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
-
-a --> glb
-a --> vlb
+a --> add
+a --> edit
+a --> del
+a --> auth
 g --> vlb
-@enduml
+g<|-a
 
+@enduml

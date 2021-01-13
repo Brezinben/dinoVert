@@ -35,16 +35,16 @@ images:id,url,alternative,created_at,updated_at
 :
 tags:id,title,description,created_at,updated_at
 post_tag, 0N posts, 0N tags: id,post_id,tag_id,created_at,updated_at
-posts:id,title,wysiwyg_text,url,created_at,updated_at
+posts:id,title,wysiwyg_text,imageUrl,created_at,updated_at
 
 contain,11 properties, 1N images
 types:id,title,description,created_at,updated_at
 :
 :
 categories:id,title,description,created_at,updated_at
-have,0N posts, 11 categories
+have,11 posts, 0N categories
 
-properties:id,title,description,price,surface,rooms,state,constructionYear,zip,town,created_at,updated_at
+properties:id,title,description,price,surface,rooms,state,constructionYear,postcode,town,created_at,updated_at
 is,11 properties, 0N types
 :
 users:id,name,email,email_verified_at,password,two_factor_secret,two_factor_recovery_codes,remember_token,current_team_id,profile_photo_path,created_at,updated_at

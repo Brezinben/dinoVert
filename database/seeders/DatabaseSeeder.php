@@ -3,10 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\Image;
 use App\Models\Post;
 use App\Models\Property;
-use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Database\Seeder;
 
@@ -31,12 +29,12 @@ class DatabaseSeeder extends Seeder
 
 
         // Création des articles auquelles on attache des tags
-//        Post::factory(50)->hasTags(rand(1, 10))->create();
-        Post::factory(50)->has(Tag::factory()->count(rand(1, 10)))->create();
+        Post::factory(50)->hasTags(rand(1, 10))->create();
+        // Post::factory(50)->has(Tag::factory()->count(rand(1, 10)))->create();
 
 
         // Création des biens auquelles on attache des images
-//        Property::factory()->count(50)->hasImages(rand(1, 10))->create();
-        Property::factory(50)->has(Image::factory()->count(rand(1, 10)))->create();
+        Property::factory()->count(50)->hasImages(rand(1, 10))->create();
+        // Property::factory(50)->has(Image::factory()->count(rand(1, 10)))->create();
     }
 }

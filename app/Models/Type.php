@@ -11,6 +11,6 @@ class Type extends Model
 
     public function property()
     {
-        $this->hasMany(Property::class);
+        return $this->hasMany(Property::class);
     }
 }

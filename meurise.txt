@@ -34,7 +34,7 @@ images:id,url,alternative,created_at,updated_at
 :
 :
 tags:id,title,description,created_at,updated_at
-post_tag, 0N posts, 0N tags: id,post_id,tag_id
+post_tag, 0N posts, 0N tags: id,post_id,tag_id,created_at,updated_at
 posts:id,title,wysiwyg_text,url,created_at,updated_at
 
 contain,11 properties, 1N images

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    public function category()
+    {
+        $this->belongsTo(Category::class);
+    }
+
+    public function tags()
+    {
+        $this->belongsToMany(Tag::class);
+    }
 }

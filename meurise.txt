@@ -26,7 +26,7 @@ http://mocodo.wingi.net/
 failed_jobs:id,uuid,connection,queue,payload,exception,failed_at
 migrations:id,migration,batch
 password_resets:email,token,created_at
-personal_access_tokens:id,tokenable_id,name,token,abilites,last_used_at,created_at,updated_at
+personal_access_tokens:id,tokenable_id,name,token,abilities,last_used_at,created_at,updated_at
 newsletters:id,email,created_at,updated_at
 logs:id,type(enum),message,created_at,updated_at
 

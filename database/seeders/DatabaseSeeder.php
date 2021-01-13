@@ -27,14 +27,10 @@ class DatabaseSeeder extends Seeder
         Category::create(['title' => 'Appartement', 'description' => 'Un appartement est une unité d’habitation, comportant un certain nombre de pièces et qui n’occupe qu’une partie d’un immeuble, situé généralement dans une ville. ']);
         Category::create(['title' => 'Enclos à dinosaure', 'description' => 'Un enclos est un espace de terrain entouré d\'une clôture qui sert à contenir des dinosaure, à délimiter un monument commémoratif. ']);
 
-
         // Création des articles auquelles on attache des tags
         Post::factory(50)->hasTags(rand(1, 10))->create();
-        // Post::factory(50)->has(Tag::factory()->count(rand(1, 10)))->create();
-
 
         // Création des biens auquelles on attache des images
         Property::factory()->count(50)->hasImages(rand(1, 10))->create();
-        // Property::factory(50)->has(Image::factory()->count(rand(1, 10)))->create();
     }
 }

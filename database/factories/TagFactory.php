@@ -22,7 +22,8 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->title,
+            'description' => $this->faker->sentence(rand(2, 15)),
         ];
     }
 }

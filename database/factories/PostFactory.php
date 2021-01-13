@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,10 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->title,
+            'imageUrl' => $this->faker->imageUrl(),
+            'wysiwyg_text' => $this->faker->randomHtml(),
+            'category_id' => Category::all()->random()->id,
         ];
     }
 }

@@ -22,7 +22,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('rooms')->nullable();
             $table->enum('state', ['Neuf', 'Rénovation', 'Abandonner', 'Ancien']);
             $table->integer('constructionYear')->nullable();
-            $table->bigInteger('zip');
+            $table->string('postcode');
             $table->string('town');
             $table->foreignId('type_id')->constrained();
             $table->timestamps();

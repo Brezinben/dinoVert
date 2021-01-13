@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('wysiwyg_text');
-            $table->string('url');
+            $table->string('imageUrl');
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });

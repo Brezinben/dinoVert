@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    //Les pages liée a l'admisnistration
+    //Les pages liée a l'admisnistration test
 }

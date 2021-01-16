@@ -6,7 +6,9 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Property;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,10 +29,19 @@ class DatabaseSeeder extends Seeder
         Category::create(['title' => 'Appartement', 'description' => 'Un appartement est une unité d’habitation, comportant un certain nombre de pièces et qui n’occupe qu’une partie d’un immeuble, situé généralement dans une ville. ']);
         Category::create(['title' => 'Enclos à dinosaure', 'description' => 'Un enclos est un espace de terrain entouré d\'une clôture qui sert à contenir des dinosaure, à délimiter un monument commémoratif. ']);
 
-        // Création des articles auquelles on attache des tags
+        // Création des articles au quelles on attache des tags
         Post::factory(50)->hasTags(rand(1, 10))->create();
 
-        // Création des biens auquelles on attache des images
+        // Création des biens au quelles on attache des images
         Property::factory()->count(50)->hasImages(rand(1, 10))->create();
+
+        //Création de l'administrateur
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@test.test',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$hSdC6HpcpbtsRY5sOqfvxeWQanLevwAwxiJJb2lFmKIv5Hi9VRwZe', // password - admin1234
+            'remember_token' => Str::random(10),
+        ]);
     }
 }

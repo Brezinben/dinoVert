@@ -33,7 +33,7 @@
                 ></div>
 
                 <div class="w-2/3 p-4 md:p-4">
-                    <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Backpack</h1>
+                    <h1 class="text-2xl font-bold text-gray-800 dark:text-white">{{Str::limit($property->title, 30, ' ...')}}</h1>
 
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{Str::limit($property->description, 70, ' ...')}}</p>
 

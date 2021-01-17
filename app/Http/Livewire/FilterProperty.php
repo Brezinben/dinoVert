@@ -78,5 +78,6 @@ class FilterProperty extends Component
             ->where('title', 'like', '%' . $this->query . '%')
             ->latest()
             ->get();
+        $this->resetFilter();
     }
 }

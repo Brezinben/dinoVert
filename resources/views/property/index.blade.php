@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="container grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
+    <div class="container my-5 grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
         @foreach($properties as $property)
             <div class="flex max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
                 <div class="w-1/3 bg-cover"

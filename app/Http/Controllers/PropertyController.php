@@ -18,7 +18,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::with(['type', 'images'])->get();
+        $properties = Property::with(['type', 'images'])
+            ->latest()
+            ->get();
         return view('property.index', compact('properties'));
     }
 

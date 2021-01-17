@@ -24,7 +24,7 @@ class PropertyFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence,
             'description' => $this->faker->text,
             'price' => rand(1000, 10000000),
             'surface' => rand(5, 5000),

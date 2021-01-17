@@ -1,6 +1,6 @@
 <nav class="bg-cover shadow dark:bg-gray-800">
-    <div class="container z-10 px-6 py-3 mx-auto md:flex">
-        <div class="flex items-center justify-between">
+    <div class="container z-10 py-3 px-6 mx-auto md:flex">
+        <div class="flex justify-between items-center">
             <div>
                 <a class="text-xl font-bold text-gray-800 dark:text-white md:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
                    href="#">
@@ -11,7 +11,7 @@
             <!-- Mobile menu button -->
             <div class="flex md:hidden">
                 <button type="button"
-                        class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+                        class="text-gray-500 hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
                         aria-label="toggle menu">
                     <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
                         <path fill-rule="evenodd"
@@ -22,13 +22,13 @@
         </div>
 
         <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-        <div class="hidden w-full md:flex md:items-center md:justify-between ">
+        <div class="hidden w-full md:flex md:items-center md:justify-between">
             <div
-                class="flex flex-col justify-center flex-grow px-2 py-3 -mx-4 space-x-10 lg:space-x-40 md:flex-row md:mx-0 md:py-0">
+                class="flex flex-col flex-grow justify-center py-3 px-2 -mx-4 space-x-10 lg:space-x-40 md:flex-row md:mx-0 md:py-0">
                 <a href="{{route('properties.index')}}"
-                   class=" w-max flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
+                   class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
                     <div>Bien à vendre</div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 " viewBox="0 0 48 35.963">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 35.963">
                         <g id="fence" transform="translate(0 -51.81)">
                             <g id="Groupe_16" data-name="Groupe 16" transform="translate(1.181 52.988)">
                                 <path id="Tracé_188" data-name="Tracé 188" d="M112.56,265.471h9.53v5.9h-9.53Z"
@@ -90,9 +90,9 @@
                 </a>
 
                 <a href="#"
-                   class=" w-max flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Actualité</div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 " viewBox="0 0 52.033 55.285">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 52.033 55.285">
                         <g id="megaphone" transform="matrix(0.978, -0.208, 0.208, 0.978, -30.048, -8.994)">
                             <path id="Tracé_203" data-name="Tracé 203"
                                   d="M35.592,102.212,31.119,73.018H43.073s3.541,23.939,4.386,30.51a1.31,1.31,0,0,1-1.431,1.466l-7.561-.686c-1.819-.165-2.707-1-2.875-2.1Z"
@@ -114,9 +114,9 @@
                 </a>
 
                 <a href="#"
-                   class=" w-max flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Qui sommes nous</div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 " viewBox="0 0 48 50.902">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 50.902">
                         <g id="question" transform="translate(-14.14 0)">
                             <path id="Tracé_218" data-name="Tracé 218"
                                   d="M51.961,312l9.265,1.478a8.075,8.075,0,0,1,6.7,6.142l2.133,9.695H24l2.133-9.7a8.075,8.075,0,0,1,6.7-6.142L42.091,312Z"
@@ -161,7 +161,7 @@
             </div>
             {{--            <div>--}}
             {{--                <input type="text"--}}
-            {{--                       class="w-full px-4 py-3 text-sm leading-tight text-gray-700 border border-transparent rounded-md lg:w-64 dark:text-gray-200 bg-gray-50 dark:bg-gray-900 placeholder-dino-500 dark:placeholder-gray-200 focus:outline-none focus:bg-white focus:ring-2 focus:border-dino-200"--}}
+            {{--                       class="py-3 px-4 w-full text-sm leading-tight text-gray-700 bg-gray-50 rounded-md border border-transparent lg:w-64 dark:text-gray-200 dark:bg-gray-900 placeholder-dino-500 dark:placeholder-gray-200 focus:outline-none focus:bg-white focus:ring-2 focus:border-dino-200"--}}
             {{--                       placeholder="Search" aria-label="Search">--}}
             {{--            </div>--}}
         </div>

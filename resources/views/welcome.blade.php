@@ -6,37 +6,37 @@
     </x-slot>
 
     <div class="container grid grid-cols-1 grid-rows-3 py-12 mx-auto lg:grid-cols-11 lg:grid-rows-5">
-        <div class="w-full row-span-1 lg:col-span-5 lg:row-span-full">
-            <div class="flex flex-col w-full h-full max-w-xl mx-auto rounded-2xl">
-                <div class="h-full overflow-hidden text-center bg-cover rounded-t-xl"
+        <div class="row-span-1 w-full lg:col-span-5 lg:row-span-full">
+            <div class="flex flex-col mx-auto w-full max-w-xl h-full rounded-2xl">
+                <div class="overflow-hidden h-full text-center bg-cover rounded-t-xl"
                      style="background-image: url('{{$properties[0]->images[0]->url}}')"
                      title="{{$properties[0]->images[0]->alternative}}">
                 </div>
                 <div
-                    class="flex flex-col justify-between w-full p-4 leading-normal bg-white border-b border-l border-r rounded-b-xl border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light ">
+                    class="flex flex-col justify-between p-4 w-full leading-normal bg-white rounded-b-xl border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light">
                     <div class="flex flex-col mb-8 space-y-2">
                         <div
                             class="text-2xl text-dino-400 font-montserrat">{{$properties[0]->town." - ".$properties[0]->postcode}}</div>
                         <div
-                            class="text-xl text-dino-400 font-montserrat ">{{number_format($properties[0]->price, 0, ',', ' ')." €"}}</div>
+                            class="text-xl text-dino-400 font-montserrat">{{number_format($properties[0]->price, 0, ',', ' ')." €"}}</div>
                         <div
-                            class="text-xl text-dino-400 font-montserrat ">{{number_format($properties[0]->surface, 0, ',', ' ')." m2"}}</div>
+                            class="text-xl text-dino-400 font-montserrat">{{number_format($properties[0]->surface, 0, ',', ' ')." m2"}}</div>
                     </div>
-                    <div class="flex items-center justify-between">
+                    <div class="flex justify-between items-center">
                         <span
                             @if($properties[0]->type->title == "Maison individuelle")
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-gray-50 bg-blue-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-50 bg-blue-600 rounded-full"
                             @elseif($properties[0]->type->title == "Appartement")
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-gray-50 bg-green-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-50 bg-green-600 rounded-full"
                             @elseif($properties[0]->type->title == "Enclos à dinosaure")
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-gray-50 bg-dino-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-50 rounded-full bg-dino-600"
                             @else
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-gray-200 bg-gray-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
                         @endif()
                         >{{$properties[0]->type->title}}</span>
                         <a
                             href="{{route("properties.show",['property'=>$properties[0]])}}"
-                            class="inline-flex items-center h-8 px-5 space-x-2 text-white transition-colors duration-150 rounded-lg bg-dino-700 focus:shadow-outline hover:bg-dino-800">
+                            class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
                             <span>Voir</span>
                             <svg class="w-6 h-6" data-darkreader-inline-fill="" data-darkreader-inline-stroke=""
                                  fill="none" stroke="currentColor"
@@ -56,42 +56,42 @@
         @for($i = 1; $i < 3; $i++)
             <div
                 @if($i==1)
-                class="w-full mt-5 row-span-1 lg:my-2 lg:row-span-2 lg:col-span-5 lg:col-start-7"
+                class="row-span-1 mt-5 w-full lg:my-2 lg:row-span-2 lg:col-span-5 lg:col-start-7"
                 @else()
-                class="w-full mt-5 row-span-1 lg:col-span-5 lg:col-start-7 lg:row-span-2 lg:row-start-4"
+                class="row-span-1 mt-5 w-full lg:col-span-5 lg:col-start-7 lg:row-span-2 lg:row-start-4"
                 @endif
             >
-                <div class="w-full max-w-xl mx-auto lg:flex rounded-2xl">
+                <div class="mx-auto w-full max-w-xl rounded-2xl lg:flex">
                     <div
-                        class="flex-none h-48 overflow-hidden text-center bg-cover  lg:h-auto lg:w-48  rounded-t-xl lg:rounded-t-none lg:rounded-l-xl"
+                        class="overflow-hidden flex-none h-48 text-center bg-cover rounded-t-xl lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l-xl"
                         style="background-image: url('{{$properties[$i]->images[0]->url}}')"
                         title="{{$properties[$i]->images[0]->alternative}}">
                     </div>
                     <div
-                        class="flex flex-col justify-between w-full p-4 leading-normal bg-white border-b border-l border-r rounded-b border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light lg:rounded-r-xl rounded-b-xl lg:rounded-b-none">
+                        class="flex flex-col justify-between p-4 w-full leading-normal bg-white rounded-b rounded-b-xl border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light lg:rounded-r-xl lg:rounded-b-none">
                         <div class="flex flex-col mb-8 space-y-2">
                             <div
                                 class="text-2xl text-dino-400 font-montserrat">{{$properties[$i]->town." - ".$properties[$i]->postcode}}</div>
                             <div
-                                class="text-xl text-dino-400 font-montserrat ">{{number_format($properties[$i]->price, 0, ',', ' ')." €"}}</div>
+                                class="text-xl text-dino-400 font-montserrat">{{number_format($properties[$i]->price, 0, ',', ' ')." €"}}</div>
                             <div
-                                class="text-xl text-dino-400 font-montserrat ">{{number_format($properties[$i]->surface, 0, ',', ' ')." m2"}}</div>
+                                class="text-xl text-dino-400 font-montserrat">{{number_format($properties[$i]->surface, 0, ',', ' ')." m2"}}</div>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex justify-between items-center">
                         <span
                             @if($properties[$i]->type->title == "Maison individuelle")
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-blue-200 bg-blue-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-blue-200 bg-blue-600 rounded-full"
                             @elseif($properties[$i]->type->title == "Appartement")
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-green-200 bg-green-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-green-200 bg-green-600 rounded-full"
                             @elseif($properties[$i]->type->title == "Enclos à dinosaure")
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-gray-50 bg-dino-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-50 rounded-full bg-dino-600"
                             @else
-                            class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none rounded-full text-gray-200 bg-gray-600"
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
                             @endif()
                             >{{$properties[$i]->type->title}}</span>
                             <a
                                 href="{{route("properties.show",['property'=>$properties[$i]])}}"
-                                class="inline-flex items-center h-8 px-5 space-x-2 text-white transition-colors duration-150 rounded-lg bg-dino-700 focus:shadow-outline hover:bg-dino-800">
+                                class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
                                 <span>Voir</span>
                                 <svg class="w-6 h-6" data-darkreader-inline-fill="" data-darkreader-inline-stroke=""
                                      fill="none" stroke="currentColor"

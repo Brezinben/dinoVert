@@ -1,24 +1,24 @@
-<div class="container my-5 mx-auto ">
+<div class="container my-5 mx-auto">
     <input type="text"
            wire:model="query"
            wire:keydown.enter="search()"
-           class=" rounded-lg  border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+           class="flex-1 py-2 px-4 w-full text-base placeholder-gray-400 text-gray-700 bg-white rounded-lg border border-transparent border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
            placeholder="Votre recherche"/>
     <div class="my-5">
         <span
-            class="inline-flex items-center justify-center  cursor-pointer px-2 py-1 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
+            class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full cursor-pointer"
             wire:click="resetFilter()"
         >All</span>
         @foreach($types as $type)
             <span
                 @if($type->title == "Maison individuelle")
-                class="inline-flex items-center justify-center cursor-pointer  px-2 py-1 my-2 text-xs font-bold leading-none bg-blue-600 rounded-full text-gray-50"
+                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-blue-600 rounded-full cursor-pointer"
                 @elseif($type->title == "Appartement")
-                class="inline-flex items-center justify-center cursor-pointer  px-2 py-1 my-2 text-xs font-bold leading-none bg-green-600 rounded-full text-gray-50"
+                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-green-600 rounded-full cursor-pointer"
                 @elseif($type->title == "Enclos à dinosaure")
-                class="inline-flex items-center justify-center cursor-pointer  px-2 py-1 my-2 text-xs font-bold leading-none rounded-full text-gray-50 bg-dino-600"
+                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 rounded-full cursor-pointer bg-dino-600"
                 @else
-                class="inline-flex items-center justify-center  cursor-pointer px-2 py-1 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
+                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full cursor-pointer"
                 @endif()
                 wire:click="filterType({{$type}})"
             >{{$type->title}}</span>
@@ -26,26 +26,26 @@
     </div>
     <div class="grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
         @foreach($filtered as $property)
-            <div class="flex max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+            <div class="flex overflow-hidden mx-auto max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800">
                 <div class="w-1/3 bg-cover"
                      style="background-image: url('{{$property->images[0]->url}}')"
                      title="{{$property->images[0]->alternative}}"
                 ></div>
 
-                <div class="w-2/3 p-4 md:p-4">
+                <div class="p-4 w-2/3 md:p-4">
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">{{Str::limit($property->title, 30, ' ...')}}</h1>
 
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{Str::limit($property->description, 70, ' ...')}}</p>
 
                     <span
                         @if($property->type->title == "Maison individuelle")
-                        class="inline-flex items-center justify-center px-2 py-1 my-2 text-xs font-bold leading-none bg-blue-600 rounded-full text-gray-50"
+                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-blue-600 rounded-full"
                         @elseif($property->type->title == "Appartement")
-                        class="inline-flex items-center justify-center px-2 py-1 my-2 text-xs font-bold leading-none bg-green-600 rounded-full text-gray-50"
+                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-green-600 rounded-full"
                         @elseif($property->type->title == "Enclos à dinosaure")
-                        class="inline-flex items-center justify-center px-2 py-1 my-2 text-xs font-bold leading-none rounded-full text-gray-50 bg-dino-600"
+                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 rounded-full bg-dino-600"
                         @else
-                        class="inline-flex items-center justify-center px-2 py-1 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
+                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
                         @endif()
                         >{{$property->type->title}}</span>
 
@@ -53,7 +53,7 @@
                         <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{number_format($property->price, 0, ',', ' ')." €"}}</h1>
                         <a
                             href="{{route("properties.show",['property'=>$property])}}"
-                            class="inline-flex items-center h-8 px-5 space-x-2 text-white transition-colors duration-150 rounded-lg bg-dino-700 focus:shadow-outline hover:bg-dino-800">
+                            class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
                             <span>Voir</span>
                             <svg class="w-6 h-6" data-darkreader-inline-fill="" data-darkreader-inline-stroke=""
                                  fill="none" stroke="currentColor"

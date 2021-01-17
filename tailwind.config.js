@@ -11,6 +11,7 @@ module.exports = {
 
     theme: {
         extend: {
+
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
                 montserrat: ['Montserrat']
@@ -39,11 +40,24 @@ module.exports = {
                 "800": "#273f4c",
                 "900": "#1d3542"
             },
+            punch: {
+                '50': '#fcf9f4',
+                '100': '#faf2ea',
+                '200': '#f2dfca',
+                '300': '#eacca9',
+                '400': '#daa669',
+                '500': '#ca8029',
+                '600': '#b67325',
+                '700': '#98601f',
+                '800': '#794d19',
+                '900': '#633f14'
+            }
         }
     },
 
     variants: {
         extend: {
+            borderWidth: ['hover', 'focus'],
             opacity: ['disabled'],
         },
     },

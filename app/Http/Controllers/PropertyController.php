@@ -53,7 +53,9 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        //
+        $property = Property::with(['type', 'images'])->findOrFail($id);
+//        $carousel =  $property->images->map(fn($images, $key) => $images->url);
+        return view('property.show', compact(['property']));
     }
 
     /**

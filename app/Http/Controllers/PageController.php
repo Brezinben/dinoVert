@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Property;
+
 class PageController extends Controller
 {
     //home
     public function home()
     {
-        return view('welcome');
+        //Les trois dernier biens
+        $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
+        return view('welcome', compact('properties'));
     }
     //mention légales
 

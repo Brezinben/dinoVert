@@ -23,9 +23,10 @@
 
         <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
         <div class="hidden w-full md:flex md:items-center md:justify-between ">
-            <div class="flex flex-col justify-center flex-grow px-2 py-3 -mx-4 space-x-40 md:flex-row md:mx-0 md:py-0">
-                <a href="#"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
+            <div
+                class="flex flex-col justify-center flex-grow px-2 py-3 -mx-4 space-x-10 lg:space-x-40 md:flex-row md:mx-0 md:py-0">
+                <a href="{{route('properties.index')}}"
+                   class=" w-max flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
                     <div>Bien à vendre</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 " viewBox="0 0 48 35.963">
                         <g id="fence" transform="translate(0 -51.81)">
@@ -89,7 +90,7 @@
                 </a>
 
                 <a href="#"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class=" w-max flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Actualité</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 " viewBox="0 0 52.033 55.285">
                         <g id="megaphone" transform="matrix(0.978, -0.208, 0.208, 0.978, -30.048, -8.994)">
@@ -113,7 +114,7 @@
                 </a>
 
                 <a href="#"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class=" w-max flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Qui sommes nous</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 " viewBox="0 0 48 50.902">
                         <g id="question" transform="translate(-14.14 0)">

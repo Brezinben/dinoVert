@@ -17,13 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('pages.home');
-Route::resource('posts', PostController::class);
-Route::resource('properties', PropertyController::class);
 Route::get('/whoAreYou', [PageController::class, 'whoAreYou'])->name('pages.whoAreYou');
 Route::get('/legal', [PageController::class, 'whoAreYou'])->name('pages.legal');
 Route::get('/newsletter', [PageController::class, 'whoAreYou'])->name('pages.newsletter');
 
+Route::resource('posts', PostController::class)->only(['index', 'show']);
+Route::resource('properties', PropertyController::class)->only(['index', 'show']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::resource('properties', PropertyController::class)->except(['index', 'show']);
+    Route::resource('posts', PostController::class)->except(['index', 'show']);
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

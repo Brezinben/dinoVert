@@ -103,13 +103,13 @@
                 <button
                     class="flex-shrink-0 bg-dino-800 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-dino-900 focus:outline-none focus:ring-2 focus:ring-dino-500 focus:ring-offset-2 focus:ring-offset-dino-200"
                     type="submit">
-                    S'aboner à la newsletter
+                    S'abonner à la newsletter
                 </button>
             </form>
         </div>
         <div
             class="text-center text-footer mt-5">
-            Created by Brezinben with ❤️
+            Created by Brezinben with <a href="{{route('login')}}">❤️</a>
         </div>
     </div>
 </footer>

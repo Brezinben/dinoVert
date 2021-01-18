@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center">
             <div>
                 <a class="text-xl font-bold text-gray-800 dark:text-white md:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
-                   href="#">
+                   href="/">
                     <img class="block w-auto h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
                 </a>
             </div>
@@ -89,7 +89,7 @@
                     </svg>
                 </a>
 
-                <a href="#"
+                <a href="{{route('posts.index')}}"
                    class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Actualité</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 52.033 55.285">
@@ -113,7 +113,7 @@
                     </svg>
                 </a>
 
-                <a href="#"
+                <a href="{{route('pages.whoAreYou')}}"
                    class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Qui sommes nous</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 50.902">
@@ -157,8 +157,38 @@
                         </g>
                     </svg>
                 </a>
-
+                @auth()
+                    <a href="{{route('dashboard')}}"
+                       class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                        <div>Administration</div>
+                        <svg class="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"/>
+                            <path d="M11 17a2.5 2.5 0 0 0 2 0"/>
+                            <path
+                                d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z"/>
+                            <line x1="8" y1="11" x2="10" y2="13"/>
+                            <line x1="16" y1="11" x2="14" y2="13"/>
+                        </svg>
+                    </a>
+                @endauth
+                @auth()
+                    <a href=""
+                       class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2"
+                       onclick="event.preventDefault();document.getElementById('formLogout').submit();"
+                    >
+                        <div>Log out</div>
+                        <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                            <polyline points="10 17 15 12 10 7"/>
+                            <line x1="15" y1="12" x2="3" y2="12"/>
+                        </svg>
+                    </a>
+                @endauth
             </div>
+            {{--            Formulaire qui est envoyer pour la déconnection du user--}}
+            <form id="formLogout" action="{{route('logout')}}" method="POST" class="hidden">@csrf</form>
             {{--            <div>--}}
             {{--                <input type="text"--}}
             {{--                       class="py-3 px-4 w-full text-sm leading-tight text-gray-700 bg-gray-50 rounded-md border border-transparent lg:w-64 dark:text-gray-200 dark:bg-gray-900 placeholder-dino-500 dark:placeholder-gray-200 focus:outline-none focus:bg-white focus:ring-2 focus:border-dino-200"--}}

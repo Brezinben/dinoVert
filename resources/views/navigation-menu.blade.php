@@ -1,13 +1,9 @@
 <nav class="bg-cover shadow dark:bg-gray-800">
     <div class="container z-10 py-3 px-6 mx-auto md:flex">
-        <div class="flex justify-between items-center">
-            <div>
-                <a class="text-xl font-bold text-gray-800 dark:text-white md:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
-                   href="/">
-                    <img class="block w-auto h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
-                </a>
-            </div>
-
+        <div class="flex flex-grow justify-between items-center">
+            <a href="/">
+                <img class="block w-full h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
+            </a>
             <!-- Mobile menu button -->
             <div class="flex md:hidden">
                 <button type="button"
@@ -19,12 +15,20 @@
                     </svg>
                 </button>
             </div>
+
         </div>
 
         <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
         <div class="hidden w-full md:flex md:items-center md:justify-between">
             <div
-                class="flex flex-col flex-grow justify-center py-3 px-2 -mx-4 space-x-10 lg:space-x-40 md:flex-row md:mx-0 md:py-0">
+                class="py-3 px-2 -mx-4  md:flex-row md:mx-0 md:py-0 flex flex-col flex-grow
+                    @auth
+                    justify-between
+                    @endauth
+                @guest
+                    justify-evenly
+                    @endguest
+                    ">
                 <a href="{{route('properties.index')}}"
                    class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
                     <div>Bien à vendre</div>
@@ -161,7 +165,7 @@
                     <a href="{{route('dashboard')}}"
                        class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                         <div>Administration</div>
-                        <svg class="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                        <svg class="w-8 h-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                              stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z"/>
                             <path d="M11 17a2.5 2.5 0 0 0 2 0"/>
@@ -171,14 +175,12 @@
                             <line x1="16" y1="11" x2="14" y2="13"/>
                         </svg>
                     </a>
-                @endauth
-                @auth()
                     <a href=""
                        class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2"
                        onclick="event.preventDefault();document.getElementById('formLogout').submit();"
                     >
                         <div>Log out</div>
-                        <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
                             <polyline points="10 17 15 12 10 7"/>
@@ -197,4 +199,3 @@
         </div>
     </div>
 </nav>
-

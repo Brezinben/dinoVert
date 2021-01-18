@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="container grid grid-cols-1 grid-rows-3 py-12 mx-auto lg:grid-cols-11 lg:grid-rows-5">
+    <div class="container grid grid-cols-1 grid-rows-3 py-12 mx-auto lg:grid-cols-11 lg:grid-rows-4">
         <div class="row-span-1 w-full lg:col-span-5 lg:row-span-full">
             <div class="flex flex-col mx-auto w-full max-w-xl h-full rounded-2xl">
                 <div class="overflow-hidden h-full text-center bg-cover rounded-t-xl"
@@ -55,12 +55,12 @@
 
         @for($i = 1; $i < 3; $i++)
             <div
+                class="row-span-1 mt-5 w-full lg:col-span-5 lg:col-start-7 lg:row-span-2
                 @if($i==1)
-                class="row-span-1 mt-5 w-full lg:my-2 lg:row-span-2 lg:col-span-5 lg:col-start-7"
+                    lg:my-2
                 @else()
-                class="row-span-1 mt-5 w-full lg:col-span-5 lg:col-start-7 lg:row-span-2 lg:row-start-4"
-                @endif
-            >
+                    lg:row-start-3
+                @endif ">
                 <div class="mx-auto w-full max-w-xl rounded-2xl lg:flex">
                     <div
                         class="overflow-hidden flex-none h-48 text-center bg-cover rounded-t-xl lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l-xl"
@@ -79,16 +79,13 @@
                         </div>
                         <div class="flex justify-between items-center">
                         <span
-                            @if($properties[$i]->type->title == "Maison individuelle")
-                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-blue-200 bg-blue-600 rounded-full"
-                            @elseif($properties[$i]->type->title == "Appartement")
-                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-green-200 bg-green-600 rounded-full"
-                            @elseif($properties[$i]->type->title == "Enclos à dinosaure")
-                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-50 rounded-full bg-dino-600"
-                            @else
-                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
-                            @endif()
-                            >{{$properties[$i]->type->title}}</span>
+                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
+                            @if($properties[$i]->type->title == "Maison individuelle")text-blue-200 bg-blue-600
+                            @elseif($properties[$i]->type->title == "Appartement")text-green-200 bg-green-600
+                            @elseif($properties[$i]->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
+                            @else text-gray-200 bg-gray-600
+                            @endif() "
+                        >{{$properties[$i]->type->title}}</span>
                             <a
                                 href="{{route("properties.show",['property'=>$properties[$i]])}}"
                                 class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">

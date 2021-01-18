@@ -37,17 +37,13 @@
 
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{Str::limit($property->description, 70, ' ...')}}</p>
 
-                    <span
-                        @if($property->type->title == "Maison individuelle")
-                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-blue-600 rounded-full"
-                        @elseif($property->type->title == "Appartement")
-                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-green-600 rounded-full"
-                        @elseif($property->type->title == "Enclos à dinosaure")
-                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 rounded-full bg-dino-600"
-                        @else
-                        class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full"
-                        @endif()
-                        >{{$property->type->title}}</span>
+                    <span class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
+                        @if($property->type->title == "Maison individuelle") text-blue-200 bg-blue-600
+                        @elseif($property->type->title == "Appartement") text-green-200 bg-green-600
+                        @elseif($property->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
+                        @else text-gray-200 bg-gray-600
+                        @endif() "
+                    >{{$property->type->title}}</span>
 
                     <div class="flex justify-between mt-1 item-center">
                         <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{number_format($property->price, 0, ',', ' ')." €"}}</h1>

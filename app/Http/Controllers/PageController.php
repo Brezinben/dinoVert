@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Property;
 
 class PageController extends Controller
@@ -11,7 +12,8 @@ class PageController extends Controller
     {
         //Les trois dernier biens
         $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
-        return view('welcome', compact('properties'));
+        $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
+        return view('welcome', compact(['properties', 'posts']));
     }
     //mention légales
 

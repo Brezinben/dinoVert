@@ -10,17 +10,13 @@
             wire:click="resetFilter()"
         >All</span>
         @foreach($types as $type)
-            <span
-                @if($type->title == "Maison individuelle")
-                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-blue-600 rounded-full cursor-pointer"
-                @elseif($type->title == "Appartement")
-                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 bg-green-600 rounded-full cursor-pointer"
-                @elseif($type->title == "Enclos à dinosaure")
-                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-50 rounded-full cursor-pointer bg-dino-600"
-                @else
-                class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full cursor-pointer"
-                @endif()
-                wire:click="filterType({{$type}})"
+            <span class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none rounded-full cursor-pointer
+                  @if($type->title == "Maison individuelle") text-blue-50 bg-blue-600
+                  @elseif($type->title == "Appartement") text-green-50 bg-green-600
+                  @elseif($type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
+                  @else text-gray-200 bg-gray-600
+                  @endif() "
+                  wire:click="filterType({{$type}})"
             >{{$type->title}}</span>
         @endforeach
     </div>
@@ -38,8 +34,8 @@
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{Str::limit($property->description, 70, ' ...')}}</p>
 
                     <span class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
-                        @if($property->type->title == "Maison individuelle") text-blue-200 bg-blue-600
-                        @elseif($property->type->title == "Appartement") text-green-200 bg-green-600
+                        @if($property->type->title == "Maison individuelle") text-blue-50 bg-blue-600
+                        @elseif($property->type->title == "Appartement") text-green-50 bg-green-600
                         @elseif($property->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
                         @else text-gray-200 bg-gray-600
                         @endif() "

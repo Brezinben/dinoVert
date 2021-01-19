@@ -24,7 +24,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->title,
-            'imageUrl' => $this->faker->imageUrl(),
+            'imageUrl' => 'https://picsum.photos/' . rand(400, 700) . '/' . rand(200, 700) . '?random=' . rand(1, 20),
             'wysiwyg_text' => $this->faker->randomHtml(),
             'category_id' => Category::all()->random()->id,
         ];

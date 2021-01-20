@@ -162,7 +162,7 @@
                     </svg>
                 </a>
                 @auth()
-                    <a href="{{route('dashboard')}}"
+                    <a href="{{route('admin.dashboard')}}"
                        class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                         <div>Administration</div>
                         <svg class="w-8 h-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"

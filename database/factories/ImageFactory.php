@@ -22,7 +22,6 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-//            'url' => $this->faker->imageUrl(),
             'url' => 'https://picsum.photos/' . rand(400, 700) . '/' . rand(200, 700) . '?random=' . rand(1, 20),
             'alternative' => $this->faker->sentence(rand(2, 15)),
         ];

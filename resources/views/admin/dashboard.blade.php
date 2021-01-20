@@ -31,10 +31,11 @@
                                 <div class="flex-grow">
                                     <p class="text-base leading-relaxed">Blue bottle crucifix vinyl post-ironic four
                                         dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                                    <button type="button"
-                                            class="py-2 px-4 mt-5 w-full text-base font-semibold text-center text-white rounded-lg shadow-md transition duration-200 ease-in bg-punch-600 hover:bg-punch-700 focus:ring-punch-500 focus:ring-offset-punch-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                                    <a type="button"
+                                       href="{{route("admin.properties.index")}}"
+                                       class="block py-2 px-4  mt-5 w-full text-base font-semibold text-center text-white rounded-lg shadow-md transition duration-200 ease-in bg-punch-600 hover:bg-punch-700 focus:ring-punch-500 focus:ring-offset-punch-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
                                         Y aller
-                                    </button>
+                                    </a>
 
                                 </div>
                             </div>
@@ -57,10 +58,11 @@
                                     <p class="text-base leading-relaxed">Blue bottle crucifix vinyl post-ironic four
                                         dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
 
-                                    <button type="button"
-                                            class="py-2 px-4 mt-5 w-full text-base font-semibold text-center text-white rounded-lg shadow-md transition duration-200 ease-in bg-punch-600 hover:bg-punch-700 focus:ring-punch-500 focus:ring-offset-punch-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                                    <a type="button"
+                                       href="{{route("admin.posts.index")}}"
+                                       class="block py-2 px-4 mt-5 w-full  text-base font-semibold text-center text-white rounded-lg shadow-md transition duration-200 ease-in bg-punch-600 hover:bg-punch-700 focus:ring-punch-500 focus:ring-offset-punch-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
                                         Y aller
-                                    </button>
+                                    </a>
 
                                 </div>
                             </div>

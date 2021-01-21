@@ -9,6 +9,10 @@ class Property extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    protected array $state = ['Neuf', 'Rénovation', 'Abandonner', 'Ancien'];
+
     public function type()
     {
         return $this->belongsTo(Type::class);

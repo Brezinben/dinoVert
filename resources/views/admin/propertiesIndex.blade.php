@@ -5,8 +5,16 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <a href="{{route("admin.properties.create")}}"
+               class="py-2 px-4 mx-1  inline-block font-semibold rounded border transition duration-300 font-montserrat border-green-500 text-green-500 hover:bg-green-700 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+            </a>
             <section class="text-gray-600 body-font">
                 <div class="overflow-x-auto py-2 pr-10 -my-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                     {{--                        <div--}}

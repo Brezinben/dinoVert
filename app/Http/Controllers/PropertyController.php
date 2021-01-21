@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PropertyCreate;
+use App\Events\PropertyDelete;
+use App\Models\Image;
 use App\Models\Property;
+use App\Models\Type;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -31,18 +35,27 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        $states = ['Neuf', 'Rénovation', 'Abandonner', 'Ancien'];
+        return view("property.create", compact(['types', 'states']));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return Application|\Illuminate\Http\RedirectResponse|Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        //
+        $property = Property::create($request->except(['_token', 'image_1']));
+        Image::create([
+                'url' => $request->input('image_1'),
+                'property_id' => $property->id,
+                'alternative' => 'alternative',]
+        );
+        event(new PropertyCreate($property));
+        return redirect()->route("properties.index");
     }
 
     /**
@@ -53,8 +66,8 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
+
         $property = Property::with(['type', 'images'])->findOrFail($id);
-//        $carousel =  $property->images->map(fn($images, $key) => $images->url);
         return view('property.show', compact(['property']));
     }
 
@@ -89,6 +102,6 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        event(new PropertyDelete());
     }
 }

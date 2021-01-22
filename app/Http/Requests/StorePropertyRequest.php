@@ -35,7 +35,7 @@ class StorePropertyRequest extends FormRequest
             'constructionYear' => 'required|integer|min:1900|max:' . Carbon::now()->year,
             'postcode' => 'required|integer|min:0|max:100000',
             'town' => 'required|string|min:0|max:255',
-            'type_id' => 'required|exists:types|max:' . Type::all()->last()->get('id'),
+            'type_id' => 'required|exists:types,id|max:' . Type::all()->last()->get('id'),
             'images' => 'required',
         ];
         //la validation des images se fait dans le composant

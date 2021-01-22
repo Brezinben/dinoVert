@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\PropertyCreate;
 use App\Events\PropertyDelete;
+use App\Http\Requests\StorePropertyRequest;
 use App\Models\Image;
 use App\Models\Property;
 use App\Models\Type;
@@ -43,17 +44,20 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param StorePropertyRequest $request
      * @return Application|\Illuminate\Http\RedirectResponse|Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(StorePropertyRequest $request)
     {
-        $property = Property::create($request->except(['_token', 'image_1']));
-        Image::create([
-                'url' => $request->input('image_1'),
-                'property_id' => $property->id,
-                'alternative' => 'alternative',]
-        );
+        $property = Property::create($request->except(['_token', 'images', 'image']));
+        $images = explode(",", $request->input('images'));
+        foreach ($images as $image) {
+            Image::create([
+                    'url' => $image,
+                    'property_id' => $property->id,
+                    'alternative' => 'alternative',]
+            );
+        }
         event(new PropertyCreate($property));
         return redirect()->route("properties.index");
     }

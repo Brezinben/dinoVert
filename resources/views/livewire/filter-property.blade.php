@@ -22,24 +22,26 @@
     </div>
     <div class="grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
         @foreach($filtered as $property)
-            <div class="flex overflow-hidden mx-auto max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800">
+            <div class="flex w-full overflow-hidden mx-auto max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800">
                 <div class="w-1/3 bg-cover"
                      style="background-image: url('{{$property->images[0]->url}}')"
                      title="{{$property->images[0]->alternative}}"
                 ></div>
 
-                <div class="p-4 w-2/3 md:p-4">
+                <div class="p-4 w-2/3 md:p-4 flex-col flex justify-evenly">
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">{{Str::limit($property->title, 30, ' ...')}}</h1>
 
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{Str::limit($property->description, 70, ' ...')}}</p>
+                    <div class="flex justify-end my-2 ">
+                         <span class="inline-flex  justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
+                                            @if($property->type->title == "Maison individuelle") text-blue-50 bg-blue-600
+                                            @elseif($property->type->title == "Appartement") text-green-50 bg-green-600
+                                            @elseif($property->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
+                                            @else text-gray-200 bg-gray-600
+                                            @endif() "
+                         >{{$property->type->title}}</span>
+                    </div>
 
-                    <span class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
-                        @if($property->type->title == "Maison individuelle") text-blue-50 bg-blue-600
-                        @elseif($property->type->title == "Appartement") text-green-50 bg-green-600
-                        @elseif($property->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                        @else text-gray-200 bg-gray-600
-                        @endif() "
-                    >{{$property->type->title}}</span>
 
                     <div class="flex justify-between mt-1 item-center">
                         <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{number_format($property->price, 0, ',', ' ')." €"}}</h1>

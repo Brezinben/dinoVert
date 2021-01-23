@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('url');
             $table->text('alternative');
-            $table->foreignId('property_id')->constrained();
+            $table->foreignId('property_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

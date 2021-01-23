@@ -11,8 +11,10 @@ use App\Models\Type;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class PropertyController extends Controller
 {
@@ -45,7 +47,7 @@ class PropertyController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StorePropertyRequest $request
-     * @return Application|\Illuminate\Http\RedirectResponse|Response|\Illuminate\Routing\Redirector
+     * @return Application|RedirectResponse|Response|Redirector
      */
     public function store(StorePropertyRequest $request)
     {
@@ -70,7 +72,6 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-
         $property = Property::with(['type', 'images'])->findOrFail($id);
         return view('property.show', compact(['property']));
     }
@@ -83,7 +84,11 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $types = Type::all();
+        $states = ['Neuf', 'Rénovation', 'Abandonner', 'Ancien'];
+        $property = Property::with(['type', 'images'])->findOrFail($id);
+        $images = $property->images->pluck('url')->toArray();//Image que l'on va passer au composant.
+        return view('property.edit', compact(['property', 'types', 'states', 'images']));
     }
 
     /**
@@ -93,9 +98,22 @@ class PropertyController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePropertyRequest $request, $id)
     {
-        //
+        $property = Property::findOrFail($id)->update($request->except(['_token', 'images', 'image']));
+
+        //On supprime les anciennes images.
+        Image::where('property_id', $id)->get()->delete();
+
+        $images = explode(",", $request->input('images'));
+        foreach ($images as $image) {
+            Image::create([
+                    'url' => $image,
+                    'property_id' => $property->id,
+                    'alternative' => 'alternative',]
+            );
+        }
+        return redirect()->route("admin.properties.index");
     }
 
     /**
@@ -106,6 +124,8 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        event(new PropertyDelete());
+        Property::findOrFail($id)->delete();
+        event(new PropertyDelete($id));
+        return redirect()->route("admin.properties.index");
     }
 }

@@ -1,6 +1,6 @@
 <nav class="bg-cover shadow dark:bg-gray-800">
-    <div class="container z-10 py-3 px-6 mx-auto md:flex">
-        <div class="flex flex-grow justify-between items-center">
+    <div class="container z-10 px-6 py-3 mx-auto md:flex">
+        <div class="flex items-center justify-between flex-grow">
             <a href="/">
                 <img class="block w-full h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
             </a>
@@ -30,7 +30,7 @@
                     @endguest
                     ">
                 <a href="{{route('properties.index')}}"
-                   class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
                     <div>Bien à vendre</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 35.963">
                         <g id="fence" transform="translate(0 -51.81)">
@@ -94,7 +94,7 @@
                 </a>
 
                 <a href="{{route('posts.index')}}"
-                   class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Actualité</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 52.033 55.285">
                         <g id="megaphone" transform="matrix(0.978, -0.208, 0.208, 0.978, -30.048, -8.994)">
@@ -118,7 +118,7 @@
                 </a>
 
                 <a href="{{route('pages.whoAreYou')}}"
-                   class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Qui sommes nous</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 50.902">
                         <g id="question" transform="translate(-14.14 0)">
@@ -163,7 +163,7 @@
                 </a>
                 @auth()
                     <a href="{{route('admin.dashboard')}}"
-                       class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                         <div>Administration</div>
                         <svg class="w-8 h-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                              stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -176,7 +176,7 @@
                         </svg>
                     </a>
                     <a href=""
-                       class="flex items-center py-1 px-2 space-x-2 w-max text-lg font-semibold rounded text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2"
+                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2"
                        onclick="event.preventDefault();document.getElementById('formLogout').submit();"
                     >
                         <div>Log out</div>
@@ -193,7 +193,7 @@
             <form id="formLogout" action="{{route('logout')}}" method="POST" class="hidden">@csrf</form>
             {{--            <div>--}}
             {{--                <input type="text"--}}
-            {{--                       class="py-3 px-4 w-full text-sm leading-tight text-gray-700 bg-gray-50 rounded-md border border-transparent lg:w-64 dark:text-gray-200 dark:bg-gray-900 placeholder-dino-500 dark:placeholder-gray-200 focus:outline-none focus:bg-white focus:ring-2 focus:border-dino-200"--}}
+            {{--                       class="w-full px-4 py-3 text-sm leading-tight text-gray-700 border border-transparent rounded-md bg-gray-50 lg:w-64 dark:text-gray-200 dark:bg-gray-900 placeholder-dino-500 dark:placeholder-gray-200 focus:outline-none focus:bg-white focus:ring-2 focus:border-dino-200"--}}
             {{--                       placeholder="Search" aria-label="Search">--}}
             {{--            </div>--}}
         </div>

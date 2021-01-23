@@ -30,10 +30,11 @@ class PropertyDeleteLog
             'type' => 'info',
             'message' => 'Un nouveau bien à été supprimer',
         ]);
-        $property = $event->getProperty();
+
+        $id = $event->getId();
         DB::table('logs')->insert([
             'type' => 'info',
-            'message' => 'Un  bien à été supprimer, il a l\'id : #' . $property->id,
+            'message' => 'Un  bien à été supprimer, il a l\'id : #' . $id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

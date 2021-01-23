@@ -11,24 +11,24 @@ class PropertyDelete
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $property;
+    private $id;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($property)
+    public function __construct($id)
     {
-        $this->property = $property;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getProperty()
+    public function getId()
     {
-        return $this->property;
+        return $this->id;
     }
 
     /**

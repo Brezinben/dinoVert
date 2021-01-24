@@ -103,13 +103,13 @@ class PropertyController extends Controller
         $property = Property::findOrFail($id)->update($request->except(['_token', 'images', 'image']));
 
         //On supprime les anciennes images.
-        Image::where('property_id', $id)->get()->delete();
+        Image::where('property_id', $id)->delete();
 
         $images = explode(",", $request->input('images'));
         foreach ($images as $image) {
             Image::create([
                     'url' => $image,
-                    'property_id' => $property->id,
+                    'property_id' => $id,
                     'alternative' => 'alternative',]
             );
         }

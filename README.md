@@ -13,7 +13,7 @@ Avoir une BDD avec une table dinoVert. Si vous voulez changer les variables d'en
 Pour une installation plus simple j'ai préparé des scripts dans le package.json.
 
 Il vous suffit de lancer la commande :
-``` npm run Instalation ```
+``` npm run Instalation ```. 
 Cela installera les packages de composer et nodejs et également les migrations pour la base ainsi que sont seeding.
 
 ## Interface d'Administration

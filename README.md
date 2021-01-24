@@ -1,5 +1,5 @@
 # Dino Vert 🦖
-DinoVert est un projet en php avec le framework laravel.
+DinoVert est un projet en php avec le framework [Laravel](https://laravel.com/).
 
 Il consiste en une gestion de vente d'enclos de dinosaure ainsi que de maison tout à fait normal. Avec aussi quelques posts pour qui contient les actualitées du site.
 

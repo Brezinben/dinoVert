@@ -42,13 +42,13 @@
     <div class="max-w-screen-xl mx-auto px-4">
         <ul class="max-w-screen-md mx-auto text-lg font-light flex flex-wrap justify-around">
             <li class="my-2">
-                <a class="text-footer" href="#">Actualité</a>
+                <a class="text-footer" href="#">Actualités</a>
             </li>
             <li class="my-2">
                 <a class="text-footer" href="#">Contact</a>
             </li>
             <li class="my-2">
-                <a class="text-footer" href="#">Mention Légales</a>
+                <a class="text-footer" href="#">Mentions Légales</a>
             </li>
         </ul>
         <div class="pt-8 flex max-w-xs mx-auto items-center justify-between">

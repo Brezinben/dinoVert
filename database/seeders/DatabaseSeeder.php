@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         Post::factory(50)->hasTags(rand(1, 10))->create();
 
         // Création des biens au quelles on attache des images
-        Property::factory()->count(50)->hasImages(rand(1, 10))->create();
+        Property::factory(50)->hasImages(rand(1, 10))->create();
 
         //Création de l'administrateur
         User::create([

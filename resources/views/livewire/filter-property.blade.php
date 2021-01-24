@@ -2,9 +2,9 @@
     <input type="text"
            wire:model="query"
            wire:keydown.enter="search()"
-           class="flex-1 py-2 px-4 w-full text-base placeholder-gray-400 text-gray-700 bg-white rounded-lg border border-transparent border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+           class="flex-1 py-2 block mx-auto px-4 w-2/3 text-base placeholder-gray-400 text-gray-700 bg-punch-50 rounded-lg border  border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-punch-600 focus:border-transparent"
            placeholder="Votre recherche"/>
-    <div class="my-5">
+    <div class="my-5 mx-auto flex justify-center space-x-5 ">
         <span
             class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full cursor-pointer"
             wire:click="resetFilter()"

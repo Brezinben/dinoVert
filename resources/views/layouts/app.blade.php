@@ -169,10 +169,15 @@
                 </svg>
             </a>
         </div>
-        <div class="text-center pt-10 sm:pt-12 font-light flex items-center justify-center">
-            <form class="flex w-full max-w-sm space-x-3">
+        <div class="text-center pt-10  sm:pt-12 font-light flex flex-col items-center justify-center">
+            <form method="POST" action="{{route('pages.newsletter')}}"
+                  class="flex w-full max-w-lg flex-col space-y-4 md:flex-row space-x-3">
+                @csrf
                 <div class=" relative ">
-                    <input type="text"
+                    <input type="email"
+                           name="newsletterMail"
+                           id="newsletterMail"
+                           value="{{old('newsletterMail')}}"
                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                            placeholder="Email"/>
                 </div>
@@ -182,6 +187,9 @@
                     S'abonner à la newsletter
                 </button>
             </form>
+            @error('newsletterMail')
+            <div class="text-red-500 text-lg">{{ $message }}</div>
+            @enderror
         </div>
         <div
             class="text-center text-footer mt-5">

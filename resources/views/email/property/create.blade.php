@@ -6,7 +6,7 @@
     @component('mail::table')
         | **Name**                                  | **Email**              | **Telephone**        |
         | ----------------------------------------- |:---------------------: | --------------------:|
-        | $property->title}} {{$property->title}} | <{{$property->title}}> | {{$property->title}} |
+        | $property->title}} {{$property->title}}   | <{{$property->title}}> | {{$property->title}} |
     @endcomponent
 
 

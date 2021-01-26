@@ -2,6 +2,8 @@
 
 namespace App\Events;
 
+use App\Models\Property;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -11,14 +13,14 @@ class PropertyCreate
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $property;
+    private Property $property;
 
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param Property $property
      */
-    public function __construct($property)
+    public function __construct(Property $property)
     {
         $this->property = $property;
     }
@@ -26,7 +28,7 @@ class PropertyCreate
     /**
      * @return mixed
      */
-    public function getProperty()
+    public function getProperty(): Property
     {
         return $this->property;
     }
@@ -34,7 +36,7 @@ class PropertyCreate
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|array
      */
     public function broadcastOn()
     {

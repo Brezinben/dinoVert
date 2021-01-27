@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('pages.home');
 Route::get('whoAreYou', [PageController::class, 'whoAreYou'])->name('pages.whoAreYou');
 Route::get('legal', [PageController::class, 'whoAreYou'])->name('pages.legal');
-Route::get('newsletters', [PageController::class, 'whoAreYou'])->name('pages.newsletter');
+Route::post('newsletters', [PageController::class, 'storeNotification'])->name('pages.newsletter');
 
 Route::resource('posts', PostController::class)->only(['index', 'show']);
 Route::resource('properties', PropertyController::class)->only(['index', 'show']);

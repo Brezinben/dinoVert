@@ -6,6 +6,7 @@ use App\Events\PropertyCreate;
 use App\Events\PropertyDelete;
 use App\Listeners\PropertyCreateLog;
 use App\Listeners\PropertyDeleteLog;
+use App\Listeners\SendNewsletterPropertyCreate;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -23,6 +24,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         PropertyCreate::class => [
             PropertyCreateLog::class,
+            SendNewsletterPropertyCreate::class
         ],
         PropertyDelete::class => [
             PropertyDeleteLog::class,

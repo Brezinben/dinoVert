@@ -61,6 +61,7 @@ class PropertyController extends Controller
             );
         }
         event(new PropertyCreate($property));
+        session()->flash('success', 'Le bien a bien été crée');
         return redirect()->route("properties.index");
     }
 
@@ -113,6 +114,7 @@ class PropertyController extends Controller
                     'alternative' => 'alternative',]
             );
         }
+        session()->flash('success', 'Le bien a bien été modifié');
         return redirect()->route("admin.properties.index");
     }
 
@@ -126,6 +128,7 @@ class PropertyController extends Controller
     {
         Property::findOrFail($id)->delete();
         event(new PropertyDelete($id));
+        session()->flash('success', 'Le bien a bien été supprimer');
         return redirect()->route("admin.properties.index");
     }
 }

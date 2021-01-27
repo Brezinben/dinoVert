@@ -29,10 +29,14 @@ Le site devra proposer :
 - Année de construction
 - Localisation
 - Une longue description
+
+
 - Une page "qui sommes-nous" avec une présentation sommaire de l’entreprise
 - Une page "Contact" avec un formulaire de contact.
-- Une page "Actualités", avec des articles. Chaque article devra afficher une image, un titre, une courte description,
-  sa catégorie, ses tags.
+- Une page "Actualités", avec des articles :
+
+Chaque article devra afficher une image, un titre, une courte description, sa catégorie, ses tags.
+
 - Nous devons pouvoir cliquer sur chaque actualité pour accéder à sa page. Elle contiendra les informations suivantes :
 - Image
 - Titre
@@ -84,7 +88,7 @@ Les pages de contact, et mentions légales sont statiques et ne peuvent être mo
 - Models Avec relations -OK
 - Authentification -OK
 - Middleware Auth -OK
-- Notifications et mails
+- Notifications et mails -OK
 
 user:admin@test.test, password:admin1234
 

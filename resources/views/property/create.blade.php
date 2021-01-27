@@ -81,7 +81,7 @@
                 <div class="relative mb-4">
                     <label for="surface" class="text-sm leading-7 text-gray-600">Surface du bien</label>
                     <input type="number" id="surface" name="surface" min="0" max="10000"
-                           placeholder="Surface en m2"
+                           placeholder="Surface en m²"
                            value="{{ old('surface') }}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">

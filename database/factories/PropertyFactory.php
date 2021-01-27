@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Property;
-use App\Models\Type;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -33,7 +32,6 @@ class PropertyFactory extends Factory
             'constructionYear' => rand(1900, Carbon::now()->year),
             'postcode' => $this->faker->postcode,
             'town' => $this->faker->city,
-            'type_id' => Type::all()->random()->id,
         ];
     }
 }

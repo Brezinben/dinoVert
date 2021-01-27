@@ -20,7 +20,7 @@
                             <div
                                 class="text-xl text-dino-400 font-montserrat">{{number_format($properties[0]->price, 0, ',', ' ')." €"}}</div>
                             <div
-                                class="text-xl text-dino-400 font-montserrat">{{number_format($properties[0]->surface, 0, ',', ' ')." m2"}}</div>
+                                class="text-xl text-dino-400 font-montserrat">{{number_format($properties[0]->surface, 0, ',', ' ')." m²"}}</div>
                         </div>
                         <div class="flex items-center justify-between">
                         <span
@@ -72,7 +72,7 @@
                                 <div
                                     class="text-xl text-dino-400 font-montserrat">{{number_format($properties[$index]->price, 0, ',', ' ')." €"}}</div>
                                 <div
-                                    class="text-xl text-dino-400 font-montserrat">{{number_format($properties[$index]->surface, 0, ',', ' ')." m2"}}</div>
+                                    class="text-xl text-dino-400 font-montserrat">{{number_format($properties[$index]->surface, 0, ',', ' ')." m²"}}</div>
                             </div>
                             <div class="flex items-center justify-between">
                         <span

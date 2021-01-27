@@ -113,7 +113,7 @@
                             <polyline points="2 15.5 12 8.5 22 15.5"/>
                             <line x1="12" y1="2" x2="12" y2="8.5"/>
                         </svg>
-                        <h2 class="text-3xl font-medium text-gray-900 title-font">{{number_format($property->surface, 0, ',', ' ')." m2"}}</h2>
+                        <h2 class="text-3xl font-medium text-gray-900 title-font">{{number_format($property->surface, 0, ',', ' ')." m²"}}</h2>
                         <p class="leading-relaxed">Surface</p>
                     </div>
                 </div>

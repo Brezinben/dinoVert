@@ -61,7 +61,7 @@
                         indigo juice before they sold out gentrify plaid gastropub normcore XOXO 90's pickled cindigo
                         jean shorts. Slow-carb next level shoindigoitch ethical authentic, yr scenester sriracha forage
                         franzen organic drinking vinegar.</p>
-                    <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
+                    <span class="inline-block h-1 w-10 rounded bg-dino-500 mt-8 mb-6"></span>
                     <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
                     <p class="text-gray-500">Senior Product Designer</p>
                 </div>

@@ -24,7 +24,24 @@ class ContactFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'bail|required|string|between:1,40',
+            'email' => 'bail|required|email',
+            'message' => 'bail|required|string|between:1,500',
+            'CGU' => 'required|accepted',
+            'wantNewsletter' => 'nullable',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'CGU.required' => 'Vous devez acceptez les CGU pour envoyer.',
+        ];
+    }
+
 }

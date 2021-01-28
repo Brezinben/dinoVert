@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ContactMail;
 use App\Http\Requests\ContactFormRequest;
 use App\Http\Requests\StoreNewsletterRequest;
 use App\Http\Requests\StorePostRequest;
+use App\Mail\SendContactMail;
 use App\Models\Post;
 use App\Models\Property;
 use Carbon\Carbon;
@@ -13,6 +15,9 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+
 
 /**
  * Class PageController
@@ -64,23 +69,49 @@ class PageController extends Controller
      */
     public function storeContactForm(ContactFormRequest $request)
     {
-        //TODO
+        $dataMail = $request->all(['name', 'email', 'message']);
+        event(new ContactMail($dataMail));
+        Mail::to('administrateur@superDino.fr')->send(new SendContactMail($dataMail));
+
+        if ($request->exists('wantNewsletter')) {
+            //On vérifie que l'email n'existe pas en double
+            $validator = Validator::make($request->all(), [
+                'email' => 'bail|email|unique:newsletters'
+            ]);
+
+            if (!$validator->fails()) {
+                $this->insertNewsletter($request->input("email"));
+            } else {
+                session()->flash('warning', 'L\'email est déjà enregistrer dans notre base.');
+            }
+        }
+        session()->flash('success', 'Votre message à bien été envoyer!');
+        return redirect()->route('pages.home');
+    }
+
+    /**
+     * @param string $email
+     * @return bool
+     */
+    private function insertNewsletter(string $email): bool
+    {
+        return DB::table('newsletters')->insert([
+            'email' => $email,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 
     /**
      * @param StoreNewsletterRequest $request
      * @return RedirectResponse
      */
-    public function storeNotification(StoreNewsletterRequest $request): RedirectResponse
+    public function storeNewsletter(StoreNewsletterRequest $request): RedirectResponse
     {
-        DB::table('newsletters')->insert([
-            'email' => $request->newsletterMail,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-        session()->flash('info', 'Votre email à bien été stocker');
+        $this->insertNewsletter($request->newsletterMail)
+            ? session()->flash('info', 'Votre email à bien été stocker')
+            : session()->flash('error', 'Une erreur est survenu lors de l\'enregistrement');
         return redirect()->back();
     }
-
 }
 

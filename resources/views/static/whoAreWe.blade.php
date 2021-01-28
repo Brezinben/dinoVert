@@ -9,38 +9,40 @@
 
         <section id="team" class="md:flex gap-8">
             <div class="md:w-1/2 text-center mb-8 md:mb-0">
-                <img class="w-48 h-48 rounded-full mx-auto -mb-24"
-                     src="https://source.unsplash.com/user/erondu/1600x900" alt="Avatar Jacky"/>
+                <img class="w-48 h-48 rounded-full mx-auto -mb-24 object-cover"
+                     src="https://images.unsplash.com/photo-1590895178913-3d3472310a47?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1498&q=80"
+                     alt=" Médhi Khaman"/>
                 <div class="bg-white shadow-lg rounded-lg px-8 pt-32 pb-10 text-gray-400">
                     <h3 class="font-title text-gray-800 text-xl mb-3">
-                        Jacky Pout
+                        Médhi Khaman
                     </h3>
                     <p class="font-body">
-                        FullStack Engineer
+                        Conseiller immobilier, spécialiser dans les maisons et les appartements
                     </p>
                     <p class="font-body text-sm mb-4">
-                        He love caramel and he hate PHP
+                        Comme Leroy Merlin, faut qu'mes envies prennent vie
                     </p>
-                    <a class="font-body text-blue-500 hover:text-gray-800" href="#">
-                        Jacky@poute.com
+                    <a class="font-body text-dino-500 hover:text-dino-800" href="medhi-khaman@superDino.fr">
+                        medhi-khaman@superDino.fr
                     </a>
                 </div>
             </div>
             <div class="md:w-1/2 text-center">
-                <img class="w-48 h-48 rounded-full mx-auto -mb-24"
-                     src="https://source.unsplash.com/user/davidprspctive/1600x900" alt="Avatar Damien Marley"/>
+                <img class="w-48 h-48 rounded-full mx-auto -mb-24  object-cover"
+                     src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                     alt="Colette Stérole"/>
                 <div class="bg-white shadow-lg rounded-lg px-8 pt-32 pb-10 text-gray-400">
                     <h3 class="font-title text-gray-800 text-xl mb-3">
-                        Damien Marley
+                        Colette Stérole
                     </h3>
                     <p class="font-body">
-                        CEO
+                        CEO, Webmaster et Conseillère
                     </p>
                     <p class="font-body text-sm mb-4">
-                        He&#x27;s fun and listen everyday Bob Marley
+                        J'adore les dinosaures, et les maisons donc je vends des enclos !
                     </p>
-                    <a class="font-body text-blue-500 hover:text-gray-800" href="mailto:dino@siete.pm">
-                        Damien@marley.com
+                    <a class="font-body text-dino-500 hover:text-dino-800" href="colette.stérole@superDino.fr">
+                        colette.stérole@superDino.fr
                     </a>
                 </div>
             </div>

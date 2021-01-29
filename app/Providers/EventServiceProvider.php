@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\ContactMail;
 use App\Events\PropertyCreate;
 use App\Events\PropertyDelete;
+use App\Listeners\ContactMailLog;
 use App\Listeners\PropertyCreateLog;
 use App\Listeners\PropertyDeleteLog;
 use App\Listeners\SendNewsletterPropertyCreate;
@@ -29,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
         PropertyDelete::class => [
             PropertyDeleteLog::class,
         ],
+        ContactMail::class => [
+            ContactMailLog::class,
+        ]
     ];
 
     /**

@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('pages.home');
-Route::get('whoAreYou', [PageController::class, 'whoAreYou'])->name('pages.whoAreYou');
-Route::get('legal', [PageController::class, 'whoAreYou'])->name('pages.legal');
-Route::post('newsletters', [PageController::class, 'storeNotification'])->name('pages.newsletter');
+Route::get('whoAreWe', [PageController::class, 'whoAreWe'])->name('pages.whoAreWe');
+Route::get('legalNotices', [PageController::class, 'legalNotices'])->name('pages.legalNotices');
+Route::get('contact', [PageController::class, 'contactForm'])->name('pages.contact');
+Route::post('contact', [PageController::class, 'storeContactForm'])->name('pages.storeContact');
+Route::post('newsletters', [PageController::class, 'storeNewsletter'])->name('pages.newsletter');
 
 Route::resource('posts', PostController::class)->only(['index', 'show']);
 Route::resource('properties', PropertyController::class)->only(['index', 'show']);

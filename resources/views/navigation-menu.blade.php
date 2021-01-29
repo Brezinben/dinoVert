@@ -117,7 +117,7 @@
                     </svg>
                 </a>
 
-                <a href="{{route('pages.whoAreYou')}}"
+                <a href="{{route('pages.whoAreWe')}}"
                    class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Qui sommes nous</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 50.902">

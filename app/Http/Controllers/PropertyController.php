@@ -74,7 +74,7 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property = Property::with(['type', 'images'])->findOrFail($id);
-        return view('property.show', compact(['property', 'test']));
+        return view('property.show', compact(['property']));
     }
 
     /**

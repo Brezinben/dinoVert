@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
+use App\Models\Post;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -14,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with(['category', 'tags'])->latest()->get();
+        return view('post.index', compact(['posts']));
     }
 
     /**
@@ -24,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Type::all();
+        return view("post.create", compact(['categories']));
     }
 
     /**
@@ -33,9 +38,11 @@ class PostController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        //
+        Post::create($request->except(['_token']));
+        session()->flash('success', 'L\' actualité a bien été crée!');
+        return redirect()->route("posts.index");
     }
 
     /**
@@ -46,7 +53,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::with(['category', 'tags'])->findOrFail($id);
+        return view('post.show', compact(['post']));
     }
 
     /**

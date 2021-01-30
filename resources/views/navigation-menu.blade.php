@@ -1,9 +1,7 @@
 <nav class="bg-cover shadow dark:bg-gray-800">
     <div class="container z-10 px-6 py-3 mx-auto md:flex">
         <div class="flex items-center justify-between flex-grow">
-            <a href="/">
-                <img class="block w-full h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
-            </a>
+            @livewire('easter-egg', ['routeName' => Route::currentRouteName()])
             <!-- Mobile menu button -->
             <div class="flex md:hidden">
                 <button type="button"

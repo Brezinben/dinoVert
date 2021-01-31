@@ -24,3 +24,8 @@ nav {
     @apply: bg-green-400;
     background-color: #68D391;
 }
+
+div.tox:nth-child(2) {
+    @apply rounded;
+}
+

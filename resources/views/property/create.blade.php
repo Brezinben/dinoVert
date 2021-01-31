@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="container flex px-5 py-10 mx-auto">
-        <form method="post" class="w-full"
+        <form method="post" class="w-full" id="createPropertyForm"
               action="{{route('admin.properties.store')}}"
         >
             @csrf
@@ -265,6 +265,7 @@
                 </div>
                 <button
                     type="submit"
+                    onclick="event.preventDefault();document.getElementById('createPropertyForm').submit();"
                     class="px-6 py-2 text-lg text-white border-0 rounded bg-dino-500 focus:outline-none hover:bg-dino-600">
                     Crée le bien
                 </button>

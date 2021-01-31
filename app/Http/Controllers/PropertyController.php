@@ -14,7 +14,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Redirector;
 
 class PropertyController extends Controller
 {
@@ -34,7 +33,7 @@ class PropertyController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function create()
     {
@@ -47,7 +46,7 @@ class PropertyController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StorePropertyRequest $request
-     * @return Application|RedirectResponse|Response|Redirector
+     * @return RedirectResponse
      */
     public function store(StorePropertyRequest $request)
     {
@@ -69,19 +68,19 @@ class PropertyController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return Application|Factory|View|RedirectResponse
      */
     public function show($id)
     {
         $property = Property::with(['type', 'images'])->findOrFail($id);
-        return view('property.show', compact(['property', 'test']));
+        return view('property.show', compact(['property']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function edit($id)
     {
@@ -97,7 +96,7 @@ class PropertyController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function update(StorePropertyRequest $request, $id)
     {
@@ -122,7 +121,7 @@ class PropertyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy($id)
     {

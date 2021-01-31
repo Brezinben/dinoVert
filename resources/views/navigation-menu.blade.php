@@ -1,36 +1,55 @@
-<nav class="bg-cover shadow dark:bg-gray-800">
-    <div class="container z-10 px-6 py-3 mx-auto md:flex">
-        <div class="flex items-center justify-between flex-grow">
-            <a href="/">
-                <img class="block w-full h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
-            </a>
-            <!-- Mobile menu button -->
-            <div class="flex md:hidden">
-                <button type="button"
-                        class="text-gray-500 hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
-                        aria-label="toggle menu">
-                    <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-                        <path fill-rule="evenodd"
-                              d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
-                    </svg>
-                </button>
-            </div>
+<nav
+    class="flex items-center justify-between bg-cover flex-wrap lg:flex-nowrap p-4 relative w-full z-10 top-0"
+    x-data="{ isOpen: false }"
+    @keydown.escape="isOpen = false"
+    :class="{ 'shadow-lg bg-indigo-900' : isOpen , 'bg-gray-800' : !isOpen}"
+>
+    <!--Logo etc-->
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <a href="/">
+            <img class="block w-full h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
+        </a>
+    </div>
 
-        </div>
+    <!--Toggle button (hidden on large screens)-->
+    <button
+        @click="isOpen = !isOpen"
+        type="button"
+        class="block lg:hidden px-2 text-gray-100 hover:text-white focus:outline-none focus:text-white"
+        :class="{ 'transition transform-180': isOpen }"
+    >
+        <svg
+            class="h-6 w-6 fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+        >
+            <path
+                x-show="isOpen"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+            />
+            <path
+                x-show="!isOpen"
+                fill-rule="evenodd"
+                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+            />
+        </svg>
+    </button>
 
-        <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-        <div class="hidden w-full md:flex md:items-center md:justify-between">
-            <div
-                class="py-3 px-2 -mx-4  md:flex-row md:mx-0 md:py-0 flex flex-col flex-grow
-                    @auth
-                    justify-between
-                    @endauth
-                @guest
-                    justify-evenly
-                    @endguest
-                    ">
+    <!--Menu-->
+    <div
+        class="w-full flex-grow lg:flex lg:items-center lg:w-auto"
+        :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }"
+        @click.away="isOpen = false"
+        x-show.transition="true"
+    >
+        <ul
+            class="pt-6 lg:pt-0 list-reset lg:flex justify-center  flex-1 items-center text-white  lg:text-dino-500 dark:text-gray-500 font-montserrat"
+        >
+            <li class="mr-3">
                 <a href="{{route('properties.index')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:ml-2">
+                   class="flex items-center  px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:ml-2">
                     <div>Bien à vendre</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 35.963">
                         <g id="fence" transform="translate(0 -51.81)">
@@ -92,9 +111,10 @@
                         </g>
                     </svg>
                 </a>
-
+            </li>
+            <li class="mr-3">
                 <a href="{{route('posts.index')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Actualité</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 52.033 55.285">
                         <g id="megaphone" transform="matrix(0.978, -0.208, 0.208, 0.978, -30.048, -8.994)">
@@ -116,9 +136,10 @@
                         </g>
                     </svg>
                 </a>
-
+            </li>
+            <li class="mr-3">
                 <a href="{{route('pages.whoAreWe')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Qui sommes nous</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 50.902">
                         <g id="question" transform="translate(-14.14 0)">
@@ -161,9 +182,11 @@
                         </g>
                     </svg>
                 </a>
-                @auth()
-                    <a href="{{route('admin.dashboard')}}"
-                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+            </li>
+            @auth()
+                <li class="mr-3">
+                    <a href="{{route('admin.dashboard')}}" @click="showMenu = !showMenu "
+                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                         <div>Administration</div>
                         <svg class="w-8 h-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                              stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -175,8 +198,10 @@
                             <line x1="16" y1="11" x2="14" y2="13"/>
                         </svg>
                     </a>
+                </li>
+                <li class="mr-3">
                     <a href=""
-                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max text-dino-500 dark:text-gray-500 font-montserrat hover:bg-dino-900 hover:text-gray-100 md:mx-2"
+                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2"
                        onclick="event.preventDefault();document.getElementById('formLogout').submit();"
                     >
                         <div>Log out</div>
@@ -187,15 +212,10 @@
                             <line x1="15" y1="12" x2="3" y2="12"/>
                         </svg>
                     </a>
-                @endauth
-            </div>
-            {{--            Formulaire qui est envoyer pour la déconnection du user--}}
-            <form id="formLogout" action="{{route('logout')}}" method="POST" class="hidden">@csrf</form>
-            {{--            <div>--}}
-            {{--                <input type="text"--}}
-            {{--                       class="w-full px-4 py-3 text-sm leading-tight text-gray-700 border border-transparent rounded-md bg-gray-50 lg:w-64 dark:text-gray-200 dark:bg-gray-900 placeholder-dino-500 dark:placeholder-gray-200 focus:outline-none focus:bg-white focus:ring-2 focus:border-dino-200"--}}
-            {{--                       placeholder="Search" aria-label="Search">--}}
-            {{--            </div>--}}
-        </div>
+                </li>
+                <!--           Formulaire qui est envoyer pour la déconnection du user-->
+                <form id="formLogout" action="{{route('logout')}}" method="POST" class="hidden">@csrf</form>
+            @endauth
+        </ul>
     </div>
 </nav>

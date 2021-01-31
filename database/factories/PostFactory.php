@@ -22,7 +22,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence(rand(3, 12)),
             'imageUrl' => 'https://picsum.photos/' . rand(400, 700) . '/' . rand(200, 700) . '?random=' . rand(1, 20),
             'wysiwyg_text' => $this->faker->randomHtml(),
         ];

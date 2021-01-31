@@ -18,7 +18,7 @@
                     </div>
                     <div class="md:flex-grow">
                         <h2 class="mb-2 text-2xl font-medium text-gray-900 title-font">{{Str::limit($post->title, 100, ' (...)')}}</h2>
-                        <p class="leading-relaxed">{{Str::limit($post->wysiwyg_text, 250, ' (...)')}}</p>
+                        <p class="leading-relaxed">{{Str::limit(strip_tags($post->wysiwyg_text), 250, ' (...)')}}</p>
                         <div class="flex justify-between justify-around items-center mt-4">
                             <a href="{{route('posts.show',['post'=> $post])}}"
                                class="inline-flex items-center duration-150 cursor-pointer text-punch-400 hover:text-punch-500">Voir

@@ -114,7 +114,7 @@
                         <p class="mb-2 text-xl font-medium text-gray-800 dark:text-white">{{$post->title}}
                         </p>
                         <p class="font-light text-gray-400 dark:text-gray-300 text-md">
-                            {{Str::limit($post->wysiwyg_text,250,' ... ') }}
+                            {{Str::limit(strip_tags($post->wysiwyg_text), 250, ' (...)') }}
                         </p>
                         <div class="flex flex-wrap items-center mt-4 justify-self-end justify-starts">
                             @foreach($post->tags as $tag)

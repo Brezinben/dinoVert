@@ -24,11 +24,11 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'title' => 'bail|required|string|between:0,300|ends_with:.',
             'imageUrl' => 'bail|required|url',
             'category_id' => 'bail|required|exists:categories,id',
-            'wysiwyg_text' => 'bail|required|string'
+            'wysiwyg_text' => 'bail|required|string',
+            'tags' => 'required|array|between:1,5|exists:tags,id',
         ];
     }
 }

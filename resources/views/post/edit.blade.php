@@ -1,13 +1,23 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-bold leading-tight text-dino-500">
-            {{ __('Crée un bien') }}
-        </h2>
+        <div class="flex justify-between ">
+            <h2 class="text-2xl font-bold leading-tight text-dino-500">
+                {{ __('Modifier l\'actualité du ').date('d/m/y', strtotime($post->created_at)) }}
+            </h2>
+            <button
+                type="submit"
+                onclick="event.preventDefault();document.getElementById('deletePost').submit();"
+                class="px-6 py-2 text-lg text-white border-0 rounded bg-red-500 focus:outline-none hover:bg-red-600">
+                Supprimer l'actualité
+            </button>
+        </div>
     </x-slot>
     <div class="container flex py-10 px-5 mx-auto">
         <form method="post" class="w-full"
-              action="{{route('admin.posts.store')}}"
+              action="{{route('admin.posts.update',['post'=>$post])}}"
+
         >
+            @method('PUT')
             @csrf
             <div
                 class="flex relative z-10 flex-col p-8 mt-10 w-full bg-white rounded-lg md:ml-auto md:mt-0">
@@ -15,7 +25,7 @@
                     <label for="title" class="text-sm leading-7 text-gray-600">Titre de l'Actualité</label>
                     <input type="text" id="title" name="title"
                            required
-                           value="{{ old('title') }}"
+                           value="{{ $post->title }}"
                            placeholder="Votre titre"
                            class="py-1 px-3 w-full text-base leading-8 text-gray-700 bg-white rounded border border-gray-300 transition-colors duration-200 ease-in-out outline-none focus:border-indigo-500">
                     @error('title')
@@ -36,7 +46,7 @@
                     <label for="imageUrl" class="text-sm leading-7 text-gray-600">Image de l'actualité</label>
                     <input type="url" id="imageUrl" name="imageUrl"
                            required
-                           value="{{ old('imageUrl') }}"
+                           value="{{$post->imageUrl }}"
                            placeholder="Lien de votre image"
                            class="py-1 px-3 w-full text-base leading-8 text-gray-700 bg-white rounded border border-gray-300 transition-colors duration-200 ease-in-out outline-none focus:border-indigo-500">
                     @error('imageUrl')
@@ -55,7 +65,7 @@
                 </div>
                 <div class="relative mb-4">
                         <textarea id="wysiwyg_text" name="wysiwyg_text">
-                          {{ old('wysiwyg_text') }}
+                          {{ $post->wysiwyg_text}}
                         </textarea>
                 </div>
                 @error('wysiwyg_text')
@@ -82,7 +92,7 @@
                     >
                         @foreach( $tags as $tag)
                             <option
-                                @if($loop->first)
+                                @if($post->tags->contains($tag))
                                 selected
                                 @endif
                                 value="{{$tag->id}}">{{$tag->title}}</option>
@@ -112,7 +122,7 @@
                     >
                         @foreach($categories as $category)
                             <option
-                                @if($loop->first)
+                                @if($post->category->id ==$category->id)
                                 selected
                                 @endif
                                 value="{{$category->id}}">{{$category->title}}</option>
@@ -133,13 +143,25 @@
                     </div>
                     @enderror
                 </div>
-                <button
-                    type="submit"
-                    class="py-2 px-6 text-lg text-white rounded border-0 bg-dino-500 focus:outline-none hover:bg-dino-600">
-                    Crée le bien
-                </button>
+                <div class="flex justify-evenly ">
+                    <button
+                        type="submit"
+                        class="px-6 py-2 text-lg text-white border-0 rounded bg-dino-500 focus:outline-none hover:bg-dino-600">
+                        Modifier l'actualité
+                    </button>
+                    <button
+                        type="submit"
+                        onclick="event.preventDefault();document.getElementById('deletePost').submit();"
+                        class="px-6 py-2 text-lg text-white border-0 rounded bg-red-500 focus:outline-none hover:bg-red-600">
+                        Supprimer l'actualité
+                    </button>
+                </div>
 
             </div>
+        </form>
+        <form id="deletePost" method="POST"
+              action="{{route('admin.posts.destroy',['post'=>$post->id])}}">
+            @method('DELETE') @csrf
         </form>
     </div>
 

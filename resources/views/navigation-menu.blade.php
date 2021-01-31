@@ -1,3 +1,4 @@
+
 <nav
     class="flex items-center justify-between bg-cover flex-wrap lg:flex-nowrap p-4 relative w-full z-10 top-0"
     x-data="{ isOpen: false }"
@@ -6,11 +7,8 @@
 >
     <!--Logo etc-->
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="/">
-            <img class="block w-full h-12 cursor-pointer" src="{{url('/images/logo.svg')}}" alt="logo"/>
-        </a>
+        @livewire('easter-egg', ['routeName' => Route::currentRouteName()])
     </div>
-
     <!--Toggle button (hidden on large screens)-->
     <button
         @click="isOpen = !isOpen"

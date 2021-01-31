@@ -16,12 +16,12 @@
                              class="object-cover shadow-lg w-full h-full rounded-t-md md:rounded-2xl"
                              alt="">
                     </div>
-                    <div class="md:flex-grow">
+                    <div class="md:flex-grow w-full">
                         <h2 class="mb-2 text-2xl font-medium text-gray-900 title-font">{{Str::limit($post->title, 100, ' (...)')}}</h2>
                         <p class="leading-relaxed">{{Str::limit(strip_tags($post->wysiwyg_text), 250, ' (...)')}}</p>
                         <div class="flex justify-between justify-around items-center mt-4">
                             <a href="{{route('posts.show',['post'=> $post])}}"
-                               class="inline-flex items-center duration-150 cursor-pointer text-punch-400 hover:text-punch-500">Voir
+                               class="inline-flex items-center duration-150 focus:outline-none cursor-pointer text-punch-400 hover:text-punch-500">Voir
                                 l'actu
                                 <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                      fill="none" stroke-linecap="round" stroke-linejoin="round">

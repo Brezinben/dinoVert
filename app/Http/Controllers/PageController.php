@@ -2,21 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\ContactMail;
-use App\Http\Requests\ContactFormRequest;
-use App\Http\Requests\StoreNewsletterRequest;
-use App\Http\Requests\StorePostRequest;
-use App\Mail\SendContactMail;
 use App\Models\Post;
 use App\Models\Property;
-use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 
 
 /**
@@ -31,9 +22,10 @@ class PageController extends Controller
      */
     public function home()
     {
+        $text = DB::select("select wysiwyg_text from contents where `for` = 'Home'");
         $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
         $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
-        return view('welcome', compact(['properties', 'posts']));
+        return view('welcome', compact(['properties', 'posts', 'text']));
     }
 
     /**
@@ -66,19 +58,23 @@ class PageController extends Controller
 
     /**
      * @param ContactFormRequest $request
+     * @return RedirectResponse
      */
-    public function storeContactForm(ContactFormRequest $request)
+    public function storeContactForm(ContactFormRequest $request): RedirectResponse
     {
+        //Data du mail
         $dataMail = $request->all(['name', 'email', 'message']);
+        //On le stock en log
         event(new ContactMail($dataMail));
+        //On envoi le mail
         Mail::to('administrateur@superDino.fr')->send(new SendContactMail($dataMail));
 
+        //Es ce qui veux enregistrer son mail en BDD
         if ($request->exists('wantNewsletter')) {
             //On vérifie que l'email n'existe pas en double
             $validator = Validator::make($request->all(), [
                 'email' => 'bail|email|unique:newsletters'
             ]);
-
             if (!$validator->fails()) {
                 $this->insertNewsletter($request->input("email"));
             } else {

@@ -1,26 +1,3 @@
-types:id,title,description,created_at,updated_at
-categories:id,title,description,created_at,updated_at
-tags:id,title,description,created_at,updated_at
-posts:id,title,wysiwyg_text,url,created_at,updated_at
-properties:id,title,description,price,surface,rooms,state,constructionYear,zip,town,created_at,updated_at
-images:id,url,alternative,created_at,updated_at
-newsletters:id,email,created_at,updated_at
-logs:id,type(enum),message,created_at,updated_at
-
-users:id,name,email,email_verified_at,password,two_factor_secret,two_factor_recovery_codes,remember_token,current_team_id,profile_photo_path,created_at,updated_at
-failed_jobs:id,uuid,connection,queue,payload,exception,failed_at
-migrations:id,migration,batch
-password_resets:email,token,created_at
-personal_access_tokens:id,tokenable_id,name,token,abilites,last_used_at,created_at,updated_at
-sessions:id,ip_address,user_agent,payload,last_activity
-
-post_tag, 0N posts, 0N tags: id,post_id,tag_id
-contain,11 properties, 1N images
-have,0N posts, 11 categories
-is,11 properties, 0N types
-own,11 users, 0N sessions
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 http://mocodo.wingi.net/
 
 failed_jobs:id,uuid,connection,queue,payload,exception,failed_at
@@ -31,7 +8,7 @@ newsletters:id,email,created_at,updated_at
 logs:id,type(enum),message,created_at,updated_at
 
 images:id,url,alternative,created_at,updated_at
-:
+content:id,for(enum),wysiwyg_text,created_at,updated_at
 :
 tags:id,title,description,created_at,updated_at
 post_tag, 0N posts, 0N tags: id,post_id,tag_id,created_at,updated_at

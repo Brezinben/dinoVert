@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Property;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class AdminController extends Controller
 {
-    //Les pages liée a l'admisnistration test
+
+    /**
+     * @return Application|Factory|View
+     */
     public function properties()
     {
         $properties = Property::with(['type', 'images'])
@@ -17,6 +23,9 @@ class AdminController extends Controller
         return view('admin.propertiesIndex', compact('properties'));
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function posts()
     {
         $posts = Post::with(['tags', 'category'])
@@ -25,6 +34,9 @@ class AdminController extends Controller
         return view('admin.postsIndex', compact('posts'));
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function dashboard()
     {
         return view('admin.dashboard');

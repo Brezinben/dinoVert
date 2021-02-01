@@ -1,10 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
+        <h2 class="text-2xl font-bold leading-tight text-dino-500">{{'Accueil'}}</h2>
+
+    </x-slot>
+    <div class="container mx-auto">
+        <div class="text-dino-500 font-montserrat mb-5">
+            {!! $text[0]->wysiwyg_text !!}
+        </div>
         <h2 class="text-2xl font-bold leading-tight text-dino-500">
             {{ __('Les nouveaux biens à vendre') }}
         </h2>
-    </x-slot>
-    <div class="container mx-auto">
         <div class="grid grid-cols-1 grid-rows-3 py-5 lg:grid-cols-11 lg:grid-rows-4">
             <div class="row-span-1 w-full lg:col-span-5 lg:row-span-full">
                 <div class="flex flex-col mx-auto w-full max-w-xl h-full rounded-2xl">

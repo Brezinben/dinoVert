@@ -46,7 +46,7 @@ class PostController extends Controller
      * @param StorePostRequest $request
      * @return RedirectResponse
      */
-    public function store(StorePostRequest $request)
+    public function store(StorePostRequest $request): RedirectResponse
     {
         //On crée le post avec les data de la request validé
         $post = Post::create($request->except(['_token', 'tags']));
@@ -91,7 +91,7 @@ class PostController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         $post = Post::findOrFail($id);
         //On update
@@ -110,7 +110,7 @@ class PostController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         $post = Post::findOrFail($id);
         $post->tags()->detach();

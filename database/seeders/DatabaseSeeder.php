@@ -7,7 +7,9 @@ use App\Models\Post;
 use App\Models\Property;
 use App\Models\Type;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +31,12 @@ class DatabaseSeeder extends Seeder
         ])->each(fn($type) => Type::factory(['title' => $type['title'], 'description' => $type['description']])->has(Property::factory(13)->hasImages(rand(1, 10)))->create())
             ->each(fn($category) => Category::factory(['title' => $category['title'], 'description' => $category['description']])->has(Post::factory(13)->hasTags(rand(1, 5)))->create());
 
+        DB::table('contents')->insert([
+            'for' => 'Home',
+            'wysiwyg_text' => '<p style="text-align: center;"><span style="font-family: arial, helvetica, sans-serif;">Bienvenue sur<strong> Dino Vert</strong> ! Vous y trouverez tout un tas de biens immobiliers, ainsi que notre sp&eacute;cialit&eacute; les enclos &agrave; dinosaure ! 🦖🦕</span><br /><span style="font-family: arial, helvetica, sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</span></p>',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
         //Création de l'administrateur
         User::create([
             'name' => 'admin',

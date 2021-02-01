@@ -12,7 +12,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PropertyController extends Controller
@@ -48,7 +47,7 @@ class PropertyController extends Controller
      * @param StorePropertyRequest $request
      * @return RedirectResponse
      */
-    public function store(StorePropertyRequest $request)
+    public function store(StorePropertyRequest $request): RedirectResponse
     {
         $property = Property::create($request->except(['_token', 'images', 'image']));
         $images = explode(",", $request->input('images'));
@@ -70,7 +69,7 @@ class PropertyController extends Controller
      * @param int $id
      * @return Application|Factory|View|RedirectResponse
      */
-    public function show($id)
+    public function show(int $id)
     {
         $property = Property::with(['type', 'images'])->findOrFail($id);
         return view('property.show', compact(['property']));
@@ -82,7 +81,7 @@ class PropertyController extends Controller
      * @param int $id
      * @return Application|Factory|View|Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $types = Type::all();
         $states = ['Neuf', 'Rénovation', 'Abandonner', 'Ancien'];
@@ -94,11 +93,11 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param StorePropertyRequest $request
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(StorePropertyRequest $request, $id)
+    public function update(StorePropertyRequest $request, int $id): RedirectResponse
     {
         $property = Property::findOrFail($id)->update($request->except(['_token', 'images', 'image']));
 
@@ -123,7 +122,7 @@ class PropertyController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         Property::findOrFail($id)->delete();
         event(new PropertyDelete($id));

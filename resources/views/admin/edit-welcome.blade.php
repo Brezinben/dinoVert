@@ -13,7 +13,8 @@
     </x-slot>
     <div class="container mx-auto">
         <div class="text-dino-500 font-montserrat mb-5">
-            <form id="homeEdit" action="{{route('admin.storeEditHome')}}" method="POST">
+            <form id="homeEdit" action="{{route('admin.storeEditHome',['id'=>$content->id])}}" method="POST">
+                @method('POST')
                 @error('wysiwygTextHome')
                 <div x-data="{ openError: true }"
                      x-show="openError"
@@ -28,9 +29,9 @@
                 </div>
                 @enderror
                 @csrf
-                @method('POST')
+
                 <textarea id="wysiwygTextHome" name="wysiwygTextHome">
-                          {{ $text[0]->wysiwyg_text }}
+                          {{ $content->wysiwyg_text }}
                  </textarea>
 
 

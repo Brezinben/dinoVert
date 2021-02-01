@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Post;
 use App\Models\Property;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,7 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class AdminController extends Controller
 {
@@ -42,26 +43,29 @@ class AdminController extends Controller
      */
     public function editHome()
     {
-        $text = DB::select("select wysiwyg_text from contents where page = 'Home'");
+        $content = Content::where('page', 'Home')->first(['id', 'wysiwyg_text']);
         $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
         $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
-        return view('admin.edit-welcome', compact(['properties', 'posts', 'text']));
+        return view('admin.edit-welcome', compact(['properties', 'posts', 'content']));
     }
 
     /**
      * @param Request $request
+     * @param $id
      * @return RedirectResponse
      */
-    public function storeEditHome(Request $request): RedirectResponse
+    public function storeEditHome(Request $request, int $id): RedirectResponse
     {
-        $text = DB::select("select wysiwyg_text from contents where page = 'Home' limit 1");
+        $content = Content::findOrFail($id);
+        $text = $content->pluck('wysiwyg_text')->toArray()[0];
         $newText = $request->input('wysiwygTextHome');
-        if ($text[0]->wysiwyg_text != $newText) {
+
+        if ($text != $newText) {
             $request->validate([
                 'wysiwygTextHome' => 'bail|required|string',
             ]);
             //Update de l'info
-            DB::update("update contents set wysiwyg_text = ? where page = 'Home' limit 1", [$newText])
+            $content->update(["wysiwyg_text" => $newText])
                 ? session()->flash('success', 'Le texte a bien modifier 🤓')
                 : session()->flash('error', 'Nous avons rencontrer une erreur 😱');
 

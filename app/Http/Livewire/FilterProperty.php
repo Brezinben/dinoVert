@@ -62,14 +62,6 @@ class FilterProperty extends Component
     }
 
     /**
-     *Reset le filtre
-     */
-    public function resetFilter()
-    {
-        $this->filtered = $this->properties;
-    }
-
-    /**
      *Revoie les biens qui match avec $this->query
      */
     public function search()
@@ -79,5 +71,13 @@ class FilterProperty extends Component
             ->latest()
             ->get();
         $this->resetFilter();
+    }
+
+    /**
+     *Reset le filtre
+     */
+    public function resetFilter()
+    {
+        $this->filtered = $this->properties;
     }
 }

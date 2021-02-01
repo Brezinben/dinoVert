@@ -1,4 +1,3 @@
-
 <nav
     class="flex items-center justify-between bg-cover flex-wrap lg:flex-nowrap p-4 relative w-full z-10 top-0"
     x-data="{ isOpen: false }"

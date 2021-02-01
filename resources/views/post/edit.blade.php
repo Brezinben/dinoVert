@@ -14,6 +14,7 @@
     </x-slot>
     <div class="container flex py-10 px-5 mx-auto">
         <form method="post" class="w-full"
+              id="editPostForm"
               action="{{route('admin.posts.update',['post'=>$post])}}"
 
         >
@@ -146,6 +147,7 @@
                 <div class="flex justify-evenly ">
                     <button
                         type="submit"
+                        onclick="event.preventDefault();document.getElementById('editPostForm').submit();"
                         class="px-6 py-2 text-lg text-white border-0 rounded bg-dino-500 focus:outline-none hover:bg-dino-600">
                         Modifier l'actualité
                     </button>

@@ -171,6 +171,7 @@
         </div>
         <div class="text-center pt-10  sm:pt-12 font-light flex flex-col items-center justify-center">
             <form method="POST" action="{{route('pages.newsletter')}}"
+                  id="storeNewsletterForm"
                   class="flex w-full max-w-lg flex-col space-y-4 md:flex-row space-x-3">
                 @csrf
                 <div class=" relative ">
@@ -182,6 +183,7 @@
                            placeholder="Email"/>
                 </div>
                 <button
+                    onclick="event.preventDefault();document.getElementById('storeNewsletterForm').submit();"
                     class="flex-shrink-0 bg-dino-800 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-dino-900 focus:outline-none focus:ring-2 focus:ring-dino-500 focus:ring-offset-2 focus:ring-offset-dino-200"
                     type="submit">
                     S'abonner à la newsletter

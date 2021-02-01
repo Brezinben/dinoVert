@@ -14,6 +14,7 @@
     </x-slot>
     <div class="container flex px-5 py-10 mx-auto">
         <form method="post" class="w-full"
+              id="editPropertyForm"
               action="{{route('admin.properties.update',['property'=>$property->id])}}"
         >
             @method('PATCH')
@@ -263,6 +264,7 @@
                 <div class="flex justify-evenly ">
                     <button
                         type="submit"
+                        onclick="event.preventDefault();document.getElementById('editPropertyForm').submit();"
                         class="px-6 py-2 text-lg text-white border-0 rounded bg-dino-500 focus:outline-none hover:bg-dino-600">
                         Modifier le bien
                     </button>

@@ -6,6 +6,7 @@
     </x-slot>
     <div class="container flex py-10 px-5 mx-auto">
         <form method="post" class="w-full"
+              id="createPostForm"
               action="{{route('admin.posts.store')}}"
         >
             @csrf
@@ -135,6 +136,7 @@
                 </div>
                 <button
                     type="submit"
+                    onclick="event.preventDefault();document.getElementById('createPostForm').submit();"
                     class="py-2 px-6 text-lg text-white rounded border-0 bg-dino-500 focus:outline-none hover:bg-dino-600">
                     Crée le bien
                 </button>

@@ -34,4 +34,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', 'verified'])
     Route::get('properties/index', [AdminController::class, 'properties'])->name('properties.index');
     Route::get('posts/index', [AdminController::class, 'posts'])->name('posts.index');
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('edit', [AdminController::class, 'editHome'])->name('editHome');
+    Route::post('edit', [AdminController::class, 'storeEditHome'])->name('storeEditHome');
 });

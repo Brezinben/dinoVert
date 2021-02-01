@@ -46,6 +46,7 @@ class PageController extends Controller
         return view('static.whoAreWe');
     }
 
+
     /**
      * Renvoie la page de contact
      * @return Application|Factory|View

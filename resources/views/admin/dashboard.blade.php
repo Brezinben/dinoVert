@@ -67,6 +67,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="p-4 md:w-1/3">
+                            <div class="flex flex-col p-8 h-full bg-gray-100 rounded-lg">
+                                <div class="flex items-center mb-3">
+                                    <div
+                                        class="inline-flex flex-shrink-0 justify-center items-center mr-3 w-8 h-8 rounded-full text-punch-500">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                                        </svg>
+
+                                    </div>
+                                    <h2 class="text-lg font-medium text-gray-900 title-font">Modifier la
+                                        home page</h2>
+                                </div>
+                                <div class="flex-grow">
+                                    <p class="text-base leading-relaxed">Blue bottle crucifix vinyl post-ironic four
+                                        dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+
+                                    <a type="button"
+                                       href="{{route("admin.editHome")}}"
+                                       class="block py-2 px-4 mt-5 w-full  text-base font-semibold text-center text-white rounded-lg shadow-md transition duration-200 ease-in bg-punch-600 hover:bg-punch-700 focus:ring-punch-500 focus:ring-offset-punch-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                                        Y aller
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

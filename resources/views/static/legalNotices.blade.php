@@ -20,7 +20,7 @@
             <p>SARL Dino Vert Numéro de SIRET : 75221735600027</p>
             <p>Responsable éditorial : <a href="https://{{substr (Request::root(), 7)}}/author/hugo-essique/">Médhi
                     KHAMAN</a></p>
-            <p>6 Place Jacques Favrot, 53340 Saulges, France</p>
+            <p>6 Place Jacques Favrot, 72 666 Isla Nublar sur Sarthe, France</p>
             <p>Téléphone : 06 66 66 66 66</p>
             <p>Email : dino-vert@superDino.fr</p>
             <p>Site Web : <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a></p>
@@ -29,13 +29,13 @@
                     >Hébergement :</span>
                 </b></p>
             <p>Hébergeur : SARL Dino Vert<br>
-                6 Place Jacques Favrot, 53340 Saulges, France<br>
+                6 Place Jacques Favrot, 72 666 Isla Nublar sur Sarthe, France<br>
                 Site Web : <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a></p>
             <p class="text-lg my-2"><span
                 ><b>Développement</b><b> : </b></span>
             </p>
             <p>SARL Dino Vert</p>
-            <p>Adresse : 6 Place Jacques Favrot, 53340 Saulges, France</p>
+            <p>Adresse : 6 Place Jacques Favrot, 72 666 Isla Nublar sur Sarthe, France</p>
             <p>Site Web : <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a></p>
             <p class="text-lg my-2"><span
                 ><b>Conditions d’utilisation : </b></span>

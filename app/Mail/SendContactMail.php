@@ -5,6 +5,8 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class SendContactMail extends Mailable
 {
@@ -33,10 +35,15 @@ class SendContactMail extends Mailable
      */
     public function build()
     {
+        $url = DB::table('newsletters')->where('email', $this->email)->exists()
+            ? URL::signedRoute('unsubscribe', ['email' => $this->email])
+            : '#';
+
         return $this->from('dino-vert@superDino.fr')->markdown('email.contact', [
             'name' => $this->name,
             'email' => $this->email,
             'message' => $this->message,
+            'unsubscribeLink' => $url
         ]);
     }
 }

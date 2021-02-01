@@ -23,6 +23,7 @@ Route::get('legalNotices', [PageController::class, 'legalNotices'])->name('pages
 Route::get('contact', [PageController::class, 'contactForm'])->name('pages.contact');
 Route::post('contact', [PageController::class, 'storeContactForm'])->name('pages.storeContact');
 Route::post('newsletters', [PageController::class, 'storeNewsletter'])->name('pages.newsletter');
+Route::get('/unsubscribe/{email}', [PageController::class, 'unsubscribe'])->name('unsubscribe')->middleware('signed');
 
 Route::resource('posts', PostController::class)->only(['index', 'show']);
 Route::resource('properties', PropertyController::class)->only(['index', 'show']);

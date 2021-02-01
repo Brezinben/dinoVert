@@ -22,7 +22,7 @@ class PageController extends Controller
      */
     public function home()
     {
-        $text = DB::select("select wysiwyg_text from contents where `for` = 'Home'");
+        $text = DB::select("select wysiwyg_text from contents where 'for' = 'Home'");
         $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
         $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
         return view('welcome', compact(['properties', 'posts', 'text']));

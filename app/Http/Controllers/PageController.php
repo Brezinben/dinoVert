@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreNewsletterRequest;
+use App\Mail\SendContactMail;
 use App\Models\Post;
 use App\Models\Property;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 
@@ -22,7 +27,7 @@ class PageController extends Controller
      */
     public function home()
     {
-        $text = DB::select("select wysiwyg_text from contents where 'for' = 'Home'");
+        $text = Arr::first(DB::select("select wysiwyg_text from contents where page = 'Home'"))->wysiwyg_text;
         $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
         $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
         return view('welcome', compact(['properties', 'posts', 'text']));

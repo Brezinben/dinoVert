@@ -5,7 +5,7 @@
     </x-slot>
     <div class="container mx-auto">
         <div class="text-dino-500 font-montserrat mb-5">
-            {!! $text[0]->wysiwyg_text !!}
+            {!!$text!!}
         </div>
         <h2 class="text-2xl font-bold leading-tight text-dino-500">
             {{ __('Les nouveaux biens à vendre') }}

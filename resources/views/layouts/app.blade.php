@@ -124,11 +124,15 @@
     </div>
 </footer>
 <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    function addDarkTheme() {
         document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
     }
+
+    function removeDarkTheme() {
+        document.documentElement.classList.remove('dark');
+    }
+
+
 </script>
 @livewireScripts
 </body>

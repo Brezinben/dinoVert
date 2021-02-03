@@ -22,4 +22,5 @@ class Property extends Model
     {
         return $this->hasMany(Image::class);
     }
+
 }

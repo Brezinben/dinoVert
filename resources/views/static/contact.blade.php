@@ -31,6 +31,7 @@
                 </div>
 
                 <form action="{{route('pages.storeContact')}}" method="post"
+                      id="storeContactForm"
                       class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 px-6 rounded-lg shadow">
                     @csrf
                     @method('POST')
@@ -133,11 +134,11 @@
 
                     <button
                         type="submit"
+                        onclick="event.preventDefault();document.getElementById('storeContactForm').submit();"
                         class="text-white bg-dino-500 border-0 py-2 px-6 focus:outline-none hover:bg-dino-600 rounded text-lg">
                         Envoyer votre message
                     </button>
-                    <p class=" text-gray-500 mt-3">Chicharrones blog helvetica normcore iceland tousled brook viral
-                        artisan.</p>
+                    <p class=" text-gray-500 mt-3">Nous essayerons de vous répondre le plus rapidement possible.</p>
                 </form>
 
             </div>

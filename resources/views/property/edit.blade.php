@@ -14,6 +14,7 @@
     </x-slot>
     <div class="container flex px-5 py-10 mx-auto">
         <form method="post" class="w-full"
+              id="editPropertyForm"
               action="{{route('admin.properties.update',['property'=>$property->id])}}"
         >
             @method('PATCH')
@@ -26,19 +27,7 @@
                            required
                            value="{{$property->title}}"
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    @error('title')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="title"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="description" class="text-sm leading-7 text-gray-600">Description du bien</label>
@@ -48,20 +37,7 @@
                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500"
                         rows="1"
                     >{{$property->description}}</textarea>
-                    @error('description')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{$message}}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-
-                    @enderror
+                    <x-error-form :input="description"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="price" class="text-sm leading-7 text-gray-600">Prix du bien</label>
@@ -69,19 +45,7 @@
                            value="{{$property->price}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    @error('price')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="price"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="surface" class="text-sm leading-7 text-gray-600">Surface du bien</label>
@@ -89,19 +53,7 @@
                            value="{{$property->surface}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    @error('surface')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="surface"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="rooms" class="text-sm leading-7 text-gray-600">Nombre de pièces</label>
@@ -109,19 +61,7 @@
                            value="{{$property->rooms}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    @error('rooms')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="rooms"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="postcode" class="text-sm leading-7 text-gray-600">Code Postal</label>
@@ -129,19 +69,7 @@
                            value="{{$property->postcode}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    @error('postcode')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="postcode"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="town" class="text-sm leading-7 text-gray-600">Ville</label>
@@ -149,19 +77,7 @@
                            value="{{$property->town}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    @error('town')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="town"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="constructionYear" class="text-sm leading-7 text-gray-600">Date de construction</label>
@@ -170,19 +86,7 @@
                            value="{{$property->constructionYear}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    @error('constructionYear')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="constructionYear"></x-error-form>
                 </div>
                 {{old('images')}}
                 @if(old('images')!=null)
@@ -191,19 +95,7 @@
                 @else
                     @livewire('image-property-input',['images'=>$images])
                 @endif
-                @error('images')
-                <div x-data="{ openError: true }"
-                     x-show="openError"
-                     class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                     role="alert">
-                    <p>{{ $message }}</p>
-                    <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                </div>
-                @enderror
+                <x-error-form :input="images"></x-error-form>
                 <div class="relative mb-4">
                     <label for="type_id" class="text-sm leading-7 text-gray-600">Type du bien</label>
                     <select id="type_id"
@@ -218,19 +110,7 @@
                                 value="{{$type->id}}">{{$type->title}}</option>
                         @endforeach
                     </select>
-                    @error('type_id')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="type_id"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="state" class="text-sm leading-7 text-gray-600">état du bien</label>
@@ -246,23 +126,12 @@
                                 value="{{$state}}">{{$state}}</option>
                         @endforeach
                     </select>
-                    @error('state')
-                    <div x-data="{ openError: true }"
-                         x-show="openError"
-                         class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
-                         role="alert">
-                        <p>{{ $message }}</p>
-                        <span class="absolute inset-y-0 right-0 flex items-center mr-4" @click="openError = !openError">
-                     <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path
-                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                             clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                    </span>
-                    </div>
-                    @enderror
+                    <x-error-form :input="state"></x-error-form>
                 </div>
                 <div class="flex justify-evenly ">
                     <button
                         type="submit"
+                        onclick="event.preventDefault();document.getElementById('editPropertyForm').submit();"
                         class="px-6 py-2 text-lg text-white border-0 rounded bg-dino-500 focus:outline-none hover:bg-dino-600">
                         Modifier le bien
                     </button>

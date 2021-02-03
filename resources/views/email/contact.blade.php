@@ -52,7 +52,8 @@
                             <tr>
                                 <td style="color: #ffffff; font-family: Arial, sans-serif; font-size: 14px;">
                                     <p style="margin: 0;">&reg; DinoVert<br/>
-                                        <a href="#" style="color: #ffffff;">Se désinscrire</a> de la newsletter.
+                                        <a href="{{$unsubscribeLink}}" style="color: #ffffff;">Se désinscrire</a> de la
+                                        newsletter.
                                     </p>
                                 </td>
                                 <td align="right">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ContactMail;
+use App\Http\Requests\ContactFormRequest;
 use App\Http\Requests\StoreNewsletterRequest;
 use App\Mail\SendContactMail;
 use App\Models\Content;
@@ -12,7 +14,10 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 
 /**
@@ -27,8 +32,12 @@ class PageController extends Controller
      */
     public function home()
     {
+        $properties = Property::with([
+            'images' => fn($query) => $query->select('id', 'url', 'property_id'),
+            'type' => fn($query) => $query->select('id', 'title'),
+        ])->latest()->limit(3)->get(['id','price', 'surface','postcode', 'town', 'type_id'])->reverse();
+
         $text = Content::where('page', 'Home')->first()->pluck('wysiwyg_text')->toArray()[0];
-        $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
         $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
         return view('welcome', compact(['properties', 'posts', 'text']));
     }
@@ -70,11 +79,6 @@ class PageController extends Controller
     {
         //Data du mail
         $dataMail = $request->all(['name', 'email', 'message']);
-        //On le stock en log
-        event(new ContactMail($dataMail));
-        //On envoi le mail
-        Mail::to('administrateur@superDino.fr')->send(new SendContactMail($dataMail));
-
         //Es ce qui veux enregistrer son mail en BDD
         if ($request->exists('wantNewsletter')) {
             //On vérifie que l'email n'existe pas en double
@@ -87,6 +91,11 @@ class PageController extends Controller
                 session()->flash('warning', 'L\'email est déjà enregistrer dans notre base.');
             }
         }
+        //On le stock en log
+        event(new ContactMail($dataMail));
+        //On envoi le mail
+        Mail::to('administrateur@superDino.fr')->send(new SendContactMail($dataMail));
+
         session()->flash('success', 'Votre message à bien été envoyer!');
         return redirect()->route('pages.home');
     }
@@ -114,6 +123,21 @@ class PageController extends Controller
             ? session()->flash('info', 'Votre email à bien été stocker')
             : session()->flash('error', 'Une erreur est survenu lors de l\'enregistrement');
         return redirect()->back();
+    }
+
+    public function unsubscribe(Request $request, $email)
+    {
+        if (!$request->hasValidSignature()) {
+            abort(401);
+        }
+        if (DB::table('newsletters')->where('email', $email)->exists()) {
+            DB::table('newsletters')->where('email', $email)->delete()
+                ? session()->flash('success', 'Votre email à bien été supprimer')
+                : session()->flash('warning', 'Une erreur est survenu lors de la surpression');
+            return redirect()->route('pages.home');
+        } else {
+            abort(401);
+        }
     }
 }
 

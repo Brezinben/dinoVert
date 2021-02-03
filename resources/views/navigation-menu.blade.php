@@ -186,10 +186,9 @@
                        class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                         <div>Administration</div>
 
-                    <?xml version = "1.0" encoding = "iso-8859-1"?>
-                    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                        <svg version="1.1" class="w-8 h-8" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+
+                        <svg version="1.1" class="w-8 h-8" id="Capa_1" 
+                            x="0px" y="0px"
                              viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;"
                              xml:space="preserve">
                                             <path style="fill:#5CB38E;" d="M292.48,307.968L292.48,307.968c-17.703-26.771-47.658-42.875-79.753-42.875h-39.453

@@ -26,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('tag.create');
     }
 
     /**
@@ -48,7 +48,9 @@ class TagController extends Controller
      */
     public function show(int $id)
     {
-        //
+        $tag = Tag::with(['posts' => fn($query) => $query->select(['posts.id', 'title', 'wysiwyg_text','imageUrl'])])
+            ->findOrFail($id, ['id', 'title', 'description']);
+        return view('tag.show', compact(['tag']));
     }
 
     /**
@@ -59,7 +61,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::findOrFail($id, ['id', 'title', 'description']);
+        return view('tag.edit', compact(['tag']));
     }
 
     /**

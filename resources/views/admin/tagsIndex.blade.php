@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Gestion des article') }}
+            {{ __('Gestion des tags') }}
         </h2>
     </x-slot>
 
     <div class="py-6">
         <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <a href="{{route("admin.posts.create")}}"
-               class="py-2 px-4 mx-1  inline-block font-semibold rounded border transition duration-300 font-montserrat border-green-500 text-green-500 hover:bg-green-700 hover:text-white focus:outline-none">
+            <a href="{{route("admin.tags.create")}}"
+               class="inline-block py-2 px-4 mx-1 font-semibold text-green-500 rounded border border-green-500 transition duration-300 font-montserrat hover:bg-green-700 hover:text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -29,41 +29,38 @@
                                     Titre
                                 </th>
                                 <th class="py-3 px-6 text-sm tracking-wider leading-4 text-left border-b-2 border-gray-300 text-punch-500">
-                                    Crée le
+                                    Description
                                 </th>
                                 <th class="py-3 px-6 text-sm tracking-wider leading-4 text-left border-b-2 border-gray-300 text-punch-500">
-                                    Categorie
+                                    Nombre de Posts
                                 </th>
                                 <th class="py-3 px-6 border-b-2 border-gray-300"></th>
                             </tr>
                             </thead>
                             <tbody class="bg-white">
-                            @foreach($posts as $post)
+                            @foreach($tags as $tag)
                                 <tr>
                                     <td class="py-4 px-6 border-b border-gray-500 whitespace-no-wrap">
                                         <div class="flex items-center">
                                             <div>
                                                 <div class="text-sm leading-5 text-gray-800">
-                                                    #{{$post->id}}</div>
+                                                    #{{$tag->id}}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="py-4 px-6 border-b border-gray-500 whitespace-no-wrap">
                                         <div
-                                            class="text-sm leading-5 text-blue-900">{{Str::limit($post->title, 50, ' (...)')}}</div>
+                                            class="text-sm leading-5 text-blue-900">{{$tag->title}}</div>
                                     </td>
                                     <td class="py-4 px-6 text-sm leading-5 text-blue-900 border-b border-gray-500 whitespace-no-wrap">
-                                        {{ date('d M y', strtotime($post->created_at)) }}
+                                        {{Str::limit( $tag->description,250,'(...)')}}
                                     </td>
-
                                     <td class="py-4 px-6 text-sm leading-5 text-blue-900 border-b border-gray-500 whitespace-no-wrap">
-                                            <span class="w-full px-2 py-1 text-xs rounded-full"
-
-                                            >{{$post->category->title}}</span>
+                                        {{$tag->posts_count}}
                                     </td>
                                     <td class="py-4 px-6 text-sm leading-5 text-right border-b border-gray-500 whitespace-no-wrap">
                                         <div class="flex">
-                                            <a href="{{route("posts.show",compact(['post']))}}"
+                                            <a href="{{route("tags.show",compact(['tag']))}}"
                                                class="py-2 px-4 mx-1 font-semibold rounded border transition duration-300 font-montserrat border-dino-500 text-dino-500 hover:bg-dino-700 hover:text-white focus:outline-none">
                                                 <svg class="w-6 h-6" data-darkreader-inline-fill=""
                                                      data-darkreader-inline-stroke=""
@@ -78,7 +75,7 @@
                                                           d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                                 </svg>
                                             </a>
-                                            <a href="{{route("admin.posts.edit",compact(['post']))}}"
+                                            <a href="{{route("admin.tags.edit",compact(['tag']))}}"
                                                class="py-2 px-4 mx-1 font-semibold rounded border transition duration-300 font-montserrat border-punch-500 text-punch-500 hover:bg-punch-700 hover:text-white focus:outline-none">
                                                 <svg class="w-6 h-6" viewBox="0 0 24 24" stroke-width="2"
                                                      stroke="currentColor" fill="none" stroke-linecap="round"

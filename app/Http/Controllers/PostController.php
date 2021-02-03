@@ -11,6 +11,9 @@ use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -24,7 +27,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        //'tags' => fn($query) => $query->select('tag_id','title'),
         $posts = Post::with(['category' => fn($query) => $query->select('id', 'title')])
             ->latest()
             ->get(['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
@@ -75,12 +77,13 @@ class PostController extends Controller
 
     /**
      * @param int $id
+     * @return Builder|Builder[]|Collection|Model|null
      */
     public function findPostWithRelation(int $id)
     {
         $post = Post::with([
             'category' => fn($query) => $query->select('id', 'title'),
-            'tags' => fn($query) => $query->select('tag_id', 'title'),])
+            'tags' => fn($query) => $query->select('tags.id', 'title'),])
             ->findOrFail($id, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
         return $post;
     }

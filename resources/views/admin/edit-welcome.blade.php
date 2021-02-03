@@ -15,7 +15,7 @@
         <div class="text-dino-500 font-montserrat mb-5">
             <form id="homeEdit" action="{{route('admin.storeEditHome',['id'=>$content->id])}}" method="POST">
                 @method('POST')
-                <x-error-form :input="wysiwygTextHome"></x-error-form>
+                <x-error-form input="wysiwygTextHome"></x-error-form>
                 @csrf
                 <textarea id="wysiwygTextHome" name="wysiwygTextHome">
                           {{ $content->wysiwyg_text }}
@@ -52,7 +52,6 @@
                             @endif() "
                         >{{$properties[0]->type->title}}</span>
                             <a
-                                href="{{route("properties.show",['property'=>$properties[0]])}}"
                                 class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
                                 <span>Voir</span>
                                 <svg class="w-6 h-6" data-darkreader-inline-fill="" data-darkreader-inline-stroke=""
@@ -104,7 +103,6 @@
                             @endif() "
                         >{{$properties[$index]->type->title}}</span>
                                 <a
-                                    href="{{route("properties.show",['property'=>$properties[$index]])}}"
                                     class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
                                     <span>Voir</span>
                                     <svg class="w-6 h-6" data-darkreader-inline-fill="" data-darkreader-inline-stroke=""
@@ -148,8 +146,8 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <a href="{{route('posts.show',['post'=> $post])}}"
-                               class="inline-flex items-center duration-150 ml-5 focus:outline-none cursor-pointer text-punch-400 hover:text-punch-500">Voir
+                            <a
+                                class="inline-flex items-center duration-150 ml-5 focus:outline-none cursor-pointer text-punch-400 hover:text-punch-500">Voir
                                 l'actu
                                 <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                      fill="none" stroke-linecap="round" stroke-linejoin="round">

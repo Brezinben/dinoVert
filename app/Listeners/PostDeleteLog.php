@@ -29,7 +29,7 @@ class PostDeleteLog
         $id = $event->getId();
         DB::table('logs')->insert([
             'type' => 'info',
-            'message' => 'Un  post à été supprimer, il a l\'id : #' . $id,
+            'message' => 'Un post a été supprimé, il a l\'id : #' . $id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

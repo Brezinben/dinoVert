@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Content;
 use App\Models\Post;
 use App\Models\Property;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -20,10 +21,9 @@ class AdminController extends Controller
      */
     public function properties()
     {
-        $properties = Property::with(['type', 'images'])
-            ->latest('id')
-            ->get()
-            ->reverse();
+        $properties = Property::with(['type' => fn($query) => $query->select('id', 'title')])
+            ->latest()
+            ->get(['id', 'title', 'description', 'price', 'town', 'state', 'type_id']);
         return view('admin.propertiesIndex', compact('properties'));
     }
 
@@ -32,10 +32,20 @@ class AdminController extends Controller
      */
     public function posts()
     {
-        $posts = Post::with(['tags', 'category'])
+        $post = Post::with([
+            'category' => fn($query) => $query->select('id', 'title'),
+            'tags' => fn($query) => $query->select('tags.id', 'title'),])
             ->latest()
-            ->get();
+            ->get(['id', 'title', 'category_id', 'created_at']);
         return view('admin.postsIndex', compact('posts'));
+    }
+
+    public function tags()
+    {
+        $tags = Tag::withCount('posts')
+            ->orderBy('posts_count', 'desc')
+            ->get(['id', 'title', 'description', 'posts_count']);
+        return view('admin.tagsIndex', compact(['tags']));
     }
 
     /**
@@ -44,8 +54,18 @@ class AdminController extends Controller
     public function editHome()
     {
         $content = Content::where('page', 'Home')->first(['id', 'wysiwyg_text']);
-        $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
-        $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
+
+        $properties = Property::with([
+            'images' => fn($query) => $query->select('id', 'url', 'property_id'),
+            'type' => fn($query) => $query->select('id', 'title'),
+        ])->latest()->limit(3)->get(['id', 'price', 'surface', 'postcode', 'town', 'type_id'])->reverse();
+
+        $posts = Post::with(['category' => fn($query) => $query->select('id', 'title')])
+            ->latest()
+            ->limit(3)
+            ->get(['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at'])
+            ->reverse();
+
         return view('admin.edit-welcome', compact(['properties', 'posts', 'content']));
     }
 
@@ -56,7 +76,7 @@ class AdminController extends Controller
      */
     public function storeEditHome(Request $request, int $id): RedirectResponse
     {
-        $content = Content::findOrFail($id);
+        $content = Content::findOrFail($id, ['wysiwyg_text']);
         $text = $content->pluck('wysiwyg_text')->toArray()[0];
         $newText = $request->input('wysiwygTextHome');
 

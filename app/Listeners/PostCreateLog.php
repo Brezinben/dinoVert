@@ -29,7 +29,7 @@ class PostCreateLog
         $post = $event->getPost();
         DB::table('logs')->insert([
             'type' => 'info',
-            'message' => 'Un nouveau bien à été crée, il a l\'id : #' . $post->id . ' et pour titre ' . $post->title,
+            'message' => 'Un nouveau bien a été crée, il a l\'id : #' . $post->id . ' et pour titre ' . $post->title,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -17,9 +17,9 @@ class EasterEgg extends Component
 
     public function increment()
     {
-        if ($this->count++ === $this->limit) {
+        if ($this->count++ === $this->limit)
             return $this->redirect('https://www.youtube.com/watch?t=425&v=z1lmj932rSk');
-        }
+
 
     }
 

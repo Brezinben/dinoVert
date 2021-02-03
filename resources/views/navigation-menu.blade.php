@@ -1,22 +1,22 @@
 <nav
-    class="flex items-center justify-between bg-cover flex-wrap lg:flex-nowrap p-4 relative w-full z-10 top-0"
+    class="relative top-0 z-10 flex flex-wrap items-center justify-between w-full p-4 bg-cover lg:flex-nowrap"
     x-data="{ isOpen: false }"
     @keydown.escape="isOpen = false"
     :class="{ 'shadow-lg bg-indigo-900' : isOpen , 'bg-gray-800' : !isOpen}"
 >
     <!--Logo etc-->
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <div class="flex items-center flex-shrink-0 mr-6 text-white">
         @livewire('easter-egg', ['routeName' => Route::currentRouteName()])
     </div>
     <!--Toggle button (hidden on large screens)-->
     <button
         @click="isOpen = !isOpen"
         type="button"
-        class="block lg:hidden px-2 text-gray-100 hover:text-white focus:outline-none focus:text-white"
+        class="block px-2 text-gray-100 lg:hidden hover:text-white focus:outline-none focus:text-white"
         :class="{ 'transition transform-180': isOpen }"
     >
         <svg
-            class="h-6 w-6 fill-current"
+            class="w-6 h-6 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
         >
@@ -36,17 +36,17 @@
 
     <!--Menu-->
     <div
-        class="w-full flex-grow lg:flex lg:items-center lg:w-auto"
+        class="flex-grow w-full lg:flex lg:items-center lg:w-auto"
         :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }"
         @click.away="isOpen = false"
         x-show.transition="true"
     >
         <ul
-            class="pt-6 lg:pt-0 list-reset lg:flex justify-center  flex-1 items-center text-white  lg:text-dino-500 dark:text-gray-500 font-montserrat"
+            class="items-center justify-center flex-1 pt-6 text-white lg:pt-0 list-reset lg:flex lg:text-dino-500 dark:text-gray-500 font-montserrat"
         >
             <li class="mr-3">
                 <a href="{{route('properties.index')}}"
-                   class="flex items-center  px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:ml-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:ml-2">
                     <div>Bien à vendre</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 35.963">
                         <g id="fence" transform="translate(0 -51.81)">
@@ -111,7 +111,7 @@
             </li>
             <li class="mr-3">
                 <a href="{{route('posts.index')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Actualité</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 52.033 55.285">
                         <g id="megaphone" transform="matrix(0.978, -0.208, 0.208, 0.978, -30.048, -8.994)">
@@ -136,7 +136,7 @@
             </li>
             <li class="mr-3">
                 <a href="{{route('pages.whoAreWe')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                     <div>Qui sommes nous</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 50.902">
                         <g id="question" transform="translate(-14.14 0)">
@@ -183,7 +183,7 @@
             @auth()
                 <li class="mr-3">
                     <a href="{{route('admin.dashboard')}}" @click="showMenu = !showMenu "
-                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2">
                         <div>Administration</div>
                         <svg class="w-8 h-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                              stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -198,7 +198,7 @@
                 </li>
                 <li class="mr-3">
                     <a href=""
-                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max    hover:bg-dino-900 hover:text-gray-100 md:mx-2"
+                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2"
                        onclick="event.preventDefault();document.getElementById('formLogout').submit();"
                     >
                         <div>Log out</div>

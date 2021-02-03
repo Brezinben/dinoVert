@@ -66,10 +66,12 @@ class FilterProperty extends Component
      */
     public function search()
     {
-        $this->properties = Property::with(['type', 'images'])
-            ->where('title', 'like', '%' . $this->query . '%')
+        $this->properties = Property::with([
+            'images' => fn($query) => $query->select('id', 'url', 'property_id')->first(),
+            'type' => fn($query) => $query->select('id', 'title'),
+        ])->where('title', 'like', '%' . $this->query . '%')
             ->latest()
-            ->get();
+            ->get(['id', 'title', 'description', 'price', 'type_id']);
         $this->resetFilter();
     }
 

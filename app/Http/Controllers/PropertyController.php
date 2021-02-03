@@ -31,8 +31,7 @@ class PropertyController extends Controller
         $properties = Property::with([
             'images' => fn($query) => $query->select('id', 'url', 'property_id'),
             'type' => fn($query) => $query->select('id', 'title'),
-        ])
-            ->latest()
+        ])->latest()
             ->get(['id', 'title', 'description', 'price', 'type_id']);
         return view('property.index', compact('properties'));
     }

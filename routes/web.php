@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::post('contact', [PageController::class, 'storeContactForm'])->name('pages
 Route::post('newsletters', [PageController::class, 'storeNewsletter'])->name('pages.newsletter');
 Route::get('/unsubscribe/{email}', [PageController::class, 'unsubscribe'])->name('unsubscribe')->middleware('signed');
 
+Route::resource('tags', TagController::class)->only(['index', 'show']);
 Route::resource('posts', PostController::class)->only(['index', 'show']);
 Route::resource('properties', PropertyController::class)->only(['index', 'show']);
 
@@ -32,8 +34,10 @@ Route::resource('properties', PropertyController::class)->only(['index', 'show']
 Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('properties', PropertyController::class)->except(['index', 'show']);
     Route::resource('posts', PostController::class)->except(['index', 'show']);
+    Route::resource('tags', TagController::class)->except(['index', 'show']);
     Route::get('properties/index', [AdminController::class, 'properties'])->name('properties.index');
     Route::get('posts/index', [AdminController::class, 'posts'])->name('posts.index');
+    Route::get('tags/index', [AdminController::class, 'tags'])->name('tags.index');
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('edit', [AdminController::class, 'editHome'])->name('editHome');
     Route::post('edit/{id}', [AdminController::class, 'storeEditHome'])->name('storeEditHome');

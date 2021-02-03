@@ -32,7 +32,7 @@
             </button>
         </div>
         @error('image')
-        <div class="px-4 py-3 leading-normal text-punch-500 bg-punch-100 rounded-lg" role="alert">
+        <div class="px-4 py-3 leading-normal rounded-lg text-punch-500 bg-punch-100" role="alert">
             <p>{{ $message }}</p>
         </div> @enderror
     </div>

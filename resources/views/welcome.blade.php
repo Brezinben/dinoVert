@@ -129,7 +129,9 @@
                                         @break
                                     @endif
                                     <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                        {{$tag->title}}
+                                        <a href="{{route('tags.show',compact('tag'))}}">
+                                            {{$tag->title}}
+                                        </a>
                                     </div>
                                 @endforeach
                             </div>

@@ -6,6 +6,7 @@
     </x-slot>
 
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-3 text-gray-600">
+        {{--        Début Carouselle--}}
         <div class="flex flex-col items-center justify-center">
             <div
                 class="relative max-w-4xl mx-auto"
@@ -50,6 +51,7 @@
                 </div>
             </div>
         </div>
+        {{--        Fin Carouselle--}}
         <div class="w-full mt-10 text-center lg:w-2/3">
             <h1 class="mb-4 text-3xl font-medium text-gray-900 title-font sm:text-4xl">{{$property->title}}</h1>
             <p class="mb-8 leading-relaxed">{{$property->description}}</p>

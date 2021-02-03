@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="container pt-12 pb-24 px-5 mx-auto">
-        <div class="grid grid-cols-3 gap-8">
+    <div class="container px-5 pt-12 pb-24 mx-auto">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @each('tag.card-index', $tags, 'tag')
         </div>
     </div>

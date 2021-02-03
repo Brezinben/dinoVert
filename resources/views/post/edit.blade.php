@@ -7,28 +7,28 @@
             <button
                 type="submit"
                 onclick="event.preventDefault();document.getElementById('deletePost').submit();"
-                class="px-6 py-2 text-lg text-white border-0 rounded bg-red-500 focus:outline-none hover:bg-red-600">
+                class="px-6 py-2 text-lg text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600">
                 Supprimer l'actualité
             </button>
         </div>
     </x-slot>
-    <div class="container flex py-10 px-5 mx-auto">
+    <div class="container flex px-5 py-10 mx-auto">
         <form method="post" class="w-full"
               id="editPostForm"
-              action="{{route('admin.posts.update',['post'=>$post])}}"
+              action="{{route('admin.posts.update',compact('post'))}}"
 
         >
             @method('PUT')
             @csrf
             <div
-                class="flex relative z-10 flex-col p-8 mt-10 w-full bg-white rounded-lg md:ml-auto md:mt-0">
+                class="relative z-10 flex flex-col w-full p-8 mt-10 bg-white rounded-lg md:ml-auto md:mt-0">
                 <div class="relative mb-4">
                     <label for="title" class="text-sm leading-7 text-gray-600">Titre de l'Actualité</label>
                     <input type="text" id="title" name="title"
                            required
                            value="{{ $post->title }}"
                            placeholder="Votre titre"
-                           class="py-1 px-3 w-full text-base leading-8 text-gray-700 bg-white rounded border border-gray-300 transition-colors duration-200 ease-in-out outline-none focus:border-indigo-500">
+                           class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
                     <x-error-form :input="title"></x-error-form>
                 </div>
                 <div class="relative mb-4">
@@ -37,7 +37,7 @@
                            required
                            value="{{$post->imageUrl }}"
                            placeholder="Lien de votre image"
-                           class="py-1 px-3 w-full text-base leading-8 text-gray-700 bg-white rounded border border-gray-300 transition-colors duration-200 ease-in-out outline-none focus:border-indigo-500">
+                           class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
                     <x-error-form :input="imageUrl"></x-error-form>
                 </div>
                 <div class="relative mb-4">
@@ -52,7 +52,7 @@
                     <select id="tags[]"
                             name="tags[]"
                             size="10"
-                            class="block py-2 px-3 mt-1 w-full bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             multiple
                     >
                         @foreach( $tags as $tag)
@@ -70,7 +70,7 @@
                     <label for="category_id" class="text-sm leading-7 text-gray-600">Type du bien</label>
                     <select id="category_id"
                             name="category_id"
-                            class="block py-2 px-3 mt-1 w-full bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                         @foreach($categories as $category)
                             <option
@@ -92,7 +92,7 @@
                     <button
                         type="submit"
                         onclick="event.preventDefault();document.getElementById('deletePost').submit();"
-                        class="px-6 py-2 text-lg text-white border-0 rounded bg-red-500 focus:outline-none hover:bg-red-600">
+                        class="px-6 py-2 text-lg text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600">
                         Supprimer l'actualité
                     </button>
                 </div>
@@ -100,7 +100,7 @@
             </div>
         </form>
         <form id="deletePost" method="POST"
-              action="{{route('admin.posts.destroy',['post'=>$post->id])}}">
+              action="{{route('admin.posts.destroy',compact('post'))}}">
             @method('DELETE') @csrf
         </form>
     </div>

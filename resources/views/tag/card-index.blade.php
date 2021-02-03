@@ -1,10 +1,10 @@
 <div
-    class="h-full p-4  shadow-lg bg-white bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
-    <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$tag->title}}</h1>
-    <p class="leading-relaxed mb-3">{{Str::limit($tag->description, 100, ' (...)')}}</p>
+    class="relative h-full p-4 px-8 pt-16 pb-24 overflow-hidden text-center bg-white bg-opacity-75 rounded-lg shadow-lg">
+    <h1 class="mb-3 text-xl font-medium text-gray-900 title-font sm:text-2xl">{{$tag->title}}</h1>
+    <p class="mb-3 leading-relaxed">{{Str::limit($tag->description, 100, ' (...)')}}</p>
     <div
-        class="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
-        <a href="{{route('tags.show',compact('tag'))}}" class="text-dino-500 inline-flex items-center">Voir les
+        class="absolute bottom-0 left-0 flex justify-center w-full py-4 mt-2 leading-none text-center">
+        <a href="{{route('tags.show',compact('tag'))}}" class="inline-flex items-center text-dino-500">Voir les
             article liés
             <span
                 class="text-dino-400  inline-flex items-center leading-none text-md mx-1.5 pr-3 py-1">

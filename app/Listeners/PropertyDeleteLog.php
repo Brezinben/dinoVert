@@ -28,13 +28,13 @@ class PropertyDeleteLog
     {
         DB::table('logs')->insert([
             'type' => 'info',
-            'message' => 'Un nouveau bien à été supprimer',
+            'message' => 'Un nouveau bien a été supprimé',
         ]);
 
         $id = $event->getId();
         DB::table('logs')->insert([
             'type' => 'info',
-            'message' => 'Un  bien à été supprimer, il a l\'id : #' . $id,
+            'message' => 'Un  bien a été supprimé, il a l\'id : #' . $id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

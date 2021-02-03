@@ -7,7 +7,7 @@
             <button
                 type="submit"
                 onclick="event.preventDefault();document.getElementById('deleteProperty').submit();"
-                class="px-6 py-2 text-lg text-white border-0 rounded bg-red-500 focus:outline-none hover:bg-red-600">
+                class="px-6 py-2 text-lg text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600">
                 Supprimer le bien
             </button>
         </div>
@@ -15,7 +15,7 @@
     <div class="container flex px-5 py-10 mx-auto">
         <form method="post" class="w-full"
               id="editPropertyForm"
-              action="{{route('admin.properties.update',['property'=>$property->id])}}"
+              action="{{route('admin.properties.update',compact('property')}}"
         >
             @method('PATCH')
             @csrf
@@ -27,7 +27,7 @@
                            required
                            value="{{$property->title}}"
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    <x-error-form :input="title"></x-error-form>
+                    <x-error-form input="title"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="description" class="text-sm leading-7 text-gray-600">Description du bien</label>
@@ -37,7 +37,7 @@
                         class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500"
                         rows="1"
                     >{{$property->description}}</textarea>
-                    <x-error-form :input="description"></x-error-form>
+                    <x-error-form input="description"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="price" class="text-sm leading-7 text-gray-600">Prix du bien</label>
@@ -45,7 +45,7 @@
                            value="{{$property->price}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    <x-error-form :input="price"></x-error-form>
+                    <x-error-form input="price"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="surface" class="text-sm leading-7 text-gray-600">Surface du bien</label>
@@ -53,7 +53,7 @@
                            value="{{$property->surface}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    <x-error-form :input="surface"></x-error-form>
+                    <x-error-form input="surface"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="rooms" class="text-sm leading-7 text-gray-600">Nombre de pièces</label>
@@ -61,7 +61,7 @@
                            value="{{$property->rooms}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    <x-error-form :input="rooms"></x-error-form>
+                    <x-error-form input="rooms"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="postcode" class="text-sm leading-7 text-gray-600">Code Postal</label>
@@ -69,7 +69,7 @@
                            value="{{$property->postcode}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    <x-error-form :input="postcode"></x-error-form>
+                    <x-error-form input="postcode"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="town" class="text-sm leading-7 text-gray-600">Ville</label>
@@ -77,7 +77,7 @@
                            value="{{$property->town}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    <x-error-form :input="town"></x-error-form>
+                    <x-error-form input="town"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="constructionYear" class="text-sm leading-7 text-gray-600">Date de construction</label>
@@ -86,7 +86,7 @@
                            value="{{$property->constructionYear}}"
                            required
                            class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
-                    <x-error-form :input="constructionYear"></x-error-form>
+                    <x-error-form input="constructionYear"></x-error-form>
                 </div>
                 {{old('images')}}
                 @if(old('images')!=null)
@@ -95,7 +95,7 @@
                 @else
                     @livewire('image-property-input',['images'=>$images])
                 @endif
-                <x-error-form :input="images"></x-error-form>
+                <x-error-form input="images"></x-error-form>
                 <div class="relative mb-4">
                     <label for="type_id" class="text-sm leading-7 text-gray-600">Type du bien</label>
                     <select id="type_id"
@@ -110,7 +110,7 @@
                                 value="{{$type->id}}">{{$type->title}}</option>
                         @endforeach
                     </select>
-                    <x-error-form :input="type_id"></x-error-form>
+                    <x-error-form input="type_id"></x-error-form>
                 </div>
                 <div class="relative mb-4">
                     <label for="state" class="text-sm leading-7 text-gray-600">état du bien</label>
@@ -126,7 +126,7 @@
                                 value="{{$state}}">{{$state}}</option>
                         @endforeach
                     </select>
-                    <x-error-form :input="state"></x-error-form>
+                    <x-error-form input="state"></x-error-form>
                 </div>
                 <div class="flex justify-evenly ">
                     <button
@@ -138,14 +138,14 @@
                     <button
                         type="submit"
                         onclick="event.preventDefault();document.getElementById('deleteProperty').submit();"
-                        class="px-6 py-2 text-lg text-white border-0 rounded bg-red-500 focus:outline-none hover:bg-red-600">
+                        class="px-6 py-2 text-lg text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600">
                         Supprimer le bien
                     </button>
                 </div>
             </div>
         </form>
         <form id="deleteProperty" method="POST"
-              action="{{route('admin.properties.destroy',['property'=>$property->id])}}">
+              action="{{route('admin.properties.destroy',compact('property'))}}">
             @method('DELETE') @csrf
         </form>
     </div>

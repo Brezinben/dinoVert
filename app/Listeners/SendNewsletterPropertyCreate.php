@@ -31,6 +31,6 @@ class SendNewsletterPropertyCreate
         $emails = DB::table('newsletters')->select('email')->pluck('email');
 
         $emails->each(fn($email) => Mail::to($email)->send(new PropertyCreateMail($property, $email)));
-        session()->flash('info', 'Les emails ont été envoyer');
+        session()->flash('info', 'Les emails ont été envoyés');
     }
 }

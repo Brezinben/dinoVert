@@ -1,12 +1,12 @@
-<div class="container my-5 mx-auto">
+<div class="container mx-auto my-5">
     <input type="text"
            wire:model="query"
            wire:keydown.enter="search()"
-           class="flex-1 py-2 block mx-auto px-4 w-2/3 text-base placeholder-gray-400 text-gray-700 bg-punch-50 rounded-lg border  border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-punch-600 focus:border-transparent"
+           class="flex-1 block w-2/3 px-4 py-2 mx-auto text-base text-gray-700 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm appearance-none bg-punch-50 focus:outline-none focus:ring-2 focus:ring-punch-600 focus:border-transparent"
            placeholder="Votre recherche"/>
-    <div class="my-5 mx-auto flex justify-center space-x-5 ">
+    <div class="flex justify-center mx-auto my-5 space-x-5 ">
         <span
-            class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full cursor-pointer"
+            class="inline-flex items-center justify-center px-2 py-1 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full cursor-pointer"
             wire:click="resetFilter()"
         >All</span>
         @foreach($types as $type)
@@ -22,13 +22,13 @@
     </div>
     <div class="grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
         @foreach($filtered as $property)
-            <div class="flex w-full overflow-hidden mx-auto max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800">
+            <div class="flex w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
                 <div class="w-1/3 bg-cover"
                      style="background-image: url('{{$property->images[0]->url}}')"
                      title="{{$property->images[0]->alternative}}"
                 ></div>
 
-                <div class="p-4 w-2/3 md:p-4 flex-col flex justify-evenly">
+                <div class="flex flex-col w-2/3 p-4 md:p-4 justify-evenly">
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">{{Str::limit($property->title, 30, ' ...')}}</h1>
 
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{Str::limit($property->description, 70, ' ...')}}</p>
@@ -46,8 +46,8 @@
                     <div class="flex justify-between mt-1 item-center">
                         <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{number_format($property->price, 0, ',', ' ')." €"}}</h1>
                         <a
-                            href="{{route("properties.show",['property'=>$property])}}"
-                            class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
+                            href="{{route("properties.show",compact('property'))}}"
+                            class="inline-flex items-center h-8 px-5 space-x-2 text-white transition-colors duration-150 rounded-lg bg-dino-700 focus:shadow-outline hover:bg-dino-800">
                             <span>Voir</span>
                             <svg class="w-6 h-6" data-darkreader-inline-fill="" data-darkreader-inline-stroke=""
                                  fill="none" stroke="currentColor"

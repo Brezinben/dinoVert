@@ -6,7 +6,7 @@
     </x-slot>
     <div class="container mx-auto">
 
-        <div class="text-dino-500 font-montserrat p-10 bg-white rounded-xl shadow-lg mb-5">
+        <div class="p-10 mb-5 bg-white shadow-lg text-dino-500 font-montserrat rounded-xl">
             <p>Merci de lire avec attention les différentes modalités d’utilisation du présent site avant d’y parcourir
                 ses
                 pages. En vous connectant sur ce site, vous acceptez, sans réserves, les présentes modalités.</p>
@@ -14,7 +14,7 @@
                 l’économie
                 numérique, les responsables du présent site internet <a
                     href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a> sont :</p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Éditeur du Site : </b></span>
             </p>
             <p>SARL Dino Vert Numéro de SIRET : 75221735600027</p>
@@ -24,20 +24,20 @@
             <p>Téléphone : 06 66 66 66 66</p>
             <p>Email : dino-vert@superDino.fr</p>
             <p>Site Web : <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a></p>
-            <p class="text-lg my-2">
+            <p class="my-2 text-lg">
                 <b><span
                     >Hébergement :</span>
                 </b></p>
             <p>Hébergeur : SARL Dino Vert<br>
                 6 Place Jacques Favrot, 72 666 Isla Nublar sur Sarthe, France<br>
                 Site Web : <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a></p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Développement</b><b> : </b></span>
             </p>
             <p>SARL Dino Vert</p>
             <p>Adresse : 6 Place Jacques Favrot, 72 666 Isla Nublar sur Sarthe, France</p>
             <p>Site Web : <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a></p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Conditions d’utilisation : </b></span>
             </p>
             <p>Ce site (<a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a>) est proposé en différents
@@ -59,7 +59,7 @@
                 AntheDesign n’est en aucun cas responsable de l’utilisation faite de ces informations, et de tout
                 préjudice
                 direct ou indirect pouvant en découler.</p>
-            <p class="text-lg my-2"><b>Cookies</b> : Le site <a
+            <p class="my-2 text-lg"><b>Cookies</b> : Le site <a
                     href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a>
                 peut-être amené à
                 vous
@@ -72,7 +72,7 @@
                 un
                 serveur accède pour lire et enregistrer des informations . Certaines parties de ce site ne peuvent être
                 fonctionnelles sans l’acceptation de cookies.</p>
-            <p class="text-lg my-2"><b>Liens hypertextes :</b> Les sites internet de peuvent offrir des liens vers
+            <p class="my-2 text-lg"><b>Liens hypertextes :</b> Les sites internet de peuvent offrir des liens vers
                 d’autres sites internet ou
                 d’autres ressources disponibles sur Internet. SARL Dino Vert ne dispose d’aucun moyen pour contrôler
                 les
@@ -95,7 +95,7 @@
             <p>La SARL Dino Vert se réserve le droit d’accepter ou de refuser un hyperlien sans avoir à en justifier
                 sa
                 décision.</p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Services fournis : </b></span>
             </p>
             <p>
@@ -116,7 +116,7 @@
                 informations indiquées sur le site {{substr (Request::root(), 7)}}<b> </b>sont données à titre
                 indicatif, et sont
                 susceptibles de changer ou d’évoluer sans préavis.</p>
-            <p class="text-lg my-2"><span><b>Limitation contractuelles sur les données : </b></span>
+            <p class="my-2 text-lg"><span><b>Limitation contractuelles sur les données : </b></span>
             </p>
             <p>Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à
                 différentes
@@ -135,7 +135,7 @@
             <p>Les liens hypertextes mis en place dans le cadre du présent site internet en direction d’autres
                 ressources
                 présentes sur le réseau Internet ne sauraient engager la responsabilité de SARL Dino Vert.</p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Propriété intellectuelle :</b></span>
             </p>
             <p>Tout le contenu du présent site <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a>,
@@ -155,7 +155,7 @@
                 contrefacteur.
                 En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à votre
                 encontre.</p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Déclaration à la CNIL : </b></span>
             </p>
             <p>Conformément à la loi 78-17 du 6 janvier 1978 (modifiée par la loi 2004-801 du 6 août 2004 relative à la
@@ -165,7 +165,7 @@
                 la
                 Commission nationale de l’informatique et des libertés (<a href="http://www.cnil.fr/">www.cnil.fr</a>).
             </p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Litiges : </b></span>
             </p>
             <p>Les présentes conditions du site <a href="{{Request::root()}}">{{substr (Request::root(), 7)}}</a> sont
@@ -175,7 +175,7 @@
                 l’exécution de celles-ci seront de la compétence exclusive des tribunaux dont dépend le siège social de
                 la
                 société. La langue de référence, pour le règlement de contentieux éventuels, est le français.</p>
-            <p class="text-lg my-2"><span
+            <p class="my-2 text-lg"><span
                 ><b>Données personnelles :</b></span>
             </p>
             <p>De manière générale, vous n’êtes pas tenu de nous communiquer vos données personnelles lorsque vous

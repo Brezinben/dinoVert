@@ -35,10 +35,16 @@ class PageController extends Controller
         $properties = Property::with([
             'images' => fn($query) => $query->select('id', 'url', 'property_id'),
             'type' => fn($query) => $query->select('id', 'title'),
-        ])->latest()->limit(3)->get(['id','price', 'surface','postcode', 'town', 'type_id'])->reverse();
+        ])->latest()->limit(3)->get(['id', 'price', 'surface', 'postcode', 'town', 'type_id'])->reverse();
 
         $text = Content::where('page', 'Home')->first()->pluck('wysiwyg_text')->toArray()[0];
-        $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
+
+        $posts = Post::with(['category' => fn($query) => $query->select('id', 'title')])
+            ->latest()
+            ->limit(3)
+            ->get(['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at'])
+            ->reverse();
+
         return view('welcome', compact(['properties', 'posts', 'text']));
     }
 
@@ -125,6 +131,11 @@ class PageController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param Request $request
+     * @param $email
+     * @return RedirectResponse
+     */
     public function unsubscribe(Request $request, $email)
     {
         if (!$request->hasValidSignature()) {

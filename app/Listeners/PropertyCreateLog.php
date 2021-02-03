@@ -29,7 +29,7 @@ class PropertyCreateLog
         $property = $event->getProperty();
         DB::table('logs')->insert([
             'type' => 'info',
-            'message' => 'Un nouveau bien à été crée, il a l\'id : #' . $property->id . ' et pour prix ' . $property->price . ' €',
+            'message' => 'Un nouveau bien a été crée, il a l\'id : #' . $property->id . ' et pour prix ' . $property->price . ' €',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

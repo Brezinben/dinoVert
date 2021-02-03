@@ -311,7 +311,8 @@
             @endauth
         </ul>
         <div x-data="{light:true}" class="cursor-pointer">
-            <div x-show="!light" @click="light=!light" class="absolute top-5 right-5" onclick="removeDarkTheme()">
+            <div x-show="!light" @click="light=!light" class="absolute  bottom-5  lg:top-5 right-5"
+                 onclick="removeDarkTheme()">
                 <svg class="w-10 h-10" fill="white" stroke="yellow" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -319,7 +320,8 @@
                 </svg>
             </div>
 
-            <div x-show="light" @click="light=!light" class="absolute top-5 right-5" onclick="addDarkTheme()">
+            <div x-show="light" @click="light=!light" class="absolute  bottom-5  lg:top-5 right-5"
+                 onclick="addDarkTheme()">
                 <svg class="w-10 h-10" fill="light-gray" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

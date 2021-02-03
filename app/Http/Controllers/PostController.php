@@ -30,7 +30,7 @@ class PostController extends Controller
         $posts = Post::with(['category' => fn($query) => $query->select('id', 'title')])
             ->latest()
             ->get(['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
-        return view('post.index', compact(['posts']));
+        return view('post.index', compact('posts'));
     }
 
     /**

@@ -1,12 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-bold leading-tight text-dino-500">
+        <h2 class="header-title">
             {{ __('Les Mentions Légales') }}
         </h2>
     </x-slot>
     <div class="container mx-auto">
 
-        <div class="p-10 mb-5 bg-white shadow-lg text-dino-500 font-montserrat rounded-xl">
+        <div
+            class="p-10 mb-5 bg-white dark:text-gray-50 dark:bg-gray-900 shadow-lg text-dino-500 font-montserrat rounded-xl">
             <p>Merci de lire avec attention les différentes modalités d’utilisation du présent site avant d’y parcourir
                 ses
                 pages. En vous connectant sur ce site, vous acceptez, sans réserves, les présentes modalités.</p>

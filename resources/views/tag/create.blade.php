@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-bold leading-tight text-dino-500">
+        <h2 class="header-title">
             {{ __('Crée un Tag') }}
         </h2>
     </x-slot>
@@ -10,23 +10,23 @@
         >
             @csrf
             <div
-                class="relative z-10 flex flex-col w-full p-8 mt-10 bg-white rounded-lg md:ml-auto md:mt-0">
+                class="form-create-edit">
                 <div class="relative mb-4">
-                    <label for='title' class="text-sm leading-7 text-gray-600">Libeller du tag</label>
+                    <label for='title' class="form-libel-create-edit">Libeller du tag</label>
                     <input type="text" id='title' name='title'
                            required
                            value="{{ old('title') }}"
                            placeholder="Titre du bien"
-                           class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500">
+                           class="form-input-create-edit">
                     <x-error-form input="title"></x-error-form>
                 </div>
                 <div class="relative mb-4">
-                    <label for="description" class="text-sm leading-7 text-gray-600">Description du tag</label>
+                    <label for="description" class="form-libel-create-edit">Description du tag</label>
                     <textarea
                         id="description" name="description"
                         placeholder="Description du bien"
                         required
-                        class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-indigo-500"
+                        class="form-input-create-edit"
                         rows="1"
                     >{{ old('description') }}</textarea>
                     <x-error-form input="description"></x-error-form>

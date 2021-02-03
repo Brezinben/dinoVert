@@ -29,3 +29,32 @@ div.tox:nth-child(2) {
     @apply rounded;
 }
 
+.header-title {
+    @apply text-2xl font-bold leading-tight text-dino-500 dark:text-gray-50
+}
+
+.btn-eye-dino {
+    @apply py-2 px-4 mx-1 font-semibold rounded border transition duration-300 font-montserrat border-dino-500 text-dino-500 hover:bg-dino-700 hover:text-white focus:outline-none dark:bg-gray-200 dark:hover:bg-dino-700
+}
+
+.btn-edit-punch {
+    @apply py-2 px-4 mx-1 font-semibold rounded border transition duration-300 font-montserrat border-punch-500 text-punch-500 hover:bg-punch-700 hover:text-white focus:outline-none dark:bg-punch-200 dark:hover:bg-punch-700
+}
+
+.btn-add-green {
+    @apply py-2 px-4 mx-1  inline-block font-semibold rounded border transition duration-300 font-montserrat border-green-500 text-green-500 dark:bg-green-200 hover:bg-green-700 dark:hover:bg-green-700 hover:text-white  focus:outline-none
+}
+
+.form-create-edit {
+    @apply relative z-10 flex flex-col w-full p-8 mt-10 bg-white rounded-lg md:ml-auto md:mt-0 dark:bg-gray-900
+}
+
+.form-libel-create-edit {
+    @apply text-sm leading-7 text-gray-600 dark:text-gray-200
+}
+
+.form-input-create-edit {
+    @apply w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none focus:border-dino-500 dark:bg-gray-800 dark:placeholder-gray-400 dark:border-black dark:text-gray-100
+}
+
+

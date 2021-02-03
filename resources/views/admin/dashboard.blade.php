@@ -7,11 +7,11 @@
 
     <div class="py-12">
         <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <section class="text-gray-600 body-font">
+            <section class="text-gray-600 dark:text-gray-200 body-font">
                 <div class="container py-24 px-5 mx-auto">
                     <div class="flex flex-wrap justify-center -m-4">
                         <div class="p-4 md:w-1/3">
-                            <div class="flex flex-col p-8 h-full bg-gray-100 rounded-lg">
+                            <div class="flex flex-col p-8 h-full bg-gray-100 dark:bg-gray-900 rounded-lg">
                                 <div class="flex items-center mb-3">
                                     <div
                                         class="inline-flex flex-shrink-0 justify-center items-center mr-3 w-8 h-8 rounded-full text-punch-500">
@@ -24,7 +24,8 @@
                                             <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3"/>
                                         </svg>
                                     </div>
-                                    <h2 class="text-lg font-medium text-gray-900 title-font">Gestion des biens</h2>
+                                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 title-font">Gestion
+                                        des biens</h2>
                                 </div>
                                 <div class="flex-grow">
                                     <p class="text-base leading-relaxed">Un tableau qui liste les différents bien ainsi
@@ -39,7 +40,7 @@
                             </div>
                         </div>
                         <div class="p-4 md:w-1/3">
-                            <div class="flex flex-col p-8 h-full bg-gray-100 rounded-lg">
+                            <div class="flex flex-col p-8 h-full bg-gray-100 dark:bg-gray-900 rounded-lg">
                                 <div class="flex items-center mb-3">
                                     <div
                                         class="inline-flex flex-shrink-0 justify-center items-center mr-3 w-8 h-8 rounded-full text-punch-500">
@@ -49,7 +50,8 @@
                                         </svg>
 
                                     </div>
-                                    <h2 class="text-lg font-medium text-gray-900 title-font">Gestions des
+                                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 title-font">Gestions
+                                        des
                                         actualitées</h2>
                                 </div>
                                 <div class="flex-grow">
@@ -66,7 +68,8 @@
                             </div>
                         </div>
                         <div class="p-4 md:w-1/3">
-                            <div class="flex flex-col p-8 h-full bg-gray-100 rounded-lg">
+                            <div
+                                class="flex flex-col justify-between p-8 h-full bg-gray-100 dark:bg-gray-900 rounded-lg">
                                 <div class="flex items-center mb-3">
                                     <div
                                         class="inline-flex flex-shrink-0 justify-center items-center mr-3 w-8 h-8 rounded-full text-punch-500">
@@ -77,7 +80,8 @@
                                         </svg>
 
                                     </div>
-                                    <h2 class="text-lg font-medium text-gray-900 title-font">Modifier la
+                                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 title-font">Modifier
+                                        la
                                         home page</h2>
                                 </div>
                                 <div class="flex-grow">
@@ -92,7 +96,7 @@
                             </div>
                         </div>
                         <div class="p-4 md:w-1/3">
-                            <div class="flex flex-col p-8 h-full bg-gray-100 rounded-lg">
+                            <div class="flex flex-col p-8 h-full bg-gray-100 dark:bg-gray-900 rounded-lg">
                                 <div class="flex items-center mb-3">
                                     <div
                                         class="inline-flex flex-shrink-0 justify-center items-center mr-3 w-8 h-8 rounded-full text-punch-500">
@@ -103,7 +107,8 @@
                                         </svg>
 
                                     </div>
-                                    <h2 class="text-lg font-medium text-gray-900 title-font">Gestion des tags</h2>
+                                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 title-font">Gestion
+                                        des tags</h2>
                                 </div>
                                 <div class="flex-grow">
                                     <p class="text-base leading-relaxed">Un tableau qui liste les différentes tags ainsi

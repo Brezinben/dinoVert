@@ -1,4 +1,5 @@
-<div class="flex flex-wrap px-5 py-8 text-gray-500 bg-white shadow rounded-2xl md:flex-nowrap">
+<div
+    class="flex flex-wrap px-5 py-8 text-gray-500 bg-white dark:bg-gray-900 dark:text-gray-50 shadow  rounded-2xl md:flex-nowrap">
     <div
         class="flex flex-col flex-shrink-0 w-full mb-6 overflow-hidden max-h-44 md:w-56 md:mr-5 md:mb-0 md:max-h-72 lg:max-h-44">
         <img src="{{$post->imageUrl}}"
@@ -6,7 +7,7 @@
              alt="">
     </div>
     <div class="w-full md:flex-grow">
-        <h2 class="mb-2 text-2xl font-medium text-gray-900 title-font">{{Str::limit($post->title, 100, ' (...)')}}</h2>
+        <h2 class="mb-2 text-2xl font-medium text-gray-900 dark:text-gray-100 title-font">{{Str::limit($post->title, 100, ' (...)')}}</h2>
         <p class="leading-relaxed">{{Str::limit(strip_tags($post->wysiwyg_text), 250, ' (...)')}}</p>
         <div class="flex items-center justify-between justify-around mt-4">
             <a href="{{route('posts.show',['post'=> $post])}}"
@@ -18,10 +19,16 @@
                     <path d="M12 5l7 7-7 7"></path>
                 </svg>
             </a>
-            <div class="flex flex-col-reverse flex-shrink-0 mb-6 md:mb-0">
-                <span class="font-semibold text-dino-700 title-font">{{$post->category->title}}</span>
+            <div class="flex flex-col-reverse flex-shrink-0 mb-6 md:mb-0 ">
+               <span class="mt-2 inline-flex  justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
+                                            @if($post->category->title == "Maison individuelle") text-blue-50 bg-blue-600
+                                            @elseif($post->category->title == "Appartement") text-green-50 bg-green-600
+                                            @elseif($post->category->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
+                                            @else text-gray-200 bg-gray-600
+                                            @endif() "
+               >{{$post->category->title}}</span>
                 <span
-                    class="mt-1 text-sm text-gray-500">{{ date('d M y', strtotime($post->created_at)) }} </span>
+                    class="mt-1 text-sm dark:text-gray-50 text-gray-500">{{ date('d M y', strtotime($post->created_at)) }} </span>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-bold leading-tight text-dino-500">
+        <h2 class="header-title">
             {{ __('Qui sommes nous ?') }}
         </h2>
     </x-slot>
@@ -12,8 +12,8 @@
                 <img class="object-cover w-48 h-48 mx-auto -mb-24 rounded-full"
                      src="https://images.unsplash.com/photo-1590895178913-3d3472310a47?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1498&q=80"
                      alt=" Médhi Khaman"/>
-                <div class="px-8 pt-32 pb-10 text-gray-400 bg-white rounded-lg shadow-lg">
-                    <h3 class="mb-3 text-xl text-gray-800 font-title">
+                <div class="px-8 pt-32 pb-10 text-gray-400 bg-white dark:bg-gray-900  rounded-lg shadow-lg">
+                    <h3 class="mb-3 text-xl text-gray-800 dark:text-gray-100 font-title">
                         Médhi Khaman
                     </h3>
                     <p class="font-body">
@@ -22,7 +22,8 @@
                     <p class="mb-4 text-sm font-body">
                         Comme Leroy Merlin, faut qu'mes envies prennent vie
                     </p>
-                    <a class="font-body text-dino-500 hover:text-dino-800" href="medhi-khaman@superDino.fr">
+                    <a class="font-body text-dino-500 hover:text-dino-800  dark:text-gray-200  dark:hover:text-gray-50"
+                       href="medhi-khaman@superDino.fr">
                         medhi-khaman@superDino.fr
                     </a>
                 </div>
@@ -31,8 +32,8 @@
                 <img class="object-cover w-48 h-48 mx-auto -mb-24 rounded-full"
                      src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
                      alt="Colette Stérole"/>
-                <div class="px-8 pt-32 pb-10 text-gray-400 bg-white rounded-lg shadow-lg">
-                    <h3 class="mb-3 text-xl text-gray-800 font-title">
+                <div class="px-8 pt-32 pb-10 text-gray-400 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
+                    <h3 class="mb-3 text-xl text-gray-800 font-title dark:text-gray-100">
                         Colette Stérole
                     </h3>
                     <p class="font-body">
@@ -41,14 +42,15 @@
                     <p class="mb-4 text-sm font-body">
                         J'adore les dinosaures, et les maisons donc je vends des enclos !
                     </p>
-                    <a class="font-body text-dino-500 hover:text-dino-800" href="colette.stérole@superDino.fr">
+                    <a class="font-body text-dino-500 hover:text-dino-800  dark:text-gray-200  dark:hover:text-gray-50"
+                       href="colette.stérole@superDino.fr">
                         colette.stérole@superDino.fr
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="testimonial" class="text-gray-600 body-font">
+        <section id="testimonial" class="text-gray-600  dark:text-gray-200  body-font">
             <div class="container px-5 py-24 mx-auto">
                 <div class="w-full mx-auto text-center xl:w-1/2 lg:w-3/4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -64,20 +66,21 @@
                         jean shorts. Slow-carb next level shoindigoitch ethical authentic, yr scenester sriracha forage
                         franzen organic drinking vinegar.</p>
                     <span class="inline-block w-10 h-1 mt-8 mb-6 rounded bg-dino-500"></span>
-                    <h2 class="text-sm font-medium tracking-wider text-gray-900 title-font">HOLDEN CAULFIELD</h2>
-                    <p class="text-gray-500">Senior Product Designer</p>
+                    <h2 class="text-sm font-medium tracking-wider dark:text-gray-100 text-gray-900 title-font">HOLDEN
+                        CAULFIELD</h2>
+                    <p class="text-gray-500 dark:text-gray-300">Senior Product Designer</p>
                 </div>
             </div>
         </section>
-        <!-- This is an example component -->
+
         <section id="stats" class="max-w-xl px-4 py-4 mx-auto">
             <div class="sm:grid sm:h-32 sm:grid-flow-row sm:gap-4 sm:grid-cols-3">
                 <div id="jh-stats-positive"
-                     class="flex flex-col justify-center px-4 py-4 bg-white border border-gray-300 rounded">
+                     class="flex flex-col justify-center px-4 py-4 bg-white dark:bg-gray-900 border dark:border-black border-gray-300 rounded">
                     <div>
                         <div>
                             <p class="flex items-center justify-end text-green-500 text-md">
-                                <span class="font-bold">6%</span>
+                                <span class="font-bold">56%</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current"
                                      viewBox="0 0 24 24">
                                     <path class="heroicon-ui"
@@ -85,43 +88,43 @@
                                 </svg>
                             </p>
                         </div>
-                        <p class="text-3xl font-semibold text-center text-gray-800">43</p>
-                        <p class="text-lg text-center text-gray-500">New Tickets</p>
+                        <p class="text-3xl font-semibold text-center text-gray-800 dark:text-gray-400">432</p>
+                        <p class="text-lg text-center  text-gray-500 dark:text-gray-300">Nouveau Client</p>
                     </div>
                 </div>
 
                 <div id="jh-stats-negative"
-                     class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
+                     class="flex flex-col justify-center px-4 py-4 mt-4 bg-white dark:bg-gray-900 border dark:border-black border-gray-300 rounded sm:mt-0">
                     <div>
                         <div>
-                            <p class="flex items-center justify-end text-red-500 text-md">
-                                <span class="font-bold">6%</span>
+                            <p class="flex items-center justify-end text-green-500 text-md">
+                                <span class="font-bold">82%</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current"
                                      viewBox="0 0 24 24">
                                     <path class="heroicon-ui"
-                                          d="M20 9a1 1 0 012 0v8a1 1 0 01-1 1h-8a1 1 0 010-2h5.59L13 10.41l-3.3 3.3a1 1 0 01-1.4 0l-6-6a1 1 0 011.4-1.42L9 11.6l3.3-3.3a1 1 0 011.4 0l6.3 6.3V9z"/>
+                                          d="M20 15a1 1 0 002 0V7a1 1 0 00-1-1h-8a1 1 0 000 2h5.59L13 13.59l-3.3-3.3a1 1 0 00-1.4 0l-6 6a1 1 0 001.4 1.42L9 12.4l3.3 3.3a1 1 0 001.4 0L20 9.4V15z"/>
                                 </svg>
                             </p>
                         </div>
-                        <p class="text-3xl font-semibold text-center text-gray-800">43</p>
-                        <p class="text-lg text-center text-gray-500">New Tickets</p>
+                        <p class="text-3xl font-semibold text-center text-gray-800 dark:text-gray-400 ">1800</p>
+                        <p class="text-lg text-center  text-gray-500 dark:text-gray-300">Client statifait</p>
                     </div>
                 </div>
 
                 <div id="jh-stats-neutral"
-                     class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
+                     class="flex flex-col justify-center px-4 py-4 mt-4 bg-white dark:bg-gray-900 border dark:bg-black dark:border-black border-gray-300 rounded sm:mt-0">
                     <div>
                         <div>
-                            <p class="flex items-center justify-end text-gray-500 text-md">
-                                <span class="font-bold">0%</span>
+                            <p class="flex items-center justify-end  text-gray-500 dark:text-gray-300 text-md">
+                                <span class="font-bold">0</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current"
                                      viewBox="0 0 24 24">
                                     <path class="heroicon-ui" d="M17 11a1 1 0 010 2H7a1 1 0 010-2h10z"/>
                                 </svg>
                             </p>
                         </div>
-                        <p class="text-3xl font-semibold text-center text-gray-800">43</p>
-                        <p class="text-lg text-center text-gray-500">New Tickets</p>
+                        <p class="text-3xl font-semibold text-center text-gray-800 dark:text-gray-400 ">0</p>
+                        <p class="text-lg text-center  text-gray-500 dark:text-gray-300">Mécontentement</p>
                     </div>
                 </div>
             </div>

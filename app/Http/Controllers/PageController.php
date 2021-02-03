@@ -32,8 +32,12 @@ class PageController extends Controller
      */
     public function home()
     {
+        $properties = Property::with([
+            'images' => fn($query) => $query->select('id', 'url', 'property_id'),
+            'type' => fn($query) => $query->select('id', 'title'),
+        ])->latest()->limit(3)->get(['id','price', 'surface','postcode', 'town', 'type_id'])->reverse();
+
         $text = Content::where('page', 'Home')->first()->pluck('wysiwyg_text')->toArray()[0];
-        $properties = Property::with(['type', 'images'])->latest()->limit(3)->get()->reverse();
         $posts = Post::with(['category', 'tags'])->latest()->limit(3)->get()->reverse();
         return view('welcome', compact(['properties', 'posts', 'text']));
     }

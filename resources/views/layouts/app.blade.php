@@ -18,7 +18,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-gray-100 dark:bg-gray-800">
 <x-jet-banner/>
 
 <div class="min-h-screen ">
@@ -38,7 +38,7 @@
 </div>
 
 @stack('modals')
-<footer class="w-full py-8 bg-dino-500 dark:bg-gray-800">
+<footer class="w-full py-8 bg-dino-500 dark:bg-gray-900">
     <div class="max-w-screen-xl px-4 mx-auto">
         <ul class="flex flex-wrap justify-around max-w-screen-md mx-auto text-lg font-light">
             <li class="my-2">
@@ -123,6 +123,13 @@
         </div>
     </div>
 </footer>
+<script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+</script>
 @livewireScripts
 </body>
 </html>

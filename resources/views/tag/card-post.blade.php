@@ -1,8 +1,8 @@
 <div
-    class="relative w-full max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg cursor-pointer h-max">
+    class="relative w-full max-w-xl mx-auto overflow-hidden bg-white   dark:border-gray-900 rounded-lg shadow-lg cursor-pointer h-max">
     <div><img alt="blog photo" src="{{$post->imageUrl}}"
               class="object-cover w-full rounded-t-lg max-h-40"/></div>
-    <div class="relative flex flex-col justify-between p-4 h-72 dark:bg-gray-800">
+    <div class="relative flex flex-col justify-between p-4 h-72 dark:bg-gray-900">
         <p class="mb-2 text-xl font-medium text-gray-800 dark:text-white">{{$post->title}}
         </p>
         <p class="font-light text-gray-400 dark:text-gray-300 text-md">

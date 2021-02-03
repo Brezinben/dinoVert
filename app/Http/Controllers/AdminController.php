@@ -32,7 +32,7 @@ class AdminController extends Controller
      */
     public function posts()
     {
-        $post = Post::with([
+        $posts = Post::with([
             'category' => fn($query) => $query->select('id', 'title'),
             'tags' => fn($query) => $query->select('tags.id', 'title'),])
             ->latest()

@@ -22,7 +22,7 @@
     </div>
     <div class="grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
         @foreach($filtered as $property)
-            <div class="flex w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+            <div class="flex w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-900">
                 <div class="w-1/3 bg-cover"
                      style="background-image: url('{{$property->images[0]->url}}')"
                      title="{{$property->images[0]->alternative}}"

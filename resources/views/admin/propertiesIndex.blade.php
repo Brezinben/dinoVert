@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Gestion des biens') }}
         </h2>
     </x-slot>
@@ -8,17 +8,17 @@
     <div class="py-6">
         <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8">
             <a href="{{route("admin.properties.create")}}"
-               class="py-2 px-4 mx-1  inline-block font-semibold rounded border transition duration-300 font-montserrat border-green-500 text-green-500 hover:bg-green-700 hover:text-white focus:outline-none">
+               class="btn-add-green">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
             </a>
-            <section class="text-gray-600 body-font">
+            <section class=" body-font">
                 <div class="overflow-x-auto py-2 pr-10 -my-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                     <div
-                        class="inline-block overflow-hidden px-8 pt-3 min-w-full align-middle bg-white rounded-br-lg rounded-bl-lg shadow shadow-dashboard">
+                        class="inline-block overflow-hidden px-8 pt-3 min-w-full align-middle bg-white dark:bg-gray-900 rounded-br-lg rounded-bl-lg shadow shadow-dashboard">
                         <table class="min-w-full">
                             <thead>
                             <tr>
@@ -43,28 +43,28 @@
                                 <th class="py-3 px-6 border-b-2 border-gray-300"></th>
                             </tr>
                             </thead>
-                            <tbody class="bg-white">
+                            <tbody class="bg-white dark:bg-gray-900">
                             @foreach($properties as $property)
                                 <tr>
                                     <td class="py-4 px-6 border-b border-gray-500 whitespace-no-wrap">
                                         <div class="flex items-center">
                                             <div>
-                                                <div class="text-sm leading-5 text-gray-800">
+                                                <div class="text-sm leading-5 text-gray-800 dark:text-gray-200">
                                                     #{{$property->id}}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="py-4 px-6 border-b border-gray-500 whitespace-no-wrap">
                                         <div
-                                            class="text-sm leading-5 text-blue-900">{{number_format($property->price, 0, ',', ' ')." €"}}</div>
+                                            class="text-sm leading-5 text-blue-900 dark:text-gray-200">{{number_format($property->price, 0, ',', ' ')." €"}}</div>
                                     </td>
-                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 border-b border-gray-500 whitespace-no-wrap">
+                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 dark:text-gray-200 border-b border-gray-500 whitespace-no-wrap">
                                         {{number_format($property->surface, 0, ',', ' ')." m2"}}
                                     </td>
-                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 border-b border-gray-500 whitespace-no-wrap">
+                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 dark:text-gray-200 border-b border-gray-500 whitespace-no-wrap">
                                         {{$property->town}}
                                     </td>
-                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 border-b border-gray-500 whitespace-no-wrap">
+                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 dark:text-gray-200 border-b border-gray-500 whitespace-no-wrap">
                                             <span class="w-full px-2 py-1 text-xs rounded-full
                                             @if($property->state == "Ancien") text-punch-600 bg-punch-200
                                             @elseif($property->state == "Neuf") text-green-600 bg-green-200
@@ -73,7 +73,7 @@
                                             @endif() "
                                             >{{$property->state}}</span>
                                     </td>
-                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 border-b border-gray-500 whitespace-no-wrap">
+                                    <td class="py-4 px-6 text-sm leading-5 text-blue-900 dark:text-gray-200 border-b border-gray-500 whitespace-no-wrap">
                                         <span
                                             class="inline-flex justify-center items-center py-1 px-2 mr-2 text-sm leading-none rounded-full
 "
@@ -83,7 +83,7 @@
                                     <td class="py-4 px-6 text-sm leading-5 text-right border-b border-gray-500 whitespace-no-wrap">
                                         <div class="flex">
                                             <a href="{{route("properties.show",compact('property'))}}"
-                                               class="py-2 px-4 mx-1 font-semibold rounded border transition duration-300 font-montserrat border-dino-500 text-dino-500 hover:bg-dino-700 hover:text-white focus:outline-none">
+                                               class="btn-eye-dino">
                                                 <svg class="w-6 h-6" data-darkreader-inline-fill=""
                                                      data-darkreader-inline-stroke=""
                                                      fill="none" stroke="currentColor"
@@ -98,7 +98,7 @@
                                                 </svg>
                                             </a>
                                             <a href="{{route("admin.properties.edit",compact('property'))}}"
-                                               class="py-2 px-4 mx-1 font-semibold rounded border transition duration-300 font-montserrat border-punch-500 text-punch-500 hover:bg-punch-700 hover:text-white focus:outline-none">
+                                               class="btn-edit-punch">
                                                 <svg class="w-6 h-6" viewBox="0 0 24 24" stroke-width="2"
                                                      stroke="currentColor" fill="none" stroke-linecap="round"
                                                      stroke-linejoin="round">

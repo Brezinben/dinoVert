@@ -42,11 +42,11 @@
         x-show.transition="true"
     >
         <ul
-            class="items-center justify-center flex-1 pt-6 text-white lg:pt-0 list-reset lg:flex lg:text-dino-500 dark:text-gray-900 font-montserrat"
+            id="nav-list"
+            class="items-center justify-center flex-1 pt-6 text-white lg:pt-0 list-reset lg:flex lg:text-dino-500 lg:dark:text-gray-900 dark:text-gray-50 font-montserrat"
         >
             <li class="mr-3">
-                <a href="{{route('properties.index')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:ml-2">
+                <a href="{{route('properties.index')}}">
                     <div>Bien à vendre</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 35.963">
                         <g id="fence" transform="translate(0 -51.81)">
@@ -111,7 +111,7 @@
             </li>
             <li class="mr-3">
                 <a href="{{route('posts.index')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                >
                     <div>Actualité</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 52.033 55.285">
                         <g id="megaphone" transform="matrix(0.978, -0.208, 0.208, 0.978, -30.048, -8.994)">
@@ -135,8 +135,7 @@
                 </a>
             </li>
             <li class="mr-3">
-                <a href="{{route('pages.whoAreWe')}}"
-                   class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                <a href="{{route('pages.whoAreWe')}}">
                     <div>Qui sommes nous</div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 48 50.902">
                         <g id="question" transform="translate(-14.14 0)">
@@ -182,13 +181,10 @@
             </li>
             @auth()
                 <li class="mr-3">
-                    <a href="{{route('admin.dashboard')}}" @click="showMenu = !showMenu "
-                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:mx-2">
+                    <a href="{{route('admin.dashboard')}}" @click="showMenu = !showMenu ">
                         <div>Administration</div>
-
-
                         <svg version="1.1" class="w-8 h-8" id="Capa_1"
-                            x="0px" y="0px"
+                             x="0px" y="0px"
                              viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;"
                              xml:space="preserve">
                                             <path style="fill:#5CB38E;" d="M292.48,307.968L292.48,307.968c-17.703-26.771-47.658-42.875-79.753-42.875h-39.453
@@ -288,12 +284,10 @@
                             <g>
                             </g>
                                     </svg>
-
                     </a>
                 </li>
                 <li class="mr-3">
                     <a href=""
-                       class="flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 dark:hover:text-gray-100  md:mx-2"
                        onclick="event.preventDefault();document.getElementById('formLogout').submit();"
                     >
                         <div>Log out</div>
@@ -330,6 +324,5 @@
                 </svg>
             </div>
         </div>
-
     </div>
 </nav>

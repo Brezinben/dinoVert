@@ -19,17 +19,12 @@
                     <path d="M12 5l7 7-7 7"></path>
                 </svg>
             </a>
-            <div class="flex flex-col-reverse flex-shrink-0 mb-6 md:mb-0 ">
-               <span class="mt-2 inline-flex  justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
-                                            @if($post->category->title == "Maison individuelle") text-blue-50 bg-blue-600
-                                            @elseif($post->category->title == "Appartement") text-green-50 bg-green-600
-                                            @elseif($post->category->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                                            @else text-gray-200 bg-gray-600
-                                            @endif() "
-               >{{$post->category->title}}</span>
+            <div class="flex flex-col flex-shrink-0 mb-6 md:mb-0 ">
                 <span
-                    class="mt-1 text-sm dark:text-gray-50 text-gray-500">{{ date('d M y', strtotime($post->created_at)) }} </span>
+                    class="mb-2 text-sm dark:text-gray-50 text-gray-500">{{ date('d M y', strtotime($post->created_at)) }} </span>
+                <x-badge-type :title="$post->category->title"></x-badge-type>
             </div>
         </div>
     </div>
 </div>
+

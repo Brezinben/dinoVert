@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['category' => fn($query) => $query->select('id', 'title')])
+        $posts = Post::with('category')
             ->latest()
             ->paginate(10, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
         return view('post.index', compact('posts'));
@@ -71,22 +71,11 @@ class PostController extends Controller
      */
     public function show(int $id)
     {
-        $post = $this->findPostWithRelation($id);
+        $post = Post::with(['category', 'tags'])
+            ->findOrFail($id, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
         return view('post.show', compact(['post']));
     }
 
-    /**
-     * @param int $id
-     * @return Builder|Builder[]|Collection|Model|null
-     */
-    public function findPostWithRelation(int $id)
-    {
-        $post = Post::with([
-            'category' => fn($query) => $query->select('id', 'title'),
-            'tags' => fn($query) => $query->select('tags.id', 'title'),])
-            ->findOrFail($id, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
-        return $post;
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -98,7 +87,9 @@ class PostController extends Controller
     {
         $tags = Tag::all(['id', 'title']);
         $categories = Category::all(['id', 'title']);
-        $post = $post = $this->findPostWithRelation($id);
+        $post = $post = Post::with(['category', 'tags'])
+            ->findOrFail($id, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
+
         return view('post.edit', compact(['post', 'categories', 'tags']));
     }
 

@@ -5,13 +5,7 @@
         </h2>
     </x-slot>
     <div class="container mx-auto mt-8 mb-32 text-center">
-        <span class="mb-4 inline-flex  justify-center items-center py-1 px-2 mr-2 text-lg font-bold leading-none rounded-full
-                                            @if($post->category->title == "Maison individuelle") text-blue-50 bg-blue-600
-                                            @elseif($post->category->title == "Appartement") text-green-50 bg-green-600
-                                            @elseif($post->category->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                                            @else text-gray-200 bg-gray-600
-                                            @endif() "
-        >{{$post->category->title}}</span>
+        <x-badge-type :title="$post->category->title" class="text-lg mb-4"></x-badge-type>
         <img
             class="object-cover w-3/4 mx-auto -mb-24 rounded-lg shadow-lg xl:max-h-80 max-h-44 md:max-h-64 lg:max-h-72 "
             src="{{$post->imageUrl}}"
@@ -21,7 +15,7 @@
         </div>
         <div class="mt-4 flex flex-nowrap justify-start items-center overflow-hidden">
             @foreach($post->tags as $tag)
-                @if ($loop->index===10)
+                @if ($loop->index===5)
                     @break
                 @endif
                 <div

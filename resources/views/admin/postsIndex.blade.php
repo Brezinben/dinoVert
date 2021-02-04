@@ -57,13 +57,7 @@
                                     </td>
 
                                     <td class="py-4 px-6 text-sm leading-5 text-blue-900 dark:text-gray-200 border-b border-gray-500 whitespace-no-wrap">
-                                            <span class="inline-flex  justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
-                                            @if($post->category->title == "Maison individuelle") text-blue-50 bg-blue-600
-                                            @elseif($post->category->title == "Appartement") text-green-50 bg-green-600
-                                            @elseif($post->category->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                                            @else text-gray-200 bg-gray-600
-                                            @endif() "
-                                            >{{$post->category->title}}</span>
+                                        <x-badge-type :title="$post->category->title"></x-badge-type>
                                     </td>
                                     <td class="py-4 px-6 text-sm leading-5 text-right border-b border-gray-500 whitespace-no-wrap">
                                         <div class="flex">

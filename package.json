@@ -4,7 +4,7 @@
         "ArtisanServe": "php artisan serve",
         "Migration": "php artisan migrate:refresh --seed",
         "Instalation": "composer install && npm install && npm run Migration",
-        "LesRoute": "php artisan route:list --columns=Method,URI,Name",
+        "LesRoutes": "php artisan route:list --columns=Method,URI,Name",
         "dev": "npm run development",
         "development": "mix",
         "watch": "mix watch",

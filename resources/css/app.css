@@ -61,3 +61,7 @@ div.tox:nth-child(2) {
     @apply py-2 px-3 mx-1 text-gray-700 shadow bg-white rounded-md dark:bg-gray-900 dark:text-gray-200 hover:bg-dino-600 dark:hover:bg-punch-500 hover:text-white dark:hover:text-gray-200
 }
 
+/*les différents liens du menu*/
+#nav-list li a {
+    @apply flex items-center px-2 py-1 space-x-2 text-lg font-semibold rounded w-max hover:bg-dino-900 hover:text-gray-100 md:ml-2
+}

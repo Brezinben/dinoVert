@@ -25,7 +25,6 @@
             document.documentElement.classList.remove('dark');
             localStorage.theme = 'light';
         }
-        console.log(localStorage.theme, document.documentElement.classList)
     </script>
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>

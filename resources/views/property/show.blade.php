@@ -42,7 +42,7 @@
                         <button
                             class="flex-1 w-4 h-2 mx-2 mt-4 mb-0 overflow-hidden transition-colors duration-200 ease-out rounded-full  hover:bg-dino-600 hover:shadow-lg"
                             :class="{
-                                  'bg-dino-200 dark:bg-gray-900': activeSlide === slide[0],
+                                  'bg-dino-200 dark:bg-gray-900 bg-white': activeSlide === slide[0],
                                   'bg-gray-200 dark:bg-gray-600': activeSlide !== slide[0]
                               }"
                             x-on:click="activeSlide = slide[0]"
@@ -57,7 +57,8 @@
             <p class="mb-8 leading-relaxed dark:text-gray-200">{{$property->description}}</p>
             <div class="flex flex-wrap justify-center -m-4 text-center">
                 <div class="w-full p-4 md:w-1/3 2xl:w-1/4 sm:w-1/2">
-                    <div class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 dark:border-black rounded-lg">
+                    <div
+                        class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 bg-white dark:border-black rounded-lg">
                         <svg class="inline-block w-12 h-12 mb-3 text-punch-500" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="7" height="7"/>
@@ -70,7 +71,8 @@
                     </div>
                 </div>
                 <div class="w-full p-4 md:w-1/3 2xl:w-1/4 sm:w-1/2">
-                    <div class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 dark:border-black rounded-lg">
+                    <div
+                        class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 bg-white dark:border-black rounded-lg">
                         <svg class="inline-block w-12 h-12 mb-3 text-dino-500" fill="none" viewBox="0 0 24 24"
                              stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -82,7 +84,8 @@
                     </div>
                 </div>
                 <div class="w-full p-4 md:w-1/3 2xl:w-1/4 sm:w-1/2">
-                    <div class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 dark:border-black rounded-lg">
+                    <div
+                        class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 bg-white dark:border-black rounded-lg">
                         <svg class="inline-block w-12 h-12 mb-3 text-punch-500" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -93,7 +96,8 @@
                     </div>
                 </div>
                 <div class="w-full p-4 md:w-1/3 2xl:w-1/4 sm:w-1/2">
-                    <div class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 dark:border-black rounded-lg">
+                    <div
+                        class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 bg-white dark:border-black rounded-lg">
                         <svg class="inline-block w-12 h-12 mb-3 text-dino-500" fill="none" stroke="currentColor"
                              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -106,7 +110,8 @@
                     </div>
                 </div>
                 <div class="w-full p-4 md:w-1/3 2xl:w-1/4 sm:w-1/2">
-                    <div class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 dark:border-black rounded-lg">
+                    <div
+                        class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 bg-white dark:border-black rounded-lg">
                         <svg class="inline-block w-12 h-12 mb-3 text-punch-500" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
@@ -120,7 +125,8 @@
                     </div>
                 </div>
                 <div class="w-full p-4 md:w-1/3 2xl:w-1/4 sm:w-1/2">
-                    <div class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 dark:border-black rounded-lg">
+                    <div
+                        class="px-4 py-6 border-2 border-gray-200 dark:bg-gray-900 bg-white dark:border-black rounded-lg">
                         <svg class="inline-block w-12 h-12 mb-3 text-dino-500" width="24" height="24"
                              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                              stroke-linecap="round" stroke-linejoin="round">

@@ -118,6 +118,9 @@
                     </div>
                 </div>
             </section>
+            <div class="mt-16 ">
+                {{ $properties->links('pagination') }}
+            </div>
         </div>
     </div>
 </x-app-layout>

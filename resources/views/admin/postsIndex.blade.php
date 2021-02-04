@@ -103,6 +103,9 @@
                     </div>
                 </div>
             </section>
+            <div class="mt-16 ">
+                {{ $posts->links('pagination') }}
+            </div>
         </div>
     </div>
 </x-app-layout>

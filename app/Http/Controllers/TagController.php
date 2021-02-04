@@ -20,7 +20,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::withCount('posts')->get(['id', 'title', 'description', 'posts_count']);
+        $tags = Tag::withCount('posts')->paginate(30, ['id', 'title', 'description', 'posts_count']);
         return view('tag.index', compact(['tags']));
     }
 

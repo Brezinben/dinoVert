@@ -96,6 +96,9 @@
                     </div>
                 </div>
             </section>
+            <div class="mt-16 ">
+                {{ $tags->links('pagination') }}
+            </div>
         </div>
     </div>
 </x-app-layout>

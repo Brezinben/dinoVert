@@ -23,7 +23,7 @@ class AdminController extends Controller
     {
         $properties = Property::with(['type' => fn($query) => $query->select('id', 'title')])
             ->latest()
-            ->get(['id', 'title', 'description', 'price', 'town', 'state', 'type_id']);
+            ->paginate(30, ['id', 'title', 'description', 'price', 'town', 'state', 'type_id']);
         return view('admin.propertiesIndex', compact('properties'));
     }
 
@@ -36,7 +36,7 @@ class AdminController extends Controller
             'category' => fn($query) => $query->select('id', 'title'),
             'tags' => fn($query) => $query->select('tags.id', 'title'),])
             ->latest()
-            ->get(['id', 'title', 'category_id', 'created_at']);
+            ->paginate(30, ['id', 'title', 'category_id', 'created_at']);
         return view('admin.postsIndex', compact('posts'));
     }
 
@@ -44,7 +44,7 @@ class AdminController extends Controller
     {
         $tags = Tag::withCount('posts')
             ->orderBy('posts_count', 'desc')
-            ->get(['id', 'title', 'description', 'posts_count']);
+            ->paginate(30, ['id', 'title', 'description', 'posts_count']);
         return view('admin.tagsIndex', compact(['tags']));
     }
 

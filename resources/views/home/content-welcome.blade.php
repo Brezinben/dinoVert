@@ -136,7 +136,6 @@
                         </svg>
                     </a>
                 </div>
-
             </div>
         </div>
     @endforeach

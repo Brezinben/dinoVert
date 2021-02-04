@@ -76,7 +76,7 @@ class AdminController extends Controller
      */
     public function storeEditHome(Request $request, int $id): RedirectResponse
     {
-        $content = Content::findOrFail($id, ['wysiwyg_text']);
+        $content = Content::findOrFail($id);
         $text = $content->pluck('wysiwyg_text')->toArray()[0];
         $newText = $request->input('wysiwygTextHome');
 

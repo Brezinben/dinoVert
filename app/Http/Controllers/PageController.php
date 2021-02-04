@@ -45,7 +45,7 @@ class PageController extends Controller
             ->get(['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at'])
             ->reverse();
 
-        return view('welcome', compact(['properties', 'posts', 'text']));
+        return view('home.welcome', compact(['properties', 'posts', 'text']));
     }
 
     /**
@@ -136,7 +136,7 @@ class PageController extends Controller
      * @param $email
      * @return RedirectResponse
      */
-    public function unsubscribe(Request $request, $email)
+    public function unsubscribe(Request $request, $email): RedirectResponse
     {
         if (!$request->hasValidSignature()) {
             abort(401);

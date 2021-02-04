@@ -22,7 +22,7 @@
                  </textarea>
             </form>
         </div>
-        @include('content-welcome')
+        @include('home.content-welcome')
     </div>
     @include('layouts.script.tinymceScript')
 </x-app-layout>

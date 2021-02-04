@@ -7,6 +7,6 @@
         <div class="text-dino-500 dark:text-gray-50 font-montserrat mb-5">
             {!!$text!!}
         </div>
-        @include('content-welcome')
+        @include('home.content-welcome')
     </div>
 </x-app-layout>

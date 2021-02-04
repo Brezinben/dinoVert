@@ -16,6 +16,17 @@
     @livewireStyles
 
     <!-- Scripts -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+        }
+        console.log(localStorage.theme, document.documentElement.classList)
+    </script>
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-800">
@@ -124,14 +135,15 @@
     </div>
 </footer>
 <script>
-    function addDarkTheme() {
-        document.documentElement.classList.add('dark')
+    function toggleTheme() {
+        if (localStorage.theme === 'dark') {
+            localStorage.theme = 'light';
+            document.documentElement.classList.remove('dark');
+        } else {
+            localStorage.theme = 'dark';
+            document.documentElement.classList.add('dark');
+        }
     }
-
-    function removeDarkTheme() {
-        document.documentElement.classList.remove('dark');
-    }
-
 
 </script>
 @livewireScripts

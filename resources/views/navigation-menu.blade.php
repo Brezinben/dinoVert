@@ -187,7 +187,7 @@
                         <div>Administration</div>
 
 
-                        <svg version="1.1" class="w-8 h-8" id="Capa_1" 
+                        <svg version="1.1" class="w-8 h-8" id="Capa_1"
                             x="0px" y="0px"
                              viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;"
                              xml:space="preserve">
@@ -309,9 +309,10 @@
                 <form id="formLogout" action="{{route('logout')}}" method="POST" class="hidden">@csrf</form>
             @endauth
         </ul>
-        <div x-data="{light:true}" class="cursor-pointer">
-            <div x-show="!light" @click="light=!light" class="absolute  bottom-5  lg:top-5 right-5"
-                 onclick="removeDarkTheme()">
+        <div x-data="{light:true}" x-init="() => { light = localStorage.theme == 'light'}" class="cursor-pointer">
+            <!-- Sun -->
+            <div x-show="!light" @click="toggleTheme();light=!light;" class="absolute  bottom-5  lg:top-5 right-5"
+               >
                 <svg class="w-10 h-10" fill="white" stroke="yellow" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -319,8 +320,9 @@
                 </svg>
             </div>
 
-            <div x-show="light" @click="light=!light" class="absolute  bottom-5  lg:top-5 right-5"
-                 onclick="addDarkTheme()">
+            <!-- Moon -->
+            <div x-show="light" @click="toggleTheme();light=!light;" class="absolute  bottom-5  lg:top-5 right-5"
+               >
                 <svg class="w-10 h-10" fill="light-gray" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

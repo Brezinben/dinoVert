@@ -88,7 +88,6 @@
                            class="form-input-create-edit">
                     <x-error-form input="constructionYear"></x-error-form>
                 </div>
-                {{old('images')}}
                 @if(old('images')!=null)
                     {{--   Si on avait déja renseigner des url alors on les repasse au composant--}}
                     @livewire('image-property-input',['images'=>explode(",", old('images'))])

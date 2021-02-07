@@ -18,12 +18,14 @@
         </div>
     @endforeach
 
+    @if($canAdd)
     <div class="relative my-5">
         <label for="image" class="hidden"></label>
         <div class="flex items-center">
             <input type="url" id="image" name="image" wire:model="image"
                    placeholder="URL de l'image"
                    class="form-input-create-edit">
+
             <button
                 wire:click="addImage()"
                 class="px-4 py-2 mb-1 ml-1 text-xs font-bold text-green-500 uppercase bg-transparent border border-green-500 border-solid rounded outline-none hover:bg-green-500 hover:text-white active:bg-green-600 focus:outline-none"
@@ -36,4 +38,5 @@
             <p>{{ $message }}</p>
         </div> @enderror
     </div>
+    @endif
 </div>

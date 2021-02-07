@@ -56,12 +56,13 @@ class PropertyController extends Controller
     {
         DB::transaction(function () use ($request) {
             $property = Property::create($request->except(['_token', 'images', 'image']));
-            $images = explode(",", $request->input('images'));
+            //On prends 10 images uniques maximum
+            $images = array_slice(array_unique(explode(",", $request->input('images'))), 0, 10);
             foreach ($images as $image) {
                 Image::create([
                         'url' => $image,
                         'property_id' => $property->id,
-                        'alternative' => 'alternative',]
+                        'alternative' => 'Photo du bien qui s\'appelle' . $property->title,]
                 );
             }
             event(new PropertyCreate($property));
@@ -110,8 +111,8 @@ class PropertyController extends Controller
             $property = Property::findOrFail($id)->update($request->except(['_token', 'images', 'image']));
             //On supprime les anciennes images.
             Image::where('property_id', $id)->delete();
-            //On crée un tableau avec les url(s)
-            $images = explode(",", $request->input('images'));
+            //On crée un tableau avec les 10 url(s) uniques
+            $images = array_slice(array_unique(explode(",", $request->input('images'))), 0, 10);
             foreach ($images as $image) {
                 Image::create([
                         'url' => $image,

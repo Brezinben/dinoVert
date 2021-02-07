@@ -19,14 +19,7 @@
                         class="text-xl dark:text-gray-50 text-dino-400 font-montserrat">{{number_format($properties[0]->surface, 0, ',', ' ')." m²"}}</div>
                 </div>
                 <div class="flex justify-between items-center">
-                        <span
-                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
-                            @if($properties[0]->type->title == "Maison individuelle") text-gray-50 bg-blue-600
-                            @elseif($properties[0]->type->title == "Appartement") text-gray-50 bg-green-600
-                            @elseif($properties[0]->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                            @else text-gray-200 bg-gray-600
-                            @endif() "
-                        >{{$properties[0]->type->title}}</span>
+                    <x-badge-type :title="$properties[0]->type->title"></x-badge-type>
                     <a
                         href="{{route("properties.show",['property'=>$properties[0]])}}"
                         class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
@@ -71,14 +64,7 @@
                             class="text-xl  dark:text-gray-50 text-dino-400 font-montserrat">{{number_format($properties[$index]->surface, 0, ',', ' ')." m²"}}</div>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span
-                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
-                            @if($properties[$index]->type->title == "Maison individuelle")text-gray-50 bg-blue-600
-                            @elseif($properties[$index]->type->title == "Appartement")text-gray-50 bg-green-600
-                            @elseif($properties[$index]->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                            @else text-gray-200 bg-gray-600
-                            @endif() "
-                        >{{$properties[$index]->type->title}}</span>
+                        <x-badge-type :title="$properties[$index]->type->title"></x-badge-type>
                         <a
                             href="{{route("properties.show",['property'=>$properties[$index]])}}"
                             class="inline-flex items-center px-5 space-x-2 h-8 text-white rounded-lg transition-colors duration-150 bg-dino-700 focus:shadow-outline hover:bg-dino-800">
@@ -106,7 +92,7 @@
         <div
             class="overflow-hidden relative mx-auto w-full max-w-xl bg-white rounded-lg shadow-lg cursor-pointer h-max">
             <div><img alt="blog photo" src="{{$post->imageUrl}}"
-                      class="object-cover w-full max-h-40 rounded-t-lg"/></div>
+                      class="object-cover w-full h-40 rounded-t-lg"/></div>
             <div class="flex relative flex-col justify-between p-4 h-72 dark:bg-gray-900">
                 <p class="mb-2 text-xl font-medium text-gray-800 dark:text-white">{{$post->title}}
                 </p>

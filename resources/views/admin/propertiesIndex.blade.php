@@ -74,11 +74,7 @@
                                             >{{$property->state}}</span>
                                     </td>
                                     <td class="py-4 px-6 text-sm leading-5 text-blue-900 dark:text-gray-200 border-b border-gray-500 whitespace-no-wrap">
-                                        <span
-                                            class="inline-flex justify-center items-center py-1 px-2 mr-2 text-sm leading-none rounded-full
-"
-                                        >{{$property->type->title}}</span>
-                                        </span>
+                                        <x-badge-type :title="$property->type->title"></x-badge-type>
                                     </td>
                                     <td class="py-4 px-6 text-sm leading-5 text-right border-b border-gray-500 whitespace-no-wrap">
                                         <div class="flex">

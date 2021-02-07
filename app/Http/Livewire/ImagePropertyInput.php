@@ -24,6 +24,8 @@ class ImagePropertyInput extends Component
      */
     public $image = '';
 
+    public bool $canAdd = true;
+
     /**
      * Règles à respecter lors de l'ajout dans $images
      * @var string[]
@@ -63,9 +65,15 @@ class ImagePropertyInput extends Component
      */
     public function addImage()
     {
-        $this->validate();
-        array_push($this->images, $this->image);
-        $this->reset('image');
+        $maxLength = 10;
+        if ($maxLength > count($this->images)) {
+            $this->validate();
+            array_push($this->images, $this->image);
+            $this->reset('image');
+            $this->canAdd = !(count($this->images) == $maxLength);
+        } else {
+            $this->canAdd = false;
+        }
     }
 
     /**
@@ -76,5 +84,6 @@ class ImagePropertyInput extends Component
     {
         array_splice($this->images, $index, $index);
         $this->reset('image');
+        $this->canAdd = true;
     }
 }

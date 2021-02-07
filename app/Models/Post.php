@@ -13,13 +13,19 @@ class Post extends Model
 
     protected $guarded = [];
 
+    /**
+     * @return BelongsTo
+     */
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->select('id', 'title');
     }
 
+    /**
+     * @return BelongsToMany
+     */
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class)->withTimestamps();
+        return $this->belongsToMany(Tag::class)->withTimestamps()->select('tags.id', 'title');
     }
 }

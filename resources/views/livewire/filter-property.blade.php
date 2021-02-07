@@ -4,20 +4,17 @@
            wire:keydown.enter="search()"
            class="flex-1 block w-2/3 px-4 py-2 mx-auto text-base text-gray-700 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm appearance-none bg-punch-50 focus:outline-none focus:ring-2 focus:ring-punch-600 focus:border-transparent"
            placeholder="Votre recherche"/>
-    <div class="flex justify-center mx-auto my-5 space-x-5 ">
-        <span
-            class="inline-flex items-center justify-center px-2 py-1 my-2 text-xs font-bold leading-none text-gray-200 bg-gray-600 rounded-full cursor-pointer"
-            wire:click="resetFilter()"
-        >All</span>
+    <div class="flex justify-center mx-auto my-5 space-x-5 items-center ">
         @foreach($types as $type)
-            <span class="inline-flex justify-center items-center py-1 px-2 my-2 text-xs font-bold leading-none rounded-full cursor-pointer
-                  @if($type->title == "Maison individuelle") text-blue-50 bg-blue-600
-                  @elseif($type->title == "Appartement") text-green-50 bg-green-600
-                  @elseif($type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                  @else text-gray-200 bg-gray-600
-                  @endif() "
-                  wire:click="filterType({{$type}})"
-            >{{$type->title}}</span>
+            @if($loop->first)
+                <div><span
+                        class="inline-flex  justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full cursor-pointer text-gray-200 bg-gray-600"
+                        wire:click="resetFilter()">All
+                 </span></div>
+            @endif
+            <div wire:click="filterType({{$type}})">
+                <x-badge-type :title="$type->title"></x-badge-type>
+            </div>
         @endforeach
     </div>
     <div class="grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
@@ -30,19 +27,10 @@
 
                 <div class="flex flex-col w-2/3 p-4 md:p-4 justify-evenly">
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">{{Str::limit($property->title, 30, ' ...')}}</h1>
-
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{Str::limit($property->description, 70, ' ...')}}</p>
                     <div class="flex justify-end my-2 ">
-                         <span class="inline-flex  justify-center items-center py-1 px-2 mr-2 text-xs font-bold leading-none rounded-full
-                                            @if($property->type->title == "Maison individuelle") text-blue-50 bg-blue-600
-                                            @elseif($property->type->title == "Appartement") text-green-50 bg-green-600
-                                            @elseif($property->type->title == "Enclos à dinosaure") text-gray-50  bg-dino-600
-                                            @else text-gray-200 bg-gray-600
-                                            @endif() "
-                         >{{$property->type->title}}</span>
+                        <x-badge-type :title="$property->type->title"></x-badge-type>
                     </div>
-
-
                     <div class="flex justify-between mt-1 item-center">
                         <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{number_format($property->price, 0, ',', ' ')." €"}}</h1>
                         <a

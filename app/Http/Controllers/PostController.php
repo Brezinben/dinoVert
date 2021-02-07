@@ -11,12 +11,10 @@ use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -27,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['category' => fn($query) => $query->select('id', 'title')])
+        $posts = Post::with('category')
             ->latest()
             ->paginate(10, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
         return view('post.index', compact('posts'));
@@ -53,13 +51,15 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request): RedirectResponse
     {
-        //On crée le post avec les data de la request validé
-        $post = Post::create($request->except(['_token', 'tags']));
-        //On lui associes les tags
-        $post->tags()->attach($request->input('tags'));
-        event(new PostCreate($post));
-        //On active un flash message
-        session()->flash('success', 'L\' actualité a bien été crée!');
+        DB::transaction(function () use ($request) {
+            //On crée le post avec les data de la request validé
+            $post = Post::create($request->except(['_token', 'tags']));
+            //On lui associes les tags
+            $post->tags()->attach($request->input('tags'));
+            event(new PostCreate($post));
+            //On active un flash message
+            session()->flash('success', 'L\' actualité a bien été crée!');
+        });
         return redirect()->route("posts.index");
     }
 
@@ -71,22 +71,11 @@ class PostController extends Controller
      */
     public function show(int $id)
     {
-        $post = $this->findPostWithRelation($id);
+        $post = Post::with(['category', 'tags'])
+            ->findOrFail($id, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
         return view('post.show', compact(['post']));
     }
 
-    /**
-     * @param int $id
-     * @return Builder|Builder[]|Collection|Model|null
-     */
-    public function findPostWithRelation(int $id)
-    {
-        $post = Post::with([
-            'category' => fn($query) => $query->select('id', 'title'),
-            'tags' => fn($query) => $query->select('tags.id', 'title'),])
-            ->findOrFail($id, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
-        return $post;
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -98,7 +87,9 @@ class PostController extends Controller
     {
         $tags = Tag::all(['id', 'title']);
         $categories = Category::all(['id', 'title']);
-        $post = $post = $this->findPostWithRelation($id);
+        $post = $post = Post::with(['category', 'tags'])
+            ->findOrFail($id, ['id', 'title', 'wysiwyg_text', 'imageUrl', 'category_id', 'created_at']);
+
         return view('post.edit', compact(['post', 'categories', 'tags']));
     }
 
@@ -112,13 +103,16 @@ class PostController extends Controller
     public function update(Request $request, int $id): RedirectResponse
     {
         $post = Post::findOrFail($id);
-        //On update
-        $post->update($request->except(['_token', 'tags']));
-        //On enlève les anciens tags associé
-        $post->tags()->detach();
-        //On attache les  nouveaux.
-        $post->tags()->attach($request->input('tags'));
-        session()->flash('success', 'L\'actualité a bien été modifié');
+        DB::transaction(function () use ($post, $request) {
+            //On update
+            $post->update($request->except(['_token', 'tags']));
+            $tags = $post->tags();
+            //On enlève les anciens tags associé
+            $tags->detach();
+            //On attache les  nouveaux.
+            $tags->attach($request->input('tags'));
+            session()->flash('success', 'L\'actualité a bien été modifié');
+        });
         return redirect()->route("admin.posts.index");
     }
 
@@ -131,10 +125,12 @@ class PostController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $post = Post::findOrFail($id);
-        $post->tags()->detach();
-        $post->delete();
-        event(new PostDelete($id));
-        session()->flash('success', 'L\'actualité a bien été supprimer');
+        DB::transaction(function () use ($post, $id) {
+            $post->tags()->detach();
+            $post->delete();
+            event(new PostDelete($id));
+            session()->flash('success', 'L\'actualité a bien été supprimer');
+        });
         return redirect()->route("admin.posts.index");
     }
 }

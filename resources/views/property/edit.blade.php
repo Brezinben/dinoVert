@@ -99,7 +99,7 @@
                     <label for="type_id" class="form-libel-create-edit">Type du bien</label>
                     <select id="type_id"
                             name="type_id"
-                            class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            class="form-input-create-edit"
                     >
                         @foreach($types as $type)
                             <option
@@ -115,7 +115,7 @@
                     <label for="state" class="form-libel-create-edit">état du bien</label>
                     <select id="state"
                             name="state"
-                            class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            class="form-input-create-edit"
                     >
                         @foreach($states as $state)
                             <option

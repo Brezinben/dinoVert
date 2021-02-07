@@ -42,7 +42,7 @@
                     <select id="tags[]"
                             name="tags[]"
                             size="10"
-                            class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            class="form-input-create-edit"
                             multiple
                     >
                         @foreach( $tags as $tag)
@@ -60,7 +60,7 @@
                     <label for="category_id" class="form-libel-create-edit">Type du bien</label>
                     <select id="category_id"
                             name="category_id"
-                            class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            class="form-input-create-edit"
                     >
                         @foreach($categories as $category)
                             <option

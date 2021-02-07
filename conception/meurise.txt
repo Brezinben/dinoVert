@@ -8,7 +8,7 @@ newsletters:id,email,created_at,updated_at
 logs:id,type(enum),message,created_at,updated_at
 
 images:id,url,alternative,created_at,updated_at
-content:id,for(enum),wysiwyg_text,created_at,updated_at
+content:id,page(enum),wysiwyg_text,created_at,updated_at
 :
 tags:id,title,description,created_at,updated_at
 post_tag, 0N posts, 0N tags: id,post_id,tag_id,created_at,updated_at

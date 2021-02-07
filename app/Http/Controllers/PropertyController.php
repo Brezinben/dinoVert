@@ -11,11 +11,9 @@ use App\Models\Type;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -56,17 +54,19 @@ class PropertyController extends Controller
      */
     public function store(StorePropertyRequest $request): RedirectResponse
     {
-        $property = Property::create($request->except(['_token', 'images', 'image']));
-        $images = explode(",", $request->input('images'));
-        foreach ($images as $image) {
-            Image::create([
-                    'url' => $image,
-                    'property_id' => $property->id,
-                    'alternative' => 'alternative',]
-            );
-        }
-        event(new PropertyCreate($property));
-        session()->flash('success', 'Le bien a bien été crée');
+        DB::transaction(function () use ($request) {
+            $property = Property::create($request->except(['_token', 'images', 'image']));
+            $images = explode(",", $request->input('images'));
+            foreach ($images as $image) {
+                Image::create([
+                        'url' => $image,
+                        'property_id' => $property->id,
+                        'alternative' => 'alternative',]
+                );
+            }
+            event(new PropertyCreate($property));
+            session()->flash('success', 'Le bien a bien été crée');
+        });
         return redirect()->route("properties.index");
     }
 
@@ -106,21 +106,21 @@ class PropertyController extends Controller
      */
     public function update(StorePropertyRequest $request, int $id): RedirectResponse
     {
-        $property = Property::findOrFail($id)->update($request->except(['_token', 'images', 'image']));
-
-        //On supprime les anciennes images.
-        Image::where('property_id', $id)->delete();
-
-        //On crée un tableau avec les url(s)
-        $images = explode(",", $request->input('images'));
-        foreach ($images as $image) {
-            Image::create([
-                    'url' => $image,
-                    'property_id' => $id,
-                    'alternative' => 'alternative',]
-            );
-        }
-        session()->flash('success', 'Le bien a bien été modifié');
+        DB::transaction(function () use ($id, $request) {
+            $property = Property::findOrFail($id)->update($request->except(['_token', 'images', 'image']));
+            //On supprime les anciennes images.
+            Image::where('property_id', $id)->delete();
+            //On crée un tableau avec les url(s)
+            $images = explode(",", $request->input('images'));
+            foreach ($images as $image) {
+                Image::create([
+                        'url' => $image,
+                        'property_id' => $id,
+                        'alternative' => 'alternative',]
+                );
+            }
+            session()->flash('success', 'Le bien a bien été modifié');
+        });
         return redirect()->route("admin.properties.index");
     }
 
@@ -132,9 +132,13 @@ class PropertyController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        Property::findOrFail($id)->delete();
-        event(new PropertyDelete($id));
-        session()->flash('success', 'Le bien a bien été supprimer');
+        //A noté que la relations avec les images se delete également
+        if (Property::findOrFail($id)->delete()) {
+            event(new PropertyDelete($id));
+            session()->flash('success', 'Le bien a bien été supprimer');
+        } else {
+            session()->flash('error', 'Le bien n\'a pas bien été supprimer');
+        }
         return redirect()->route("admin.properties.index");
     }
 }

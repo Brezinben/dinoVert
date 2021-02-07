@@ -32,4 +32,13 @@ class Property extends Model
         return $this->hasMany(Image::class)->select('id', 'url', 'alternative', 'property_id')->oldest();
     }
 
+    /**
+     * Pour ne pas avoir d'espace dans le code postal
+     * @param $value
+     * @return string|string[]
+     */
+    public function getPostcodeAttribute($value)
+    {
+        return str_replace(' ', '', $value);
+    }
 }

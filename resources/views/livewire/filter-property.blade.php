@@ -4,6 +4,7 @@
            wire:keydown.enter="search()"
            class="flex-1 block w-2/3 px-4 py-2 mx-auto text-base text-gray-700 placeholder-gray-400 border border-gray-300 rounded-lg shadow-sm appearance-none bg-punch-50 focus:outline-none focus:ring-2 focus:ring-punch-600 focus:border-transparent"
            placeholder="Votre recherche"/>
+    @error('query') <span class="error">{{ $message }}</span> @enderror
     <div class="flex justify-center mx-auto my-5 space-x-5 items-center ">
         @foreach($types as $type)
             @if($loop->first)
@@ -20,10 +21,18 @@
     <div class="grid grid-cols-1 gap-4 mx-auto xl:grid-cols-3 md:grid-cols-2 md:gap-3">
         @foreach($filtered as $property)
             <div class="flex w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-900">
-                <div class="w-1/3 bg-cover"
-                     style="background-image: url('{{$property->images[0]->url}}')"
-                     title="{{$property->images[0]->alternative}}"
-                ></div>
+                @if($property->images->count()!=0)
+                    <div class="w-1/3 bg-cover"
+                         style="background-image: url('{{$property->images[0]->url}}')"
+                         title="{{$property->images[0]->alternative}}"
+                    ></div>
+                @else
+                    <div class="w-1/3 bg-cover"
+                         style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/200px-No_image_3x4.svg.png')"
+                         title="Pas d'image disponible"
+                    ></div>
+                @endif
+
 
                 <div class="flex flex-col w-2/3 p-4 md:p-4 justify-evenly">
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">{{Str::limit($property->title, 30, ' ...')}}</h1>

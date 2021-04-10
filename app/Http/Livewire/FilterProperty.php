@@ -32,6 +32,11 @@ class FilterProperty extends Component
      */
     public $types;
 
+    protected $rules = [
+        'query' => '',
+    ];
+
+
     /**
      * @param $properties
      */
@@ -66,9 +71,7 @@ class FilterProperty extends Component
      */
     public function search()
     {
-        $this->properties = Property::with([
-            'images' => fn($query) => $query->first(),
-            'type',])
+        $this->properties = Property::with(['images', 'type'])
             ->where('title', 'like', '%' . $this->query . '%')
             ->latest()
             ->get(['id', 'title', 'description', 'price', 'type_id']);
